@@ -8,30 +8,84 @@
     <head>
         <meta name="viewport" content="width=device-width" />
         <title>{{ title }}</title>
-        <script type="text/javascript" src="@this.Url.Content("~/Scripts/angular.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/angular.js")"></script>
         
         <script type="text/javascript">
-            angular.module('Cement', []);
-            angular.module('Cement').controller('Main', ["$scope", "$controller", function ($scope, $controller) {
+            angular.module('Cement', [], function ($routeProvider, $locationProvider) {
+                $routeProvider.when('/Page/:page', {
+                    templateUrl: '/Templates/Page.html',
+                    controller: 'Pages'
+                });
+
+                // configure html5 to get links working on jsfiddle
+                $locationProvider.html5Mode(true);
+
+            });
+            angular.module('Cement').controller('Main', ["$scope", function ($scope) {
+                
                 $scope.title = "test";
+                $scope.placeholder = {
+                    name: "testmodule",
+                    settings: {
+                        title: 'test1',
+                        option1: '1',
+                        option2: '2'
+                    }
+                };
+                $scope.placeholder2 = {
+                    name: "testmodule",
+                    settings: {
+                        title: 'test2',
+                        option1: '1',
+                        option2: '2'
+                    }
+                };
+                $scope.changeTitle = function() {
+                    $scope.placeholder2.settings.title += "vasya";
+                };
             }]);
-            angular.module('Cement').controller('Vasya', ["$scope", "$controller", function ($scope, $controller) {
+
+            angular.module('Cement').controller('Pages', ["$scope", "$routeParams", "$location", function ($scope, $routeParams, $location) {
+                console.log($routeParams);
+                console.log($location);
             }]);
-            angular.module('Cement').directive('placeholder', function (injectables) {
-                console.log(injectables);
+
+
+            angular.module('Cement').directive('placeholder', function ($compile) {
                 return {
-                    template: "<div>{{param1}}</div>",
                     replace: true,
                     restrict: 'E',
-                    scope: {},
-                    link: function postLink(scope, iElement, iAttrs) {
-                        scope.param1 = "param1 test";
+                    scope: {
+                        module: '='
+                    },
+                    link: function (scope, element, attrs) {
+                        element.replaceWith($compile("<" + scope.module.name + " settings='module.settings'>" + "</" + scope.module.name + ">")(scope));
+                        
                     }
                 };
             });
+            
+            angular.module('Cement').directive('testmodule', function () {
+                return {
+                    replace: true,
+                    restrict: 'E',
+                    scope: {
+                        settings: '='
+                    },
+                    template: "<div>{{ settings.title }}</div>",
+                    link: function (scope, element, attrs) {
+    
+                    }
+                };
+            });
+
         </script>
     </head>
     <body>
-        <placeholder></placeholder>
+        <a href="/Page/Home">Home</a> |
+        <a href="/Page/About">About</a> |
+
+        <ng-view></ng-view>
+
     </body>
 </html>

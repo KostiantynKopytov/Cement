@@ -27,7 +27,7 @@ namespace Cement.Web.Controllers
         public ActionResult Index()
         {
             var model = new { Layout = "_Basic" };
-            return this.View(model);
+            return View(model);
         }
 
         #endregion
