@@ -15,7 +15,9 @@
                 $routeProvider.when('/Page/:page', {
                     templateUrl: '/Templates/Page.html',
                     controller: 'Pages'
-                });
+                }).otherwise({
+                    redirectTo: '/Page/Home'
+                });;
 
                 // configure html5 to get links working on jsfiddle
                 $locationProvider.html5Mode(true);
