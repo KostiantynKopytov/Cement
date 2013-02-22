@@ -1,0 +1,37 @@
+﻿@{
+    this.Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="Cement" ng-controller="Main">
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>{{ title }}</title>
+        <script type="text/javascript" src="@this.Url.Content("~/Scripts/angular.js")"></script>
+        
+        <script type="text/javascript">
+            angular.module('Cement', []);
+            angular.module('Cement').controller('Main', ["$scope", "$controller", function ($scope, $controller) {
+                $scope.title = "test";
+            }]);
+            angular.module('Cement').controller('Vasya', ["$scope", "$controller", function ($scope, $controller) {
+            }]);
+            angular.module('Cement').directive('placeholder', function (injectables) {
+                console.log(injectables);
+                return {
+                    template: "<div>{{param1}}</div>",
+                    replace: true,
+                    restrict: 'E',
+                    scope: {},
+                    link: function postLink(scope, iElement, iAttrs) {
+                        scope.param1 = "param1 test";
+                    }
+                };
+            });
+        </script>
+    </head>
+    <body>
+        <placeholder></placeholder>
+    </body>
+</html>
