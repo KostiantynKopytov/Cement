@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\JasmineController.cs" />
+    <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -320,7 +321,7 @@
     <Content Include="Scripts\ui-bootstrap-0.1.0-SNAPSHOT.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.1.0-SNAPSHOT.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.1.0-SNAPSHOT.min.js" />
-    <Content Include="Templates\Page.html" />
+    <Content Include="TemplatesOld\Page.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -346,6 +347,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jasmine\MIT.LICENSE" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Templates\PageTemplate.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

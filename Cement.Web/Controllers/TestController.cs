@@ -26,7 +26,7 @@ namespace Cement.Web.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            var model = new CementPage { PageTemplate = "/Templates/Page.html" };
+            var model = new CementPage { PageTemplate = "/Templates/PageTemplate" };
             return View(model);
         }
 

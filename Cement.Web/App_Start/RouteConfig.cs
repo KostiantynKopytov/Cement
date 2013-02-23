@@ -16,13 +16,19 @@ namespace Cement.Web
             routes.MapRoute(
                 name: "Test",
                 url: "Test",
-                defaults: new { controller = "Jasmine", action = "Run", id = UrlParameter.Optional }
+                defaults: new { controller = "Jasmine", action = "Run" }
+            );
+
+            routes.MapRoute(
+                name: "Templates",
+                url: "Templates/{page}",
+                defaults: new { controller = "Templates", action = "Index" }
             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{*path}",
-                defaults: new { controller = "Test", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Test", action = "Index"}
             );
         }
     }
