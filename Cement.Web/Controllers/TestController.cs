@@ -26,8 +26,13 @@ namespace Cement.Web.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            var model = new { Layout = "_Basic" };
+            var model = new CementPage { PageTemplate = "/Templates/Page.html" };
             return View(model);
+        }
+
+        public class CementPage
+        {
+            public string PageTemplate;
         }
 
         #endregion

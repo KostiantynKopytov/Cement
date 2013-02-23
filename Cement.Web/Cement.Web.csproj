@@ -139,6 +139,10 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cement\app.js" />
+    <Content Include="Scripts\cement\controllers\PageController.js" />
+    <Content Include="Scripts\cement\directives\testmodule.js" />
+    <Content Include="Scripts\cement\directives\placeholder.js" />
     <Content Include="Scripts\i18n\angular-locale_am-et.js" />
     <Content Include="Scripts\i18n\angular-locale_am.js" />
     <Content Include="Scripts\i18n\angular-locale_ar-eg.js" />
