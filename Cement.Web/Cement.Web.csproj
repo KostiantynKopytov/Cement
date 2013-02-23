@@ -139,10 +139,12 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\cement\app.js" />
-    <Content Include="Scripts\cement\controllers\PageController.js" />
-    <Content Include="Scripts\cement\directives\testmodule.js" />
-    <Content Include="Scripts\cement\directives\placeholder.js" />
+    <Content Include="Scripts\cement\modules\core\module.config.js" />
+    <Content Include="Scripts\cement\modules\core\controllers\BodyController.js" />
+    <Content Include="Scripts\cement\modules\core\controllers\PageController.js" />
+    <Content Include="Scripts\cement\require.config.js" />
+    <Content Include="Scripts\cement\modules\core\directives\testmodule.js" />
+    <Content Include="Scripts\cement\modules\core\directives\placeholder.js" />
     <Content Include="Scripts\i18n\angular-locale_am-et.js" />
     <Content Include="Scripts\i18n\angular-locale_am.js" />
     <Content Include="Scripts\i18n\angular-locale_ar-eg.js" />
@@ -300,6 +302,8 @@
     <Content Include="Scripts\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\jstd-scenario-adapter-config.js" />
     <Content Include="Scripts\jstd-scenario-adapter.js" />
+    <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.js" />
     <Content Include="Scripts\ui-bootstrap-0.1.0-SNAPSHOT.js" />
     <Content Include="Scripts\ui-bootstrap-0.1.0-SNAPSHOT.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.1.0-SNAPSHOT.js" />
