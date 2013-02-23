@@ -321,7 +321,6 @@
     <Content Include="Scripts\ui-bootstrap-0.1.0-SNAPSHOT.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.1.0-SNAPSHOT.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.1.0-SNAPSHOT.min.js" />
-    <Content Include="TemplatesOld\Page.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

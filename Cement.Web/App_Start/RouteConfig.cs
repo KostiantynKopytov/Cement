@@ -28,7 +28,7 @@ namespace Cement.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{*path}",
-                defaults: new { controller = "Test", action = "Index"}
+                defaults: new { controller = "Test", action = "Index" }
             );
         }
     }
