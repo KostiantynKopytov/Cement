@@ -14,10 +14,16 @@ namespace Cement.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{*path}",
-                defaults: new { controller = "Test", action = "Index", id = UrlParameter.Optional }
+                name: "Test",
+                url: "Test",
+                defaults: new { controller = "Jasmine", action = "Run", id = UrlParameter.Optional }
             );
+//
+//            routes.MapRoute(
+//                name: "Default",
+//                url: "{*path}",
+//                defaults: new { controller = "Test", action = "Index", id = UrlParameter.Optional }
+//            );
         }
     }
 }
