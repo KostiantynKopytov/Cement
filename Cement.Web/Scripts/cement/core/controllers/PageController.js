@@ -24,6 +24,8 @@
             $scope.changeTitle = function () {
                 $scope.placeholder2.settings.title += "vasya";
             };
+
+            $scope.goodMood = "yes";
         }]
     };
 });

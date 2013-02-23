@@ -12,5 +12,9 @@
         it("should have placeholder", function () {
             expect(scope.placeholder).toNotBe(null);
         });
+        
+        it("should have a good mood", function () {
+            expect(scope.goodMood).toBe(null);
+        });
     });
 });
