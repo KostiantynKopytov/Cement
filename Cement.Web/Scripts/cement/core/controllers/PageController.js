@@ -1,5 +1,8 @@
-﻿define(['angular', 'cement/app'], function (angular) {
-    return ["$scope", "$location", "$rootScope", function($scope, $location, $rootScope) {
+﻿console.log('PageController');
+
+define(['cement/core/controllers'], function (module) {
+    console.log('module', module);
+    module.controller('PageController', ["$scope", "$location", "$rootScope", function ($scope, $location, $rootScope) {
         console.log('PageController init');
         $rootScope.title = $location.$$path;
 
@@ -23,5 +26,5 @@
         $scope.changeTitle = function() {
             $scope.placeholder2.settings.title += "vasya";
         };
-    }];
+    }]);
 });

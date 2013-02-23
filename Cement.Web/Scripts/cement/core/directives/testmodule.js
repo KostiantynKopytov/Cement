@@ -1,5 +1,5 @@
-﻿define(['angular'], function(angular) {
-    angular.module('Cement.Directives').directive('testmodule', function() {
+﻿define(['cement/core/directives'], function (core) {
+    core.directive('testmodule', function ($compile) {
         return {
             replace: true,
             restrict: 'E',
@@ -8,7 +8,6 @@
             },
             template: "<div>{{ settings.title }}</div>",
             link: function(scope, element, attrs) {
-
             }
         };
     });
