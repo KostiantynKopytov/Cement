@@ -18,12 +18,12 @@ namespace Cement.Web
                 url: "Test",
                 defaults: new { controller = "Jasmine", action = "Run", id = UrlParameter.Optional }
             );
-//
-//            routes.MapRoute(
-//                name: "Default",
-//                url: "{*path}",
-//                defaults: new { controller = "Test", action = "Index", id = UrlParameter.Optional }
-//            );
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{*path}",
+                defaults: new { controller = "Pages", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }
