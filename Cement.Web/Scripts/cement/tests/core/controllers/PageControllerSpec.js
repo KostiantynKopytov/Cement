@@ -1,8 +1,12 @@
-﻿define(['angular-mocks', 'cement/core/controllers'], function (mock) {
+﻿define(['angular', 'angular-mocks', 'cement/core/controllers/PageController'], function (angular, mock, ctrlFactory) {
     return describe('PageController', function () {
         var scope;
 
-        beforeEach(mock.module('cement.core.controllers'));
+        var depends = [];
+        var module = angular.module('test', depends);
+        ctrlFactory(module, depends);
+
+        beforeEach(mock.module('test'));
 
         beforeEach(mock.inject(function ($rootScope, $controller) {
             scope = $rootScope.$new();
