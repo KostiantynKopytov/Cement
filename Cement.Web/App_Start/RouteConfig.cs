@@ -20,16 +20,15 @@ namespace Cement.Web
             );
 
             routes.MapRoute(
-                name: "Templates",
-                url: "Templates/{page}",
-                defaults: new { controller = "Templates", action = "Index" }
+                name: "Resources",
+                url: "core/~{action}",
+                defaults: new { controller = "Resources" }
             );
-
 
             routes.MapRoute(
                 name: "Default",
                 url: "{*path}",
-                defaults: new { controller = "Pages", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Resources", action = "MasterPage" }
             );
         }
     }

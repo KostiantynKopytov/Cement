@@ -1,4 +1,4 @@
-﻿define([], function() {
+﻿define(['module!cement.core.controllers'], function(module) {
     return {
         name: 'PageController',
         factory: ["$scope", "$location", "$rootScope", function($scope, $location, $rootScope) {
@@ -36,7 +36,6 @@
             $scope.goodMood = "yes";
             
             $rootScope.title = $scope.page.title;
-
         }]
     };
 });

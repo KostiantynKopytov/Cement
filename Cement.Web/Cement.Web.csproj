@@ -111,8 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\JasmineController.cs" />
-    <Compile Include="Controllers\PagesController.cs" />
-    <Compile Include="Controllers\TemplatesController.cs" />
+    <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -154,15 +153,16 @@
     <Content Include="Scripts\cement\admin\app.js" />
     <Content Include="Scripts\cement\core\controllers.js" />
     <Content Include="Scripts\cement\core\controllers\PageController.js" />
+    <Content Include="Scripts\cement\core\services.js" />
     <Content Include="Scripts\cement\core\directives.js" />
     <Content Include="Scripts\cement\core\directives\requireCss.js" />
-    <Content Include="Scripts\cement\helpers\defineModule.js" />
+    <Content Include="Scripts\cement\core\services\pageService.js" />
     <Content Include="Scripts\cement\portal\app.js" />
-    <Content Include="Scripts\cement\require.config.js" />
+    <Content Include="Scripts\cement\requirejs\config.js" />
     <Content Include="Scripts\cement\core\directives\testmodule.js" />
     <Content Include="Scripts\cement\core\directives\placeholder.js" />
     <Content Include="Scripts\cement\tests\core\controllers\PageControllerSpec.js" />
-    <Content Include="Scripts\css.js" />
+    <Content Include="Scripts\cement\requirejs\plugins\css.js" />
     <Content Include="Scripts\i18n\angular-locale_am-et.js" />
     <Content Include="Scripts\i18n\angular-locale_am.js" />
     <Content Include="Scripts\i18n\angular-locale_ar-eg.js" />
@@ -326,6 +326,7 @@
     <Content Include="Scripts\jasmine\jasmine.js" />
     <Content Include="Scripts\jstd-scenario-adapter-config.js" />
     <Content Include="Scripts\jstd-scenario-adapter.js" />
+    <Content Include="Scripts\cement\requirejs\plugins\module.js" />
     <Content Include="Scripts\normalize.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
@@ -344,13 +345,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Layouts\" />
+    <Folder Include="Scripts\cement\helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Pages\Index.cshtml" />
+    <Content Include="Views\Resources\MasterPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Jasmine\SpecRunner.cshtml" />
@@ -359,10 +360,10 @@
     <Content Include="Scripts\jasmine\MIT.LICENSE" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Templates\MainLayout.cshtml" />
+    <Content Include="Views\Resources\Layouts\MainLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Templates\CustomLayout.cshtml" />
+    <Content Include="Views\Resources\Layouts\CustomLayout.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
