@@ -3,6 +3,7 @@
     fileDeps: [
         'cement/core/directives/placeholder',
         'cement/core/directives/testmodule',
+        'cement/core/directives/requireCss',
     ],
     callback: function (module) {
         for (var i = 1; i < arguments.length; i++) {

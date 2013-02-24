@@ -1,10 +1,23 @@
-﻿
-<div style="width: 700px; margin: 0 auto;">
-    
-    <a href="/Home">Home</a> |
-    <a href="/About">About</a> |
+﻿<require-css href="@Url.Content("~/content/bootstrap.css")"></require-css>
+<require-css href="@Url.Content("~/content/css/main.layout.css")"></require-css>
 
-    <placeholder module="page.placeholder" ></placeholder>
-    <placeholder module="page.placeholder2"></placeholder>
-    <a ng-click="changeTitle()">change module title</a>
+<div class="container">
+    <div class="row">
+        <div class="span2">
+            <div class="pane"> sidebar</div>
+            <!--Sidebar content-->
+       
+        </div>
+        <div class="span10">
+            <div class="pane">
+                <a href="/Home">Home</a> |
+                <a href="/About">About</a> |
+
+                <placeholder module="page.placeholder" ></placeholder>
+                <placeholder module="page.placeholder2"></placeholder>
+            
+                <button class="btn" type="button" ng-click="changeTitle()"><i class="icon-font"></i> change module title</button>
+            </div>
+        </div>
+    </div>
 </div>

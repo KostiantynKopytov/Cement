@@ -1,0 +1,10 @@
+﻿
+
+.pane {
+    padding: 10px;
+    background-color: #BBD8E9;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}

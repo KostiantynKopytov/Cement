@@ -127,6 +127,7 @@
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\main.layout.css" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\jasmine\jasmine.css" />
@@ -154,12 +155,14 @@
     <Content Include="Scripts\cement\core\controllers.js" />
     <Content Include="Scripts\cement\core\controllers\PageController.js" />
     <Content Include="Scripts\cement\core\directives.js" />
+    <Content Include="Scripts\cement\core\directives\requireCss.js" />
     <Content Include="Scripts\cement\helpers\defineModule.js" />
     <Content Include="Scripts\cement\portal\app.js" />
     <Content Include="Scripts\cement\require.config.js" />
     <Content Include="Scripts\cement\core\directives\testmodule.js" />
     <Content Include="Scripts\cement\core\directives\placeholder.js" />
     <Content Include="Scripts\cement\tests\core\controllers\PageControllerSpec.js" />
+    <Content Include="Scripts\css.js" />
     <Content Include="Scripts\i18n\angular-locale_am-et.js" />
     <Content Include="Scripts\i18n\angular-locale_am.js" />
     <Content Include="Scripts\i18n\angular-locale_ar-eg.js" />
@@ -323,6 +326,7 @@
     <Content Include="Scripts\jasmine\jasmine.js" />
     <Content Include="Scripts\jstd-scenario-adapter-config.js" />
     <Content Include="Scripts\jstd-scenario-adapter.js" />
+    <Content Include="Scripts\normalize.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\ui-bootstrap-0.1.0-SNAPSHOT.js" />
