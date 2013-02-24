@@ -3,19 +3,18 @@
 
 <div class="container">
     <div class="row">
-        <div class="span2">
-            <div class="pane"> sidebar</div>
-            <!--Sidebar content-->
-       
-        </div>
-        <div class="span10">
+        <div class="span12">       
+            <ul class="nav nav-pills">
+                <li ng-class="navClass('home')">
+                    <a href="/Home">Home</a>
+                </li>
+                <li ng-class="navClass('about')">
+                    <a href="/About">About</a>
+                </li>
+            </ul>
             <div class="pane">
-                <a href="/Home">Home</a> |
-                <a href="/About">About</a> |
-
                 <placeholder module="page.placeholder" ></placeholder>
                 <placeholder module="page.placeholder2"></placeholder>
-            
                 <button class="btn" type="button" ng-click="changeTitle()"><i class="icon-font"></i> change module title</button>
             </div>
         </div>

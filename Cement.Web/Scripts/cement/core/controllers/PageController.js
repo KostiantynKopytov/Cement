@@ -9,6 +9,11 @@
                 $scope.page.placeholder2.settings.title += "vasya";
             };
 
+            $scope.navClass = function (page) {
+                var currentRoute = $location.path().substring(1) || 'home';
+                return page === currentRoute.toLowerCase() ? 'active' : '';
+            };
+            
             $scope.page = {
                 layout: "Templates/MainLayout",
                 placeholder: {
