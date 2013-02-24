@@ -2,9 +2,7 @@
     return {
         name: 'PageController',
         factory: ["$scope", "$location", "$rootScope", function($scope, $location, $rootScope) {
-            $rootScope.title = $location.$$path;
             
-
             $scope.changeTitle = function() {
                 $scope.page.placeholder2.settings.title += "vasya";
             };
@@ -15,6 +13,7 @@
             };
             
             $scope.page = {
+                title:  $location.path().substring(1),
                 layout: "Templates/MainLayout",
                 placeholder: {
                     name: "testmodule",
@@ -35,6 +34,9 @@
             };
 
             $scope.goodMood = "yes";
+            
+            $rootScope.title = $scope.page.title;
+
         }]
     };
 });
