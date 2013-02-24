@@ -151,14 +151,12 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cement\admin\app.js" />
-    <Content Include="Scripts\cement\core\controllers.js" />
     <Content Include="Scripts\cement\core\controllers\PageController.js" />
     <Content Include="Scripts\cement\core\directives\requireDirective.js" />
-    <Content Include="Scripts\cement\core\services.js" />
-    <Content Include="Scripts\cement\core\directives.js" />
     <Content Include="Scripts\cement\core\directives\requireCss.js" />
     <Content Include="Scripts\cement\core\services\pageService.js" />
     <Content Include="Scripts\cement\portal\app.js" />
+    <Content Include="Scripts\cement\portal\app.factory.js" />
     <Content Include="Scripts\cement\requirejs\config.js" />
     <Content Include="Scripts\cement\core\directives\testmodule.js" />
     <Content Include="Scripts\cement\core\directives\placeholder.js" />

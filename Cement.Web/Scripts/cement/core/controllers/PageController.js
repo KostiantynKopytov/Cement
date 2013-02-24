@@ -1,39 +1,26 @@
-﻿define(['angular'], function (angular) {
-    var module = angular.module('cement.core.controllers.PageController', []);
-    module.controller('PageController', ["$scope", "$location", "$rootScope", function ($scope, $location, $rootScope) {
+﻿define(['angular-resource'], function () {
+    return function (module, dependsOn) {
+        dependsOn.push('ngResource');
+        module.controller('PageController', ["$scope", "$location", "$resource", "$rootScope", function ($scope, $location, $resource, $rootScope) {
 
-        $scope.changeTitle = function() {
-            $scope.page.placeholder2.settings.title += "vasya";
-        };
+            $scope.changeTitle = function () {
+                $scope.page.placeholder2.settings.title += "vasya";
+            };
 
-        $scope.navClass = function(page) {
-            var currentRoute = $location.path().substring(1) || 'home';
-            return page === currentRoute.toLowerCase() ? 'active' : '';
-        };
+            $scope.navClass = function (page) {
+                var currentRoute = $location.path().substring(1) || 'home';
+                return page === currentRoute.toLowerCase() ? 'active' : '';
+            };
 
-        $scope.page = {
-            title: $location.path().substring(1),
-            layout: "/core/~layout/MainLayout",
-            placeholder: {
-                name: "testmodule",
-                settings: {
-                    title: 'Test Module 1',
-                    option1: '1',
-                    option2: '2'
-                }
-            },
-            placeholder2: {
-                name: "testmodule",
-                settings: {
-                    title: 'Test Module 2',
-                    option1: '1',
-                    option2: '2'
-                }
-            }
-        };
-
-        $scope.goodMood = "yes";
-
-        $rootScope.title = $scope.page.title;
-    }]);
+            var pageService = $resource('/core/~page' + $location.$$path);
+            console.log('loading page:', pageService, $location.$$path);
+            pageService.get({}, function (x) {
+                console.log('loaded page:', x, $scope);
+                $scope.page = x;
+                $scope.page.title = $location.$$path;
+                $scope.page.layout = "/core/~layout/" + x.layout;
+                $rootScope.title = $scope.page.title;
+            });
+        }]);
+    };
 });
