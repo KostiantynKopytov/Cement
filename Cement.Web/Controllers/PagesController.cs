@@ -36,6 +36,7 @@ namespace Cement.Web.Controllers
             var server = client.GetServer();
             var pages = server["test"]["pages"].AsQueryable<Page>();
             var page = pages.FirstOrDefault(p => p.Id == pageId);
+            page = page ?? new Page {Id = pageId, Template = "Page"};
             return View(page);
         }
 

@@ -354,7 +354,7 @@
     <Content Include="Scripts\jasmine\MIT.LICENSE" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Templates\PageTemplate.cshtml" />
+    <Content Include="Views\Templates\Page.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
