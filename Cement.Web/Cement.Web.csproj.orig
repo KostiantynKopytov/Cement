@@ -111,8 +111,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\JasmineController.cs" />
+<<<<<<< HEAD
     <Compile Include="Controllers\PagesController.cs" />
+=======
     <Compile Include="Controllers\TemplatesController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+>>>>>>> e8fd3ec4abdaab2b1acd06300ba4404a6fb75700
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

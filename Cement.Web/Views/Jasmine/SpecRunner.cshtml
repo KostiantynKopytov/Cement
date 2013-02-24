@@ -1,8 +1,5 @@
-@{
-    Layout = null;
-}
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
+
 <html>
     <head>
         <title>Jasmine Spec Runner</title>
@@ -16,8 +13,6 @@
         <script type="text/javascript" src="@Url.Content("~/Scripts/cement/require.config.js")"> </script>
         <script type="text/javascript">
             require(['angular', 'cement/tests/core/controllers/PageControllerSpec'], function(angular) {
-                console.log('ok');
-
                 var jasmineEnv = jasmine.getEnv();
                 jasmineEnv.updateInterval = 1000;
 
@@ -28,18 +23,6 @@
                 jasmineEnv.specFilter = function(spec) {
                     return htmlReporter.specFilter(spec);
                 };
-
-//                var currentWindowOnload = window.onload;
-
-//                window.onload = function() {
-//                    if (currentWindowOnload) {
-//                        currentWindowOnload();
-//                    }
-//                    execJasmine();
-//                };
-//
-//                function execJasmine() {
-//                }
 
                 jasmineEnv.execute();
 

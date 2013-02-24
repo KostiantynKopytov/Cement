@@ -14,7 +14,12 @@
         <script type="text/javascript" src="@Url.Content("~/Scripts/cement/require.config.js")"></script>
         <script type="text/javascript">
             require(['angular', 'cement/portal/app'], function (angular, app) {
+<<<<<<< HEAD:Cement.Web/Views/Pages/Index.cshtml
+                console.log('staring...');
                 app.constant('TemplateUrl', '/Templates/@Model.Template');
+=======
+                app.constant('TemplateUrl', '@Model.PageTemplate');
+>>>>>>> e8fd3ec4abdaab2b1acd06300ba4404a6fb75700:Cement.Web/Views/Test/Index.cshtml
                 var html = document.getElementsByTagName('html');
                 angular.bootstrap(html, ['cement.portal.app']);
             }, function(error) {
