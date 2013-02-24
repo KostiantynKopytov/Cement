@@ -6,7 +6,7 @@
             
 
             $scope.changeTitle = function() {
-                $scope.placeholder2.settings.title += "vasya";
+                $scope.page.placeholder2.settings.title += "vasya";
             };
 
             $scope.page = {

@@ -10,7 +10,7 @@
         }));
 
         it("should have placeholder", function () {
-            expect(scope.placeholder).toNotBe(null);
+            expect(scope.placeholder).toBeDefined();
         });
         
         it("should have a good mood", function () {

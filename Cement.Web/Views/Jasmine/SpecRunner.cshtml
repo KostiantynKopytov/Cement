@@ -9,9 +9,12 @@
         <script type="text/javascript" src="/Scripts/jasmine/jasmine.js"> </script>
         <script type="text/javascript" src="/Scripts/jasmine/jasmine-html.js"> </script>
 
-        <script type="text/javascript" src="@Url.Content("~/Scripts/require.js")"> </script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/cement/require.config.js")"> </script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/cement/helpers/defineModule.js")"> </script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/require.js")"> </script>
+        
         <script type="text/javascript">
+            require.config(requireCfg);
             require(['angular', 'cement/tests/core/controllers/PageControllerSpec'], function(angular) {
                 var jasmineEnv = jasmine.getEnv();
                 jasmineEnv.updateInterval = 1000;
@@ -30,9 +33,7 @@
                 console.log('error', error);
             });
         </script>
-
     </head>
-
     <body>
     </body>
 </html>

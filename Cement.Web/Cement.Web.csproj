@@ -154,6 +154,7 @@
     <Content Include="Scripts\cement\core\controllers.js" />
     <Content Include="Scripts\cement\core\controllers\PageController.js" />
     <Content Include="Scripts\cement\core\directives.js" />
+    <Content Include="Scripts\cement\helpers\defineModule.js" />
     <Content Include="Scripts\cement\portal\app.js" />
     <Content Include="Scripts\cement\require.config.js" />
     <Content Include="Scripts\cement\core\directives\testmodule.js" />
@@ -354,10 +355,10 @@
     <Content Include="Scripts\jasmine\MIT.LICENSE" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Templates\Page.cshtml" />
+    <Content Include="Views\Templates\MainLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Templates\MainLayout.cshtml" />
+    <Content Include="Views\Templates\CustomLayout.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
