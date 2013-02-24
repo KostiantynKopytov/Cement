@@ -1,5 +1,6 @@
-﻿define(['module!cement.core.controllers'], function (module) {
-    module.directive('placeholder', function($compile) {
+﻿define(['angular'], function (angular) {
+    var module = angular.module('cement.core.directives.placeholder', []);
+    module.directive('placeholder', function ($compile) {
         return {
             replace: true,
             restrict: 'E',

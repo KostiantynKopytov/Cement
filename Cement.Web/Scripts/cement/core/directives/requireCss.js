@@ -1,5 +1,6 @@
-﻿define(['module!cement.core.controllers'], function (module) {
-    module.directive('requireCss', function() {
+﻿define(['angular'], function (angular) {
+    var module = angular.module('cement.core.directives.requireCss', []);
+    module.directive('requireCss', function () {
         return {
             restrict: 'E',
             link: function(scope, element, attrs) {

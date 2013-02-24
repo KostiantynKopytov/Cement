@@ -1,5 +1,6 @@
-﻿define(['module!cement.core.controllers'], function (module) {
-    module.directive('testmodule', function() {
+﻿define(['angular'], function (angular) {
+    var module = angular.module('cement.core.directives.testmodule', []);
+    module.directive('testmodule', function () {
         return {
             replace: true,
             restrict: 'E',

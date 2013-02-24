@@ -153,6 +153,7 @@
     <Content Include="Scripts\cement\admin\app.js" />
     <Content Include="Scripts\cement\core\controllers.js" />
     <Content Include="Scripts\cement\core\controllers\PageController.js" />
+    <Content Include="Scripts\cement\core\directives\requireDirective.js" />
     <Content Include="Scripts\cement\core\services.js" />
     <Content Include="Scripts\cement\core\directives.js" />
     <Content Include="Scripts\cement\core\directives\requireCss.js" />

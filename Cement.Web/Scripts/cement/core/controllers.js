@@ -1,11 +1,7 @@
-﻿define(['angular'],
+﻿define(['angular', 'cement/core/controllers/PageController'],
     function (angular) {
-        
-        var module = angular.module('cement.core.controllers', []);
-        for (var i = 1; i < arguments.length; i++) {
-            var controller = arguments[i];
-            module.controller(controller.name, controller.factory);
-        }
-        return module;
+        return angular.module('cement.core.controllers', [
+            'cement.core.controllers.PageController',
+        ]);
     }
 );
