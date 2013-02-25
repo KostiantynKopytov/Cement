@@ -343,7 +343,7 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\seed\" />
     <Folder Include="Scripts\cement\helpers\" />
   </ItemGroup>
   <ItemGroup>
@@ -363,6 +363,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Resources\Layouts\CustomLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cemend.Seed\Cemend.Seed.csproj">
+      <Project>{7c1efc6a-37e7-40dd-94bc-5cb37cba9300}</Project>
+      <Name>Cemend.Seed</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -392,6 +398,10 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
