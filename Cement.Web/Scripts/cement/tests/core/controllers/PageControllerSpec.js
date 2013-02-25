@@ -2,9 +2,8 @@
     return describe('PageController', function () {
         var scope;
 
-        var depends = [];
-        var module = angular.module('test', depends);
-        ctrlFactory(module, depends);
+        var module = angular.module('test', []);
+        ctrlFactory(module);
 
         beforeEach(mock.module('test'));
 

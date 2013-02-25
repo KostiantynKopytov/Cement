@@ -4,6 +4,7 @@
         css: '/scripts/cement/requirejs/plugins/css',
         module: '/scripts/cement/requirejs/plugins/module',
         service: '/scripts/cement/requirejs/plugins/service',
+        _: '/scripts/underscore'
     },
     shim: {
         'angular': {
@@ -20,6 +21,11 @@
         },
         'angular-resource': {
             deps: ['angular']
+        },
+        '_': {
+            init: function () {
+                return _;
+            }
         }
     }
 };

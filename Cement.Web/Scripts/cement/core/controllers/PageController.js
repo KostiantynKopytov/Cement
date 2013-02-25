@@ -1,6 +1,7 @@
-﻿define(['angular-resource'], function () {
-    return function (module, dependsOn) {
-        dependsOn.push('ngResource');
+﻿define(['_', 'angular-resource'], function (_) {
+    return function (module) {
+        module.requires = _.union(module.requires, ['ngResource']);
+        console.log(module.requires);
         module.controller('PageController', ["$scope", "$location", "$resource", "$rootScope", function ($scope, $location, $resource, $rootScope) {
 
             $scope.changeTitle = function () {
