@@ -155,6 +155,7 @@
     <Content Include="Scripts\cement\core\directives\requireDirective.js" />
     <Content Include="Scripts\cement\core\directives\requireCss.js" />
     <Content Include="Scripts\cement\core\services\pageService.js" />
+    <Content Include="Scripts\cement\core\widgets\navigation\navigation.js" />
     <Content Include="Scripts\cement\helpers\extensions.js" />
     <Content Include="Scripts\cement\portal\app.js" />
     <Content Include="Scripts\cement\portal\app.factory.js" />
