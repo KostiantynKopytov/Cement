@@ -5,30 +5,30 @@
     db.pages.insert({
         _id: "/",
         layout: "MainLayout",
-        settings:
+        placeholders:
         {
-            placeholder: [{ name: "testmodule", settings: { title: "Title 1" } }, { name: "testmodule", settings: { title: "Title 2" } }],
-            placeholder2: [{ name: "testmodule", settings: { title: "Title 1" } }, { name: "testmodule", settings: { title: "Title 2" } }],
+            left: [{ directive: "testmodule", settings: { title: "Module 1" } }, { directive: "testmodule", settings: { title: "Module 2" } }],
+            content: [{ directive: "testmodule", settings: { title: "Module 1" } }, { directive: "testmodule", settings: { title: "Module 2" } }],
         }
     });
 
     db.pages.insert({
         _id: "/home",
         layout: "MainLayout",
-        settings:
+        placeholders:
         {
-            placeholder: [{ name: "testmodule", settings: { title: "Title 1" } }, { name: "testmodule", settings: { title: "Title 2" } }],
-            placeholder2: [{ name: "testmodule", settings: { title: "Title 1" } }, { name: "testmodule", settings: { title: "Title 2" } }],
+            left: [{ directive: "testmodule", settings: { title: "Module 1" } }, { directive: "testmodule", settings: { title: "Module 2" } }],
+            content: [{ directive: "testmodule", settings: { title: "Module 1" } }, { directive: "testmodule", settings: { title: "Module 2" } }],
         }
     });
 
     db.pages.insert({
         _id: "/about",
         layout: "MainLayout",
-        settings:
+        placeholders:
         {
-            placeholder: [{ name: "testmodule", settings: { title: "Title 1" } }, { name: "testmodule", settings: { title: "Title 2" } }],
-            placeholder2: [{ name: "testmodule", settings: { title: "Title 1" } }, { name: "testmodule", settings: { title: "Title 2" } }],
+            left: [{ directive: "testmodule", settings: { title: "Module 1" } }, { directive: "testmodule", settings: { title: "Module 2" } }],
+            content: [{ directive: "testmodule", settings: { title: "Module 1" } }, { directive: "testmodule", settings: { title: "Module 2" } }],
         }
     });
 })(db);
