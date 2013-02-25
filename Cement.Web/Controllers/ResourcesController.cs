@@ -32,19 +32,23 @@ namespace Cement.Web.Controllers
             var client = new MongoClient();
             var server = client.GetServer();
             var pages = server["test"]["pages"].FindAll().ToList();
-            var root = pages.First(p => p["_id"] == "/");
+            var roots = pages.First(p => p["_id"] == "/");
 
-            var menu = ChildPages(root, pages);
+            var menu = new BsonDocument(new BsonElement("childPages", ChildPages(null, pages)));
 
             return Content(menu.ToJson(), "application/json", Encoding.UTF8);
         }
 
-        private static BsonDocument ChildPages(BsonDocument current, IList<BsonDocument> pages)
+        private static BsonArray ChildPages(string current, IList<BsonDocument> pages)
         {
-            return new BsonDocument(
-                new BsonElement("href", current["_id"].AsString),
-                new BsonElement("title", current["title"].AsString),
-                new BsonElement("childPages", new BsonArray(pages.Where(page => page["parentId"] == current["_id"]).Select(child => ChildPages(child, pages)))));
+            return new BsonArray(
+                pages
+                .Where(page => page["parentId"] == current || current == null && page["parentId"].IsBsonNull)
+                .Select(child =>
+                    new BsonDocument( 
+                        new BsonElement("href", child["_id"].AsString),
+                        new BsonElement("title", child["title"].AsString),
+                        new BsonElement("childPages", ChildPages(child["_id"].AsString, pages)))));
         }
 
         public ActionResult MasterPage()
