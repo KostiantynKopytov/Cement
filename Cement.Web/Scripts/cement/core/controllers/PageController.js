@@ -14,11 +14,6 @@
                 }
             };
 
-            $scope.navClass = function (page) {
-                var currentRoute = $location.path().substring(1) || 'home';
-                return page === currentRoute.toLowerCase() ? 'active' : '';
-            };
-
             var pageService = $resource('/core/~page' + $location.$$path);
             pageService.get({}, function (x) {
                 $scope.page = x;

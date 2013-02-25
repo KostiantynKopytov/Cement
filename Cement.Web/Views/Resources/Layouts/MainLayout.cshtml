@@ -2,20 +2,12 @@
 <require-css href="@Url.Content("~/content/css/main.layout.css")"></require-css>
 
 <div class="container">
+    <placeholder name="top"></placeholder>
     <div class="row">
         <div class="span2">
-              <placeholder name="left"></placeholder>
-
+            <placeholder name="left"></placeholder>
         </div>
         <div class="span10">       
-            <ul class="nav nav-pills">
-                <li ng-class="navClass('home')">
-                    <a href="/Home">Home</a>
-                </li>
-                <li ng-class="navClass('about')">
-                    <a href="/About">About</a>
-                </li>
-            </ul>
             <div class="pane">
                 <placeholder name="content"></placeholder>
                 <button class="btn" type="button" ng-click="changeTitle()"><i class="icon-font"></i> change module title</button>
