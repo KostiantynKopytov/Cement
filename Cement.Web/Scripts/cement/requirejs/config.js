@@ -4,7 +4,9 @@
         css: '/scripts/cement/requirejs/plugins/css',
         module: '/scripts/cement/requirejs/plugins/module',
         service: '/scripts/cement/requirejs/plugins/service',
-        _: '/scripts/underscore'
+        _: '/scripts/underscore',
+        jquery: '/scripts/jquery-1.9.1',
+        extensions: '/scripts/cement/helpers/extensions'
     },
     shim: {
         'angular': {

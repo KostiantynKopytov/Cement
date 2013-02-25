@@ -1,6 +1,6 @@
 ﻿define([], function() {
     return function(module) {
-        module.directive('testmodule', function() {
+        module.directive('navigation', function() {
             return {
                 replace: true,
                 restrict: 'E',

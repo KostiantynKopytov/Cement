@@ -155,6 +155,7 @@
     <Content Include="Scripts\cement\core\directives\requireDirective.js" />
     <Content Include="Scripts\cement\core\directives\requireCss.js" />
     <Content Include="Scripts\cement\core\services\pageService.js" />
+    <Content Include="Scripts\cement\helpers\extensions.js" />
     <Content Include="Scripts\cement\portal\app.js" />
     <Content Include="Scripts\cement\portal\app.factory.js" />
     <Content Include="Scripts\cement\requirejs\config.js" />
@@ -323,6 +324,9 @@
     <Content Include="Scripts\jasmine-samples\SpecHelper.js" />
     <Content Include="Scripts\jasmine\jasmine-html.js" />
     <Content Include="Scripts\jasmine\jasmine.js" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jstd-scenario-adapter-config.js" />
     <Content Include="Scripts\jstd-scenario-adapter.js" />
     <Content Include="Scripts\cement\requirejs\plugins\module.js" />
@@ -343,10 +347,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\seed\" />
-    <Folder Include="Scripts\cement\helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

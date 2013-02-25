@@ -3,7 +3,7 @@
         'cement/core/directives/requireDirective',
         'cement/core/directives/requireCss',
         'cement/core/directives/placeholder',
-        'cement/core/directives/testmodule',
+        'cement/core/directives/testmodule'
     ], function (angular) {
     var module = angular.module('cement.portal.app.factory', []);
     for (var i = 1; i < arguments.length; i++) {
