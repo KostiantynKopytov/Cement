@@ -38,6 +38,8 @@
     <None Include="seed.cmd" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cement%24roles.js" />
+    <Content Include="cement%24users.js" />
     <Content Include="pages.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
