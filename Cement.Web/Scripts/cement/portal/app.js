@@ -8,7 +8,7 @@ define(['angular', 'cement/portal/app.factory'], function (angular) {
     module.config(['$routeProvider', '$locationProvider',
         function ($routeProvider, $locationProvider) {
             $routeProvider.otherwise({
-                template: "<ng-include src='page.layout'></ng-include>",
+                template: "<ng-include src='page.layoutUrl'></ng-include>",
                 controller: 'PageController',
             });
             $locationProvider.html5Mode(true);

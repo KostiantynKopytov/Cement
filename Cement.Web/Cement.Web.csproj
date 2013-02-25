@@ -152,6 +152,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cement\admin\app.js" />
     <Content Include="Scripts\cement\core\controllers\PageController.js" />
+    <Content Include="Scripts\cement\core\directives\layout.js" />
     <Content Include="Scripts\cement\core\directives\requireDirective.js" />
     <Content Include="Scripts\cement\core\directives\requireCss.js" />
     <Content Include="Scripts\cement\core\services\pageService.js" />
@@ -349,7 +350,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\seed\" />
@@ -373,7 +373,7 @@
     <Content Include="Views\Resources\Layouts\CustomLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cemend.Seed\Cemend.Seed.csproj">
+    <ProjectReference Include="..\Cement.Seed\Cement.Seed.csproj">
       <Project>{7c1efc6a-37e7-40dd-94bc-5cb37cba9300}</Project>
       <Name>Cemend.Seed</Name>
     </ProjectReference>

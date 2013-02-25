@@ -2,8 +2,11 @@
     return function (module) {
         module.directive('placeholder', function($compile) {
             return {
+                replace: true,
+                template: '<div class="placeholder"></div>',
                 restrict: 'E',
                 link: function (scope, element, attrs) {
+                    element.addClass(attrs.name);
                     scope.$watch('page.placeholders.' + attrs.name + '.length', function () {
                         element.html('');
                         var val = scope.page.placeholders[attrs.name];

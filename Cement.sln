@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cement.Web", "Cement.Web\Cement.Web.csproj", "{3F2EDF24-42CC-4340-9952-478080BC4C58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cemend.Seed", "Cemend.Seed\Cemend.Seed.csproj", "{7C1EFC6A-37E7-40DD-94BC-5CB37CBA9300}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cement.Seed", "Cement.Seed\Cement.Seed.csproj", "{7C1EFC6A-37E7-40DD-94BC-5CB37CBA9300}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

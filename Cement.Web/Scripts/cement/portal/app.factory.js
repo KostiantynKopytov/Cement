@@ -1,6 +1,7 @@
 ﻿define(['angular',
         'cement/core/controllers/PageController',
         'cement/core/directives/requireDirective',
+        'cement/core/directives/layout',
         'cement/core/directives/requireCss',
         'cement/core/directives/placeholder',
         'cement/core/directives/testmodule',

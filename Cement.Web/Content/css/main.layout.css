@@ -8,3 +8,7 @@
     -moz-border-radius: 10px;
     border-radius: 10px;
 }
+
+.top {
+    height: 64px;
+}

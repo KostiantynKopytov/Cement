@@ -13,13 +13,13 @@
                     destination.push(widget[0]);
                 }
             };
-
+            
             var pageService = $resource('/core/~page' + $location.$$path);
             pageService.get({}, function (x) {
                 $scope.page = x;
-                $scope.page.title = $location.$$path;
-                $scope.page.layout = "/core/~layout/" + x.layout;
+                $scope.page.layoutUrl = "/core/~layout/" + x.layout;
                 $rootScope.title = $scope.page.title;
+                $rootScope.layout = x.layout;
             });
         }]);
     };
