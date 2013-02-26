@@ -1,5 +1,5 @@
 ﻿define(['../requirejs/config'], function () {
-    define('inner-app', ['app.factory'], function () {
+    define('cement-app', ['app.factory'], function () {
         var module = angular.module('cement.portal.app', ['cement.portal.app.factory']);
         module.config(['$routeProvider', '$locationProvider',
             function($routeProvider, $locationProvider) {
@@ -14,6 +14,6 @@
         angular.bootstrap(html, ['cement.portal.app']);
     });
 
-    require(['inner-app'], function () {
+    require(['cement-app'], function () {
     });
 });

@@ -9,28 +9,8 @@
         <script type="text/javascript" src="/Scripts/jasmine/jasmine.js"> </script>
         <script type="text/javascript" src="/Scripts/jasmine/jasmine-html.js"> </script>
 
-        <script type="text/javascript" src="@Url.Content("~/Scripts/require.js")"> </script>
+        <script type="text/javascript" data-main="/scripts/cement/tests/runTests.js" src="@Url.Content("~/Scripts/require.js")"> </script>
         
-        <script type="text/javascript">
-            require(["@Url.Content("~/Scripts/cement/requirejs/config.js")"], function() {
-                require(['cement/tests/core/controllers/PageControllerSpec'], function () {
-                    var jasmineEnv = jasmine.getEnv();
-                    jasmineEnv.updateInterval = 1000;
-
-                    var htmlReporter = new jasmine.HtmlReporter();
-
-                    jasmineEnv.addReporter(htmlReporter);
-
-                    jasmineEnv.specFilter = function (spec) {
-                        return htmlReporter.specFilter(spec);
-                    };
-
-                    jasmineEnv.execute();
-
-                }, function (error) {
-                    console.log('error', error);
-                });
-            });
         </script>
     </head>
     <body>

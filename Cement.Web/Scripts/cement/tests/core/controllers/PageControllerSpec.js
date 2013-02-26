@@ -1,23 +1,38 @@
-﻿define(['angular-mocks', 'cement/core/controllers/PageController'], function (mock, ctrlFactory) {
-    return describe('PageController', function () {
+﻿define(['angular-mocks', '../../../core/controllers/PageController'], function(mock, ctrlFactory) {
+    return describe('PageController', function() {
         var scope;
 
         var module = angular.module('test', []);
+        module.factory('$location', function() {
+            return {
+                path: function() {
+                    return "/";
+                }
+            };
+        });
+        module.factory('coreService', function() {
+            return {
+                get: function(args, callback) {
+                    callback({ title: "test", placeholders: {} });
+                }
+            };
+        });
+
         ctrlFactory(module);
 
         beforeEach(mock.module('test'));
 
-        beforeEach(mock.inject(function ($rootScope, $controller) {
+        beforeEach(mock.inject(function($rootScope, $controller) {
             scope = $rootScope.$new();
             $controller('PageController', { $scope: scope });
         }));
 
-        it("should have placeholder", function () {
-            expect(scope.placeholder).toBeDefined();
+        it("page should have title 'test'", function() {
+            expect(scope.page.title).toBe("test");
         });
-        
-        it("should have a good mood", function () {
-            expect(scope.goodMood).toBe(null);
+
+        it("page should have placeholders", function() {
+            expect(scope.page.placeholders).toBeDefined();
         });
     });
 });

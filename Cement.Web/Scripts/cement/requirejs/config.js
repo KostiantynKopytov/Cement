@@ -1,18 +1,16 @@
 ﻿(function (requirejs) {
     var requireCfg = {
         paths: {
-            _: '/scripts/underscore',
             jquery: '/scripts/jquery-1.9.1',
+            underscore: '/scripts/underscore',
             angular: '/scripts/angular',
             'angular-resource': '/scripts/angular-resource',
+            'angular-mocks': '/scripts/angular-mocks',
             extensions: '/scripts/cement/helpers/extensions'
         },
         shim: {
             'angular': {
                 exports: 'angular',
-                init: function() {
-                    return angular;
-                }
             },
             'angular-mocks': {
                 deps: ['angular'],
@@ -24,14 +22,10 @@
                 deps: ['angular']
             },
             'jquery': {
-                init: function() {
-                    return $;
-                }
+                exports: '$'
             },            
-            '_': {
-                init: function() {
-                    return _;
-                }
+            'underscore': {
+                exports: '_'
             }
         }
     };
@@ -42,5 +36,5 @@
     };
 })(requirejs);
 
-define(['jquery', '_', 'angular', 'extensions'], function() {
+define(['jquery', 'underscore', 'angular', 'extensions'], function() {
 });

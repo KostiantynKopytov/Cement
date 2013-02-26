@@ -155,7 +155,7 @@
     <Content Include="Scripts\cement\core\directives\layout.js" />
     <Content Include="Scripts\cement\core\directives\requireDirective.js" />
     <Content Include="Scripts\cement\core\directives\requireCss.js" />
-    <Content Include="Scripts\cement\core\services\pageService.js" />
+    <Content Include="Scripts\cement\core\services\coreService.js" />
     <Content Include="Scripts\cement\core\widgets\navigation\template.html" />
     <Content Include="Scripts\cement\core\widgets\navigation\directive.js" />
     <Content Include="Scripts\cement\helpers\extensions.js" />
@@ -166,6 +166,7 @@
     <Content Include="Scripts\cement\core\directives\placeholder.js" />
     <Content Include="Scripts\cement\tests\core\controllers\PageControllerSpec.js" />
     <Content Include="Scripts\cement\requirejs\plugins\css.js" />
+    <Content Include="Scripts\cement\tests\runTests.js" />
     <Content Include="Scripts\i18n\angular-locale_am-et.js" />
     <Content Include="Scripts\i18n\angular-locale_am.js" />
     <Content Include="Scripts\i18n\angular-locale_ar-eg.js" />

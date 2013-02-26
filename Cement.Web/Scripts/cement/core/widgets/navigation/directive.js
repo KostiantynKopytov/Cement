@@ -1,7 +1,6 @@
-﻿define(['_', 'angular-resource'], function(_) {
+﻿define(['angular-resource'], function() {
     return function(module) {
-        module.requires = _.union(module.requires, ['ngResource']);
-        module.directive('navigation', ['$resource', '$location', function ($resource, $location) {
+        module.directive('navigation', ['coreService', '$location', function(coreService, $location) {
             return {
                 replace: true,
                 restrict: 'E',
@@ -9,7 +8,7 @@
                     settings: '='
                 },
                 controller: function($scope, $element, $attrs) {
-                    $resource("/core/~menu/").get({}, function(menu) {
+                    coreService.get({ type: 'menu' }, function(menu) {
                         $scope.menu = menu;
                     });
 
