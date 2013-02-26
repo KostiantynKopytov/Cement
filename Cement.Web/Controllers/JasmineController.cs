@@ -4,9 +4,9 @@ namespace Cement.Web.Controllers
 {
     public class JasmineController : Controller
     {
-        public ViewResult Run()
+        public ActionResult Run()
         {
-            return View("SpecRunner");
+            return File(Server.MapPath("~/cement/tests/index.html"), "text/html");
         }
     }
 }
