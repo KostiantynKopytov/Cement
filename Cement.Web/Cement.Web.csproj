@@ -115,7 +115,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -150,23 +149,23 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\cement\admin\app.js" />
-    <Content Include="Scripts\cement\core\controllers\PageController.js" />
-    <Content Include="Scripts\cement\core\directives\layout.js" />
-    <Content Include="Scripts\cement\core\directives\requireDirective.js" />
-    <Content Include="Scripts\cement\core\directives\requireCss.js" />
-    <Content Include="Scripts\cement\core\services\coreService.js" />
-    <Content Include="Scripts\cement\core\widgets\navigation\template.html" />
-    <Content Include="Scripts\cement\core\widgets\navigation\directive.js" />
-    <Content Include="Scripts\cement\helpers\extensions.js" />
-    <Content Include="Scripts\cement\portal\app.js" />
-    <Content Include="Scripts\cement\portal\app.factory.js" />
-    <Content Include="Scripts\cement\requirejs\config.js" />
-    <Content Include="Scripts\cement\core\directives\testmodule.js" />
-    <Content Include="Scripts\cement\core\directives\placeholder.js" />
-    <Content Include="Scripts\cement\tests\core\controllers\PageControllerSpec.js" />
-    <Content Include="Scripts\cement\requirejs\plugins\css.js" />
-    <Content Include="Scripts\cement\tests\runTests.js" />
+    <Content Include="cement\admin\app.js" />
+    <Content Include="cement\core\controllers\PageController.js" />
+    <Content Include="cement\core\directives\layout.js" />
+    <Content Include="cement\core\directives\requireCss.js" />
+    <Content Include="cement\core\services\coreService.js" />
+    <Content Include="cement\core\widgets\navigation\template.html" />
+    <Content Include="cement\core\widgets\navigation\directive.js" />
+    <Content Include="cement\helpers\extensions.js" />
+    <Content Include="cement\portal\app.js" />
+    <Content Include="cement\portal\app.factory.js" />
+    <Content Include="cement\portal\controllers\AppController.js" />
+    <Content Include="cement\requirejs\config.js" />
+    <Content Include="cement\core\directives\testmodule.js" />
+    <Content Include="cement\core\directives\placeholder.js" />
+    <Content Include="cement\tests\core\controllers\PageControllerSpec.js" />
+    <Content Include="cement\requirejs\plugins\css.js" />
+    <Content Include="cement\tests\runTests.js" />
     <Content Include="Scripts\i18n\angular-locale_am-et.js" />
     <Content Include="Scripts\i18n\angular-locale_am.js" />
     <Content Include="Scripts\i18n\angular-locale_ar-eg.js" />
@@ -333,7 +332,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jstd-scenario-adapter-config.js" />
     <Content Include="Scripts\jstd-scenario-adapter.js" />
-    <Content Include="Scripts\cement\requirejs\plugins\module.js" />
+    <Content Include="cement\requirejs\plugins\module.js" />
     <Content Include="Scripts\normalize.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
@@ -352,26 +351,24 @@
     </Content>
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\seed\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Resources\MasterPage.cshtml" />
+    <Content Include="cement\index.html" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Jasmine\SpecRunner.cshtml" />
+    <Content Include="cement\tests\index.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jasmine\MIT.LICENSE" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Resources\Layouts\MainLayout.cshtml" />
+    <Content Include="cement\layouts\MainLayout.html" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Resources\Layouts\CustomLayout.cshtml" />
+    <Content Include="cement\layouts\CustomLayout.html" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cement.Seed\Cement.Seed.csproj">

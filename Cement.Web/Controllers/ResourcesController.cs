@@ -13,13 +13,12 @@ namespace Cement.Web.Controllers
     {
         public ActionResult Layout(string path)
         {
-            return View("Layouts/" + path);
+            return File(Server.MapPath("~/cement/layouts/" + path + ".html"), "text/html");
         }
 
-        [OutputCache(Duration = 3600)]
         public ActionResult Page(string path)
         {
-            var pageId = "/" + (path ?? string.Empty).ToLower();
+            var pageId = (Request.QueryString["path"] ?? string.Empty).ToLower();
             var client = new MongoClient();
             var server = client.GetServer();
             var pages = server["test"]["pages"];
@@ -28,7 +27,6 @@ namespace Cement.Web.Controllers
             return Content(page.ToJson(), "application/json", Encoding.UTF8);
         }
 
-        [OutputCache(Duration = 3600)]
         public ActionResult Menu()
         {
             var client = new MongoClient();
@@ -54,7 +52,7 @@ namespace Cement.Web.Controllers
 
         public ActionResult MasterPage()
         {
-            return View();
+            return File(Server.MapPath("~/cement/index.html"), "text/html");
         }
     }
 }

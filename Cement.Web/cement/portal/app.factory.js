@@ -1,5 +1,5 @@
 ﻿define(['../core/controllers/PageController',
-        '../core/directives/requireDirective',
+        './controllers/AppController',
         '../core/directives/layout',
         '../core/directives/requireCss',
         '../core/directives/placeholder',

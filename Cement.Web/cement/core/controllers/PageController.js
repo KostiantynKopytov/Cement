@@ -10,12 +10,5 @@
                 destination.push(widget[0]);
             }
         };
-
-        coreService.get({ type:'page', path: $location.path() }, function (page) {
-            $scope.page = page;
-            $scope.page.layoutUrl = "/core/~layout/" + page.layout;
-            $rootScope.title = $scope.page.title;
-            $rootScope.layout = page.layout;
-        });
     }]);
 });
