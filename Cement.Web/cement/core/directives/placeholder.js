@@ -1,5 +1,5 @@
 ﻿define(['jquery', 'module!core'], function($, module) {
-    module.directive('placeholder', function($compile) {
+    module.directive('placeholder', ['$compile', function($compile) {
         return {
             replace: true,
             template: '<div class="placeholder"></div>',
@@ -17,5 +17,5 @@
                 });
             }
         };
-    });
+    }]);
 });

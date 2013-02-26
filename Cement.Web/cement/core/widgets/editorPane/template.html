@@ -1,0 +1,19 @@
+﻿<div class="editor-pane">
+     
+    <label>Placeholder</label>
+    <select ng-model="placeholder" ng-options="value for value in placehodlersList">
+        <option value="">(blank)</option>
+    </select>
+
+    <label>Title</label>
+    <input ng-model="widgetTitle" type="text"></input>
+
+    <label>Content</label>
+    <input ng-model="widgetContent" type="text"></input>
+
+    <br />
+
+    <button class="btn" type="submit" ng-click="addModule()"><i class="icon-plus"></i>Add module</button>
+
+</div>
+

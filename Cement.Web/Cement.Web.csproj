@@ -121,6 +121,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="cement\core\widgets\editorPane\directive.js" />
+    <Content Include="cement\core\widgets\editorPane\template.html" />
     <Content Include="cement\core\widgets\text\template.html" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
