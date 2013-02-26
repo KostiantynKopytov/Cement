@@ -1,6 +1,7 @@
 ﻿(function (requirejs) {
     var requireCfg = {
         paths: {
+            module: '/scripts/cement/requirejs/plugins/module',
             jquery: '/scripts/jquery-1.9.1',
             underscore: '/scripts/underscore',
             angular: '/scripts/angular',

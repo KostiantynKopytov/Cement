@@ -1,14 +1,9 @@
-﻿define(['angular-mocks', '../../../core/controllers/PageController'], function(mock, ctrlFactory) {
+﻿define(['angular-mocks', 'module!core', '../../../core/controllers/PageController'], function (mock, module) {
     return describe('PageController', function() {
         var scope;
 
-        var module = angular.module('test', []);
         module.factory('$location', function() {
-            return {
-                path: function() {
-                    return "/";
-                }
-            };
+            return { path: function() { return "/"; } };
         });
         module.factory('coreService', function() {
             return {
@@ -18,21 +13,19 @@
             };
         });
 
-        ctrlFactory(module);
+        var cs;
 
-        beforeEach(mock.module('test'));
+        beforeEach(mock.module('core'));
+        beforeEach(mock.inject(function ($rootScope, $controller, coreService) {
+            spyOn(coreService, 'get');
+            cs = coreService;
 
-        beforeEach(mock.inject(function($rootScope, $controller) {
             scope = $rootScope.$new();
             $controller('PageController', { $scope: scope });
         }));
 
-        it("page should have title 'test'", function() {
-            expect(scope.page.title).toBe("test");
-        });
-
-        it("page should have placeholders", function() {
-            expect(scope.page.placeholders).toBeDefined();
+        it("page should call service", function () {
+            expect(cs.get).toHaveBeenCalled();
         });
     });
 });
