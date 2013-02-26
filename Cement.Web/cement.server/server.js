@@ -3,17 +3,44 @@ var url = require('url');
 var path = require('path');
 var fs = require('fs');
 var util = require('util');
+var less = require('less');
+require('./helpers');
+
 var db = require('./db');
 
 var router = require('choreographer').router();
 
 http.ServerResponse.prototype.serveFile = function(file, contentType) {
+    var res = this;
     console.log(' --> file:', file);
-    contentType = contentType || db.getContentType(path.extname(file));
+    if (fs.existsSync(file)) {
+        if (file.endsWith('.less')) {
+            fs.readFile(file, 'utf8', function(err, data) {
+                if (err) {
+                    res.writeHead(200, { 'Content-Type': 'text/css' });
+                    res.end(JSON.stringify(err));
+                } else {
+                    less.render(data, function(err2, css) {
+                        res.writeHead(200, { 'Content-Type': 'text/css' });
+                        if (err2) {
+                            res.end(JSON.stringify(err2));
+                        } else {
+                            res.end(css);
+                        }
+                    });
+                }
+            });
+        } else {
+            contentType = contentType || db.getContentType(path.extname(file));
 
-    this.writeHead(200, { 'Content-Type': contentType });
-    var fileStream = fs.createReadStream(file);
-    fileStream.pipe(this);
+            this.writeHead(200, { 'Content-Type': contentType });
+            var fileStream = fs.createReadStream(file);
+            fileStream.pipe(this);
+        }
+    } else {
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.end('404 Not found');
+    }
 };
 
 router
