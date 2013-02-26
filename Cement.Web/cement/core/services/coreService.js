@@ -1,4 +1,4 @@
-﻿define(['module!core'], function (module) {
+﻿define(['module!core', 'extensions'], function (module) {
     module.factory('coreService', ["$http", function ($http) {
         var noop = function () { };
         return {

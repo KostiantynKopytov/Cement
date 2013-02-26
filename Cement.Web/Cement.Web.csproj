@@ -121,6 +121,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="cement.server\db.js" />
+    <Content Include="cement.server\node_modules\choreographer\choreographer.js" />
+    <Content Include="cement.server\node_modules\nodemon\nodemon.js" />
+    <Content Include="cement.server\server.js" />
     <Content Include="cement\admin\widgets\editorPane\directive.js" />
     <Content Include="cement\admin\widgets\editorPane\template.html" />
     <Content Include="cement\portal\widgets\text\template.html" />
@@ -327,6 +331,15 @@
     <Content Include="Scripts\jasmine-samples\SpecHelper.js" />
     <Content Include="Scripts\jasmine\jasmine-html.js" />
     <Content Include="Scripts\jasmine\jasmine.js" />
+    <Content Include="cement.server\node_modules\choreographer\package.json" />
+    <Content Include="cement.server\node_modules\choreographer\README.md" />
+    <Content Include="cement.server\node_modules\.bin\nodemon" />
+    <Content Include="cement.server\node_modules\.bin\nodemon.cmd" />
+    <Content Include="cement.server\node_modules\nodemon\.npmignore" />
+    <Content Include="cement.server\node_modules\nodemon\nodemonignore.example" />
+    <Content Include="cement.server\node_modules\nodemon\package.json" />
+    <Content Include="cement.server\node_modules\nodemon\README.md" />
+    <Content Include="cement.server\run-server.cmd" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -391,15 +404,14 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>40793</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:10000/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1000/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
