@@ -45,9 +45,6 @@ exports.pages = {
             top: [
                 { directive: "navigation" }
             ],
-            left: [
-                { directive: "text", settings: { title: "Module 2 about about" } }
-            ],
             content: [
                 { directive: "text", settings: { title: "Module 1" } }, { directive: "text", settings: { title: "Module 2" } }
             ],

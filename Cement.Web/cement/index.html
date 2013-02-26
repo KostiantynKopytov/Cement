@@ -5,8 +5,12 @@
         <meta name="viewport" content="width=device-width" />
         <title ng-bind="page.title"></title>
         <script type="text/javascript" data-main="/cement/portal/app" src="/scripts/require.js"></script>
+        
+        <require-css href="/content/less/bootstrap.less"></require-css>
+        <require-css href="/content/styles/main.less"></require-css>
     </head>
     <body>
+        <editor-pane page="page"></editor-pane>
         <ng-include src="layoutUrl" controller="PageController"></ng-include>  
     </body>
 </html>

@@ -10,13 +10,11 @@
                 $scope.addModule = function (placeholder, settings) {
                     if (typeof $scope.page.placeholders[placeholder] != 'undefined') {
                         $scope.page.placeholders[placeholder].push({
-                                directive: "text",
-                                settings: settings
+                            directive: "text",
+                            settings: settings
                         });
-                    }  
+                    }
                 };
-
-                $scope.placehodlersList = Object.getOwnPropertyNames($scope.page.placeholders);
             },
             templateUrl: "/cement/admin/widgets/editorPane/template.html"
         };
