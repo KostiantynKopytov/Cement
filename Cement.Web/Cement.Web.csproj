@@ -150,8 +150,6 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="cement\admin\app.js" />
-    <Content Include="cement\core\controllers\PageController.js" />
     <Content Include="cement\core\directives\layout.js" />
     <Content Include="cement\core\directives\requireCss.js" />
     <Content Include="cement\core\services\coreService.js" />
@@ -351,7 +349,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="cement\admin\" />
+    <Folder Include="cement\core\controllers\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
