@@ -1,15 +1,12 @@
-﻿define(['angular',
-        'cement/core/controllers/PageController',
-        'cement/core/directives/requireDirective',
-        'cement/core/directives/layout',
-        'cement/core/directives/requireCss',
-        'cement/core/directives/placeholder',
-        'cement/core/directives/testmodule',
-        'cement/core/widgets/navigation/directive'
-    ], function (angular) {
-    var module = angular.module('cement.portal.app.factory', []);
-    for (var i = 1; i < arguments.length; i++) {
-        var child = arguments[i];
-        child(module);
-    }
-});
+﻿define(['../core/controllers/PageController',
+        '../core/directives/requireDirective',
+        '../core/directives/layout',
+        '../core/directives/requireCss',
+        '../core/directives/placeholder',
+        '../core/directives/testmodule',
+        '../core/widgets/navigation/directive'
+    ], function() {
+        var module = angular.module('cement.portal.app.factory', []);
+        _.each(arguments, function (x) { x(module); })
+        return module;
+    });

@@ -1,5 +1,4 @@
-﻿define(['jquery'], function($) {
-
+﻿define(['jquery'], function ($) {
     // ------ .Net string extensions ------ //
     String.Format = function () {
         var args = arguments;
@@ -30,4 +29,3 @@
         return $('<div />').html(this.clone()).html();
     };
 });
-	

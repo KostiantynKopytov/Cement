@@ -1,4 +1,4 @@
-﻿define(['_', 'angular-resource'], function (_) {
+﻿define([], function () {
     return function (module) {
         module.requires = _.union(module.requires, ['ngResource']);
         module.controller('PageController', ["$scope", "$location", "$resource", "$rootScope", function ($scope, $location, $resource, $rootScope) {

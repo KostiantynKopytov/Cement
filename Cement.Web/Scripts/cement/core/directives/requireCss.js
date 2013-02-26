@@ -1,10 +1,9 @@
-﻿define(['jquery', 'extensions'], function ($) {
+﻿define([], function () {
     return function(module) {
         module.directive('requireCss', function() {
             return {
                 restrict: 'E',
                 link: function ($scope, $element, $attrs) {
-                    console.log('link');
                     var selector = String.Format("link[href='{0}']", $attrs.href);
                     var link = $(selector);
                    

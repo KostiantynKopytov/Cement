@@ -1,4 +1,4 @@
-﻿define(['angular', 'angular-mocks', 'cement/core/controllers/PageController'], function (angular, mock, ctrlFactory) {
+﻿define(['angular-mocks', 'cement/core/controllers/PageController'], function (mock, ctrlFactory) {
     return describe('PageController', function () {
         var scope;
 

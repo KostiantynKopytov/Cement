@@ -16,6 +16,7 @@ namespace Cement.Web.Controllers
             return View("Layouts/" + path);
         }
 
+        [OutputCache(Duration = 3600)]
         public ActionResult Page(string path)
         {
             var pageId = "/" + (path ?? string.Empty).ToLower();
@@ -27,12 +28,12 @@ namespace Cement.Web.Controllers
             return Content(page.ToJson(), "application/json", Encoding.UTF8);
         }
 
+        [OutputCache(Duration = 3600)]
         public ActionResult Menu()
         {
             var client = new MongoClient();
             var server = client.GetServer();
             var pages = server["test"]["pages"].FindAll().ToList();
-            var roots = pages.First(p => p["_id"] == "/");
 
             var menu = new BsonDocument(new BsonElement("childPages", ChildPages(null, pages)));
 

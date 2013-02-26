@@ -11,7 +11,6 @@
                 controller: function($scope, $element, $attrs) {
                     $resource("/core/~menu/").get({}, function(menu) {
                         $scope.menu = menu;
-                        console.log(menu);
                     });
 
                     $scope.navClass = function(page) {
@@ -19,10 +18,7 @@
                         return page === currentRoute.toLowerCase() ? 'active' : '';
                     };
                 },
-                templateUrl: "/scripts/cement/core/widgets/navigation/template.html",
-                link: function($scope, $element, $attrs) {
-
-                }
+                templateUrl: "/scripts/cement/core/widgets/navigation/template.html"
             };
         }]);
     };

@@ -1,4 +1,4 @@
-﻿define(['angular'], function (angular) {
+﻿define([], function () {
     return angular.module('cement.admin', [],
         ['$routeProvider', '$locationProvider', 'TemplateUrl', '$provide', '$controllerProvider',
             function ($routeProvider, $locationProvider, templateUrl) {
