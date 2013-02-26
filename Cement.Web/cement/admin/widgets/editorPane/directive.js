@@ -7,21 +7,18 @@
                 page: '='
             },
             controller: function($scope, $element, $attrs) {
-                $scope.placeholder = "";
-                $scope.widgetTitle = "";
-                $scope.widgetContent = "";
-                $scope.addModule = function () {
-                    if (typeof $scope.page.placeholders[$scope.placeholder] != 'undefined') {
-                        $scope.page.placeholders[$scope.placeholder].push({
+                $scope.addModule = function (placeholder, settings) {
+                    if (typeof $scope.page.placeholders[placeholder] != 'undefined') {
+                        $scope.page.placeholders[placeholder].push({
                                 directive: "text",
-                                settings: { title: $scope.widgetTitle, content: $scope.widgetContent }
+                                settings: settings
                         });
                     }  
                 };
 
                 $scope.placehodlersList = Object.getOwnPropertyNames($scope.page.placeholders);
             },
-            templateUrl: "/cement/core/widgets/editorPane/template.html"
+            templateUrl: "/cement/admin/widgets/editorPane/template.html"
         };
     }]);
 });

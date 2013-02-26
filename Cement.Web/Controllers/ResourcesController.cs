@@ -13,12 +13,12 @@ namespace Cement.Web.Controllers
     {
         public ActionResult Layout(string path)
         {
-            return File(Server.MapPath("~/cement/layouts/" + path + ".html"), "text/html");
+            return File(Server.MapPath("~/cement/portal/layouts/" + path + ".html"), "text/html");
         }
 
         public ActionResult Page(string path)
         {
-            var pageId = (Request.QueryString["path"] ?? string.Empty).ToLower();
+            var pageId = ("/" + path).ToLower();
             var client = new MongoClient();
             var server = client.GetServer();
             var pages = server["test"]["pages"];

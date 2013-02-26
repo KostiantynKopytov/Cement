@@ -1,6 +1,16 @@
-﻿define(['module!core', 'angular-resource'], function (module) {
-    module.requires = _.union(module.requires, ['ngResource']);
-    module.factory('coreService', ["$resource", function($resource) {
-        return $resource('/core/~:type?path=:path');
+﻿define(['module!core'], function (module) {
+    module.factory('coreService', ["$http", function ($http) {
+        var noop = function () { };
+        return {
+            get: function (options, success, error) {
+                var path = options.path;
+                if (path && !path.startsWith("/")) {
+                    path = "/" + path;
+                }
+                var url = String.Format("/${0}{1}", options.type, path || "");
+                var getPromise = $http.get(url);
+                return getPromise.success(success || noop).error(error || noop);
+            }
+        };
     }]);
 });

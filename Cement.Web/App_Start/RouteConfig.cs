@@ -21,7 +21,7 @@ namespace Cement.Web
 
             routes.MapRoute(
                 name: "Resources",
-                url: "core/~{action}/{*path}",
+                url: "${action}/{*path}",
                 defaults: new { controller = "Resources" }
             );
 

@@ -1,4 +1,4 @@
-﻿define(['../requirejs/config'], function () {
+﻿define(['../shared/requirejs/config'], function () {
     define('cement-app', ['app.factory'], function () {
         var module = angular.module('cement.portal.app', ['cement.portal.app.factory']);
         module.config(['$routeProvider', '$locationProvider',

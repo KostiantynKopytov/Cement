@@ -1,13 +1,13 @@
 ﻿(function (requirejs) {
     var requireCfg = {
         paths: {
-            module: '/cement/requirejs/plugins/module',
+            module: '/cement/shared/requirejs/plugins/module',
             jquery: '/scripts/jquery-1.9.1.min',
             underscore: '/scripts/underscore.min',
             angular: '/scripts/angular.min',
             'angular-resource': '/scripts/angular-resource',
             'angular-mocks': '/scripts/angular-mocks',
-            extensions: '/cement/helpers/extensions'
+            extensions: '/cement/shared/helpers/extensions'
         },
         shim: {
             'angular': {

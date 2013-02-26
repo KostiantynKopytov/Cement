@@ -16,7 +16,7 @@
                     return page === currentRoute.toLowerCase() ? 'active' : '';
                 };
             },
-            templateUrl: "/cement/core/widgets/navigation/template.html"
+            templateUrl: "/cement/portal/widgets/navigation/template.html"
         };
     }]);
 });

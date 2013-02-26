@@ -6,7 +6,7 @@
             scope: {
                 settings: '='
             },
-            templateUrl: "/cement/core/widgets/text/template.html"
+            templateUrl: "/cement/portal/widgets/text/template.html"
         };
     });
 });

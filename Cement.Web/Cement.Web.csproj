@@ -121,9 +121,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="cement\core\widgets\editorPane\directive.js" />
-    <Content Include="cement\core\widgets\editorPane\template.html" />
-    <Content Include="cement\core\widgets\text\template.html" />
+    <Content Include="cement\admin\widgets\editorPane\directive.js" />
+    <Content Include="cement\admin\widgets\editorPane\template.html" />
+    <Content Include="cement\portal\widgets\text\template.html" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -155,18 +155,17 @@
     <Content Include="cement\core\directives\layout.js" />
     <Content Include="cement\core\directives\requireCss.js" />
     <Content Include="cement\core\services\coreService.js" />
-    <Content Include="cement\core\widgets\navigation\template.html" />
-    <Content Include="cement\core\widgets\navigation\directive.js" />
-    <Content Include="cement\helpers\extensions.js" />
+    <Content Include="cement\portal\widgets\navigation\template.html" />
+    <Content Include="cement\portal\widgets\navigation\directive.js" />
+    <Content Include="cement\shared\helpers\extensions.js" />
     <Content Include="cement\portal\app.js" />
     <Content Include="cement\portal\app.factory.js" />
     <Content Include="cement\portal\controllers\AppController.js" />
-    <Content Include="cement\requirejs\config.js" />
-    <Content Include="cement\core\widgets\text\directive.js" />
+    <Content Include="cement\shared\requirejs\config.js" />
+    <Content Include="cement\portal\widgets\text\directive.js" />
     <Content Include="cement\core\directives\placeholder.js" />
-    <Content Include="cement\tests\core\controllers\PageControllerSpec.js" />
-    <Content Include="cement\requirejs\plugins\css.js" />
-    <Content Include="cement\tests\runTests.js" />
+    <Content Include="cement\shared\requirejs\plugins\css.js" />
+    <Content Include="cement.tests\runTests.js" />
     <Content Include="Scripts\i18n\angular-locale_am-et.js" />
     <Content Include="Scripts\i18n\angular-locale_am.js" />
     <Content Include="Scripts\i18n\angular-locale_ar-eg.js" />
@@ -333,7 +332,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jstd-scenario-adapter-config.js" />
     <Content Include="Scripts\jstd-scenario-adapter.js" />
-    <Content Include="cement\requirejs\plugins\module.js" />
+    <Content Include="cement\shared\requirejs\plugins\module.js" />
     <Content Include="Scripts\normalize.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
@@ -352,7 +351,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="cement\admin\" />
     <Folder Include="cement\core\controllers\" />
   </ItemGroup>
   <ItemGroup>
@@ -362,16 +360,16 @@
     <Content Include="cement\index.html" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="cement\tests\index.html" />
+    <Content Include="cement.tests\index.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jasmine\MIT.LICENSE" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="cement\layouts\MainLayout.html" />
+    <Content Include="cement\portal\layouts\MainLayout.html" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="cement\layouts\CustomLayout.html" />
+    <Content Include="cement\portal\layouts\CustomLayout.html" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cement.Seed\Cement.Seed.csproj">
