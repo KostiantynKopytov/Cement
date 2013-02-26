@@ -1,4 +1,4 @@
-﻿(function (db) {
+﻿(function(db) {
     db.pages.remove();
 
     db.pages.insert({
@@ -8,9 +8,16 @@
         layout: "MainLayout",
         placeholders:
         {
-            top: [{ directive: "navigation" }],
-            left: [{ directive: "testmodule", settings: { title: "Module 2 home home home" } }],
-            content: [{ directive: "testmodule", settings: { title: "Module 1" } }, { directive: "testmodule", settings: { title: "Module 2" } }],
+            top: [
+                { directive: "navigation" }
+            ],
+            left: [
+                { directive: "text", settings: { title: "Lorem ipsum", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." } }
+            ],
+            content: [
+                { directive: "text", settings: { title: "Module 1", content: "Phasellus odio felis, tempus eget rhoncus quis, placerat sed purus. Nulla metus leo, cursus nec auctor quis, volutpat nec urna." } },
+                { directive: "text", settings: { title: "Module 2", content: "Aenean viverra ultricies sapien nec porttitor." } }
+            ],
         }
     });
 
@@ -21,12 +28,18 @@
         layout: "CustomLayout",
         placeholders:
         {
-            top: [{ directive: "navigation" }],
-            left: [{ directive: "testmodule", settings: { title: "Module 2 about about" } }],
-            content: [{ directive: "testmodule", settings: { title: "Module 1" } }, { directive: "testmodule", settings: { title: "Module 2" } }],
+            top: [
+                { directive: "navigation" }
+            ],
+            left: [
+                { directive: "text", settings: { title: "Module 2 about about" } }
+            ],
+            content: [
+                { directive: "text", settings: { title: "Module 1" } }, { directive: "text", settings: { title: "Module 2" } }
+            ],
         }
     });
-    
+
 
     db.pages.insert({
         _id: "/contact-us",
@@ -35,9 +48,15 @@
         layout: "MainLayout",
         placeholders:
         {
-            top: [{ directive: "navigation" }],
-            left: [{ directive: "testmodule", settings: { title: "Module 2" } }],
-            content: [{ directive: "testmodule", settings: { title: "Module 1" } }, { directive: "testmodule", settings: { title: "Module 2" } }],
+            top: [
+                { directive: "navigation" }
+            ],
+            left: [
+                { directive: "text", settings: { title: "Module 2" } }
+            ],
+            content: [
+                { directive: "text", settings: { title: "Module 1" } }, { directive: "text", settings: { title: "Module 2" } }
+            ],
         }
     });
 
