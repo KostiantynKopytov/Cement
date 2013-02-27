@@ -1,5 +1,5 @@
-﻿define(['module!core', 'extensions'], function (module, extensions) {
-    extensions.registerDirectives(module, 'text', ['template'], function (templateUrl) {
+﻿define(['module!core', 'extensions', 'json!./$templates'], function (module, extensions, templates) {
+    extensions.registerDirectives(module, 'text', templates, function (templateUrl) {
         return [function () {
             return {
                 restrict: 'E',

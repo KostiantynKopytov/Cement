@@ -8,15 +8,19 @@
             <option value="">(blank)</option>
         </select>
 
-        <label>Title</label>
-        <input ng-model="widgetTitle" type="text"></input>
-
-        <label>Content</label>
-        <input ng-model="widgetContent" type="text"></input>
+        <label>Widgets</label>
+        <select ng-model="widget" ng-options="value for value in widgets">
+            <option value="">(blank)</option>
+        </select>
+        
+        <label>Templates</label>
+        <select ng-disabled="!widget" ng-model="template" ng-options="value for value in templates">
+            <option value="">(blank)</option>
+        </select>
 
         <br />
 
-        <button class="btn" type="submit" ng-click="addModule(placeholder, {title: widgetTitle, content: widgetContent})"><i class="icon-plus"></i>Add module</button>
+        <button ng-disabled="!(placeholder && widget && template)" class="btn" type="submit" ng-click="addWidget(placeholder, widget, {template: template})"><i class="icon-plus"></i>Add module</button>
     </div>    
 
 

@@ -1,6 +1,5 @@
-﻿define(['module!core', 'extensions'], function (module, extensions) {
-
-    extensions.registerDirectives(module, 'navigation', ['template'], function(templateUrl) {
+﻿define(['module!core', 'extensions', 'json!./$templates'], function (module, extensions, templates) {
+    extensions.registerDirectives(module, 'navigation', templates, function (templateUrl) {
         return ['coreService', '$location', function(coreService, $location) {
             return {
                 restrict: 'E',

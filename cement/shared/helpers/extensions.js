@@ -24,7 +24,10 @@
     Array.prototype.forEach = function(callback) {
         _.each(this, callback);
     };
-
+    Array.prototype.contains = function (val) {
+        _.contains(this, val);
+    };
+    
     // ------ jQuery extensions ------ //
     $.exists = function (selector) { return ($(selector).length > 0); };
     $.fn.exists = function () { return ($(this).length > 0); };

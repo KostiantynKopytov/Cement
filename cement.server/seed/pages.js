@@ -28,7 +28,7 @@ var pages = [
         placeholders:
         {
             top: [
-                { directive: "navigation" }
+                { directive: "navigation", settings: { template: "template2" } }
             ],
             content: [
                 { directive: "text", settings: { title: "Module 1" } }, { directive: "text", settings: { title: "Module 2" } }

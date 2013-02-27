@@ -60,6 +60,7 @@
     <Content Include="portal\controllers\AppController.js" />
     <Content Include="portal\layouts\CustomLayout.html" />
     <Content Include="portal\layouts\MainLayout.html" />
+    <Content Include="portal\widgets\navigation\template2.html" />
     <Content Include="portal\widgets\navigation\directive.js" />
     <Content Include="portal\widgets\navigation\template.html" />
     <Content Include="portal\widgets\text\directive.js" />
