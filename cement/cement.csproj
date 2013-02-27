@@ -49,6 +49,8 @@
     <Content Include="content\images\glyphicons-halflings.png" />
     <Content Include="content\jasmine\jasmine.css" />
     <Content Include="content\jasmine\jasmine_favicon.png" />
+    <Content Include="content\styles\jquery-ui-1.10.1.custom.css" />
+    <Content Include="content\styles\jquery-ui-1.10.1.custom.min.css" />
     <Content Include="core\directives\widget.js" />
     <Content Include="core\directives\layout.js" />
     <Content Include="core\directives\placeholder.js" />
@@ -244,6 +246,8 @@
     <Content Include="scripts\jasmine-samples\SpecHelper.js" />
     <Content Include="scripts\jasmine\jasmine-html.js" />
     <Content Include="scripts\jasmine\jasmine.js" />
+    <Content Include="scripts\jquery-ui-1.10.1.custom.js" />
+    <Content Include="scripts\jquery-ui-1.10.1.custom.min.js" />
     <Content Include="shared\requirejs\plugins\json.js" />
     <Content Include="shared\requirejs\plugins\text.js" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />

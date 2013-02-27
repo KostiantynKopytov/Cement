@@ -1,15 +1,16 @@
 ﻿(function (requirejs) {
     var requireCfg = {
         paths: {
-            module: '/shared/requirejs/plugins/module',
-            text: '/shared/requirejs/plugins/text',
-            json: '/shared/requirejs/plugins/json',
-            jquery: '/scripts/jquery-1.9.1.min',
-            underscore: '/scripts/underscore.min',
-            angular: '/scripts/angular.min',
+            'module': '/shared/requirejs/plugins/module',
+            'text': '/shared/requirejs/plugins/text',
+            'json': '/shared/requirejs/plugins/json',
+            'jquery': '/scripts/jquery-1.9.1.min',
+            'underscore': '/scripts/underscore.min',
+            'angular': '/scripts/angular.min',
             'angular-resource': '/scripts/angular-resource',
             'angular-mocks': '/scripts/angular-mocks',
-            extensions: '/shared/helpers/extensions'
+            'extensions': '/shared/helpers/extensions',
+            'jquery-ui': '/scripts/jquery-ui-1.10.1.custom.min'
         },
         shim: {
             'angular': {
@@ -29,6 +30,9 @@
             },            
             'underscore': {
                 exports: '_'
+            },
+            'jquery-ui': {
+                deps: ['jquery']
             }
         }
     };

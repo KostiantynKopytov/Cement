@@ -1,4 +1,4 @@
-﻿define(['module!core', 'json!/portal/widgets/*$name', 'extensions'], function(module, widgets) {
+﻿define(['module!core', 'json!/portal/widgets/*$name', 'underscore', 'extensions'], function (module, widgets, _) {
     module.directive('editorPane', [function() {
         return {
             replace: true,
@@ -16,7 +16,7 @@
                             if ($scope.template && !templates.contains($scope.template)) {
                                 $scope.template = null;
                             }
-                            $scope.$digest();
+                            $scope.$apply();
                         });
                     } else {
                         $scope.templates = [];
