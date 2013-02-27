@@ -39,8 +39,6 @@
     <Content Include="db.js" />
     <Content Include="helpers.js" />
     <Content Include="logger.js" />
-    <Content Include="seed\cement%24roles.js" />
-    <Content Include="seed\cement%24users.js" />
     <Content Include="seed\pages.js" />
     <Content Include="server.js" />
   </ItemGroup>

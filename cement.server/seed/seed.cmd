@@ -2,7 +2,7 @@
 
 if NOT EXIST "%~d0%~p0mongodb-install.done.user" (
   echo INSTALL MONGODB
-  call :run call "%~d0%~p0..\database\mongodb\mongodb-service-install.cmd"
+  call :run call "%~d0%~p0..\..\database\mongodb\mongodb-service-install.cmd"
   echo done >"%~d0%~p0mongodb-install.done.user"
 )
 
@@ -17,7 +17,7 @@ exit 0
 fc /b %1 %2 >NUL 2>NUL
 if %errorlevel% NEQ 0 (
   echo SEED %1
-  call :run "%~d1%~p1..\database\MongoDb\bin\mongo.exe" --quiet %1
+  call :run "%~d1%~p1..\..\database\MongoDb\bin\mongo.exe" --quiet %1
   copy /y %1 %2 >NUL
 )
 exit /b 0
