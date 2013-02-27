@@ -47,4 +47,4 @@ function logRequest(chainFn) {
 
 http.createServer(logRequest(router)).listen(10000);
 
-logger.info('Server running at http://localhost:10000');
+logger.info('server is running at http://localhost:10000');
