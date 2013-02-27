@@ -1,4 +1,5 @@
 var http = require('http');
+var fs = require('fs');
 var url = require('url');
 var util = require('util');
 var logger = require('./logger').get();
@@ -15,7 +16,7 @@ router
         helpers.serveFile(res, "../cement" + parsedUrl.pathname);
     })
     .get(/^\/\$page(\/.*)/, function(req, res, path) {
-        db.$page(path, function (error, data) {
+        db.$page(path, function(error, data) {
             if (error) throw error;
             var result = JSON.stringify(data);
             logger.silly(' --> json:', result);
@@ -33,6 +34,31 @@ router
         logger.silly(' --> json:', result);
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(result);
+    })
+    .get("/$widgets", function (req, res) {
+        // TODO: read database
+        fs.readdir('../cement/portal/widgets', function (error, files) {
+            if (!error) {
+                var result = JSON.stringify(files);
+                logger.silly(' --> widgets:', result);
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(result);
+            }
+        });
+    })
+    .get("/$widget/*/templates", function(req, res, widget) {
+        // TODO: read database
+        var path = util.format('../cement/portal/widgets/%s', widget);
+        fs.readdir(path, function(error, files) {
+            if (!error) {
+                var htmlExt = ".html";
+                var templates = files.filter(function(file) { return file.endsWith(htmlExt); });
+                var result = JSON.stringify(templates.map(function(val) { return val.substring(0, val.length - htmlExt.length); }));
+                logger.silly(' --> widget templates:', result);
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(result);
+            }
+        });
     })
     .get('/**', function(req, res) {
         helpers.serveFile(res, '../cement/index.html');
