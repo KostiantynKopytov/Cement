@@ -35,11 +35,15 @@
     <None Include="run-server.cmd" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="serve\%24menu.js" />
+    <Content Include="serve\%24layout.js" />
     <Content Include="db.js" />
     <Content Include="helpers.js" />
     <Content Include="logger.js" />
     <Content Include="seed\pages.js" />
     <Content Include="server.js" />
+    <Content Include="serve\%24page.js" />
+    <Content Include="serve\lookupForFiles.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,7 +2,8 @@
     <require-css href="/content/styles/main.layout.less"></require-css>
 
     <div class="container">
-        <placeholder widgets="page.placeholders.top"></placeholder>
+        <widget widget="widget" ng-repeat="widget in page.placeholders.top"></widget>
+<!--        <placeholder widgets="page.placeholders.top"></placeholder>-->
         <div class="row">
             <div class="span2">
                 <placeholder widgets="page.placeholders.left"></placeholder>
