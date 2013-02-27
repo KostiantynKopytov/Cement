@@ -11,7 +11,7 @@
                 $scope.$watch('widget', function () {
                     if ($scope.widget) {
                         var url = String.Format("json!/portal/widgets/{0}/$templates", $scope.widget);
-                        return require([url], function(templates) {
+                        require([url], function(templates) {
                             $scope.templates = templates;
                             if ($scope.template && !templates.contains($scope.template)) {
                                 $scope.template = null;
