@@ -50,16 +50,16 @@ var pages = [
                 { directive: "text", settings: { title: "Module 1" } }, { directive: "text", settings: { title: "Module 2" } }
             ],
         }
-    },
+    }
 ];
 
-var throwError = function (error) {
+var throwIfError = function (error) {
     if (error) throw error;
 };
 
 db.$collection('pages', function (error, collection) {
-    if (error) throw error;
-    collection.remove(throwError);
-    collection.insert(pages, throwError);
-    collection.ensureIndex("parentId", throwError);
+    throwIfError(error);
+    collection.remove(throwIfError);
+    collection.insert(pages, throwIfError);
+    collection.ensureIndex("parentId", throwIfError);
 });
