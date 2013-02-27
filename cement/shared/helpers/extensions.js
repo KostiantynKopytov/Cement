@@ -1,4 +1,4 @@
-﻿define(['jquery'], function ($) {
+﻿define(['jquery', 'underscore'], function ($, _) {
     // ------ .Net string extensions ------ //
     String.Format = function () {
         var args = arguments;
@@ -19,6 +19,11 @@
     String.prototype.startsWith = function (str) {
         return (this.match("^" + str) == str);
     };
+    
+    // ------ Array extensions ------ //
+    Array.prototype.forEach = function(callback) {
+        _.each(this, callback);
+    };
 
     // ------ jQuery extensions ------ //
     $.exists = function (selector) { return ($(selector).length > 0); };
@@ -28,4 +33,14 @@
     $.fn.outerHtml = function () {
         return $('<div />').html(this.clone()).html();
     };
+
+    return {
+        registerDirectives: function (module, name, templates, factory) {
+            templates.forEach(function (template) {
+                var templateUrl = String.Format('/portal/widgets/{0}/{1}.html', name, template);
+                module.directive(name + template.capitalize(), factory(templateUrl));
+            });
+        }
+    };
+
 });

@@ -1,22 +1,24 @@
-﻿define(['module!core'], function(module) {
-    module.directive('navigation', ['coreService', '$location', function(coreService, $location) {
-        return {
-            replace: true,
-            restrict: 'E',
-            scope: {
-                settings: '='
-            },
-            controller: function($scope, $element, $attrs) {
-                coreService.get({ type: 'menu' }, function(menu) {
-                    $scope.menu = menu;
-                });
+﻿define(['module!core', 'extensions'], function (module, extensions) {
 
-                $scope.navClass = function(page) {
-                    var currentRoute = $location.path() || '/home';
-                    return page === currentRoute.toLowerCase() ? 'active' : '';
-                };
-            },
-            templateUrl: "/portal/widgets/navigation/template.html"
-        };
-    }]);
+    extensions.registerDirectives(module, 'navigation', ['template'], function(templateUrl) {
+        return ['coreService', '$location', function(coreService, $location) {
+            return {
+                restrict: 'E',
+                scope: {
+                    settings: '='
+                },
+                controller: function($scope, $element, $attrs) {
+                    coreService.get({ type: 'menu' }, function(menu) {
+                        $scope.menu = menu;
+                    });
+
+                    $scope.navClass = function(page) {
+                        var currentRoute = $location.path() || '/home';
+                        return page === currentRoute.toLowerCase() ? 'active' : '';
+                    };
+                },
+                templateUrl: templateUrl
+            };
+        }];
+    });
 });
