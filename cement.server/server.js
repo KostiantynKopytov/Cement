@@ -5,6 +5,8 @@ var logger = require('./logger').get();
 var helpers = require('./helpers');
 var db = require('./db');
 
+require('./seed/pages');
+
 var router = require('choreographer').router();
 
 router
@@ -14,12 +16,11 @@ router
     })
     .get(/^\/\$page(\/.*)/, function(req, res, path) {
         db.$page(path, function (error, data) {
-            if (!error) {
-                var result = JSON.stringify(data);
-                logger.silly(' --> json:', result);
-                res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(result);
-            }
+            if (error) throw error;
+            var result = JSON.stringify(data);
+            logger.silly(' --> json:', result);
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(result);
         });
     })
     .get(/^\/\$layout\/([^/]*)/, function(req, res, path) {

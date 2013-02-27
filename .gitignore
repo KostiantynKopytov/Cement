@@ -1,5 +1,6 @@
+*.lock
+*.log
 *.suo
 *.user
-*.lock
 /bin/*
 /*/obj/*

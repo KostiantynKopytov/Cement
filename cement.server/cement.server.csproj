@@ -33,7 +33,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="run-server.cmd" />
-    <None Include="seed\seed.cmd" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="db.js" />
