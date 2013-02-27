@@ -2,6 +2,8 @@
     var requireCfg = {
         paths: {
             module: '/shared/requirejs/plugins/module',
+            text: '/shared/requirejs/plugins/text',
+            json: '/shared/requirejs/plugins/json',
             jquery: '/scripts/jquery-1.9.1.min',
             underscore: '/scripts/underscore.min',
             angular: '/scripts/angular.min',
