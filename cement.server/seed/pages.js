@@ -7,13 +7,13 @@ var pages = [
         parentId: null,
         title: 'home',
         layout: "MainLayout",
-        widgets:
+        placeholders:
         {
             top: [
                 { directive: "navigation" }
             ],
             left: [
-                { directive: "text", settings: { title: "Lorem ipsum", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." } }
+                { directive: "text", settings: { title: "Lorem ipsum", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.aaaaaaaaaaaaaaadwdawdadawd" } }
             ],
             content: [
                 { directive: "text", settings: { title: "Module 1", content: "<b>Phasellus</b> odio felis, tempus eget rhoncus quis, placerat sed purus. Nulla metus leo, cursus nec auctor quis, volutpat nec urna." } },
@@ -25,7 +25,7 @@ var pages = [
         parentId: null,
         title: 'about',
         layout: "CustomLayout",
-        widgets:
+        placeholders:
         {
             top: [
                 { directive: "navigation" }
@@ -39,7 +39,7 @@ var pages = [
         parentId: null,
         title: 'contact-us',
         layout: "MainLayout",
-        widgets:
+        placeholders:
         {
             top: [
                 { directive: "navigation" }

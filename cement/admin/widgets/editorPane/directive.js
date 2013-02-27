@@ -8,8 +8,8 @@
             },
             controller: function($scope, $element, $attrs) {
                 $scope.addModule = function (placeholder, settings) {
-                    if (typeof $scope.page.widgets[placeholder] != 'undefined') {
-                        $scope.page.widgets[placeholder].push({
+                    if (typeof $scope.page.placeholders[placeholder] != 'undefined') {
+                        $scope.page.placeholders[placeholder].push({
                             directive: "text",
                             settings: settings
                         });

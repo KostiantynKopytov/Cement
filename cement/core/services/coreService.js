@@ -8,7 +8,7 @@
                     path = "/" + path;
                 }
                 var url = String.Format("/${0}{1}", options.type, path || "");
-                var getPromise = $http.get(url);
+                var getPromise = $http.get(url, { cache: true });
                 return getPromise.success(success || noop).error(error || noop);
             }
         };

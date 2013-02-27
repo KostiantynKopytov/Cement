@@ -15,7 +15,7 @@
         };
         
         $scope.changeTitle = function () {
-            $scope.page.widgets.left[0].settings.title += " vasya";
+            $scope.page.placeholders.left[0].settings.title += " vasya";
         };
     }]);
 });
