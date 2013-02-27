@@ -7,7 +7,7 @@ var pages = [
         parentId: null,
         title: 'home',
         layout: "MainLayout",
-        placeholders:
+        widgets:
         {
             top: [
                 { directive: "navigation" }
@@ -25,7 +25,7 @@ var pages = [
         parentId: null,
         title: 'about',
         layout: "CustomLayout",
-        placeholders:
+        widgets:
         {
             top: [
                 { directive: "navigation" }
@@ -39,7 +39,7 @@ var pages = [
         parentId: null,
         title: 'contact-us',
         layout: "MainLayout",
-        placeholders:
+        widgets:
         {
             top: [
                 { directive: "navigation" }

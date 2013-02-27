@@ -2,18 +2,18 @@
     <require-css href="/content/styles/main.layout.less"></require-css>
 
     <div class="container">
-        <placeholder name="top"></placeholder>
+        <placeholder widgets="page.widgets.top"></placeholder>
         <div class="row">
             <div class="span2">
-                <placeholder name="left"></placeholder>
+                <placeholder widgets="page.widgets.left"></placeholder>
             </div>
             <div class="span10">       
                 <div class="pane">
-                    <placeholder name="content"></placeholder>
+                    <placeholder widgets="page.widgets.content"></placeholder>
                     <br />
                     <button class="btn" type="button" ng-click="changeTitle()"><i class="icon-font"></i> change module title</button>
-                    <button class="btn" type="button" ng-click="moveModule(page.placeholders.content, page.placeholders.left)"><i class="icon-chevron-left"></i> move left</button>
-                    <button class="btn" type="button" ng-click="moveModule(page.placeholders.left, page.placeholders.content)"><i class="icon-chevron-right"></i> move right</button>
+                    <button class="btn" type="button" ng-click="moveWidget(page.widgets.content, page.widgets.left)"><i class="icon-chevron-left"></i> move left</button>
+                    <button class="btn" type="button" ng-click="moveWidget(page.widgets.left, page.widgets.content)"><i class="icon-chevron-right"></i> move right</button>
                 </div>
             </div>
         </div>

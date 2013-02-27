@@ -49,6 +49,7 @@
     <Content Include="content\images\glyphicons-halflings.png" />
     <Content Include="content\jasmine\jasmine.css" />
     <Content Include="content\jasmine\jasmine_favicon.png" />
+    <Content Include="core\directives\widget.js" />
     <Content Include="core\directives\layout.js" />
     <Content Include="core\directives\placeholder.js" />
     <Content Include="core\directives\requireCss.js" />

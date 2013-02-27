@@ -2,6 +2,7 @@
         '../core/directives/layout',
         '../core/directives/requireCss',
         '../core/directives/placeholder',
+        '../core/directives/widget',
         '../core/services/coreService',
         './controllers/AppController',
         './widgets/navigation/directive',
