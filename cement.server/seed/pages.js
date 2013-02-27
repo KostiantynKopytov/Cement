@@ -1,4 +1,5 @@
-﻿var db = require('../db');
+﻿var logger = require('../logger').get();
+var db = require('../db');
 
 var pages = [
     {
@@ -53,13 +54,20 @@ var pages = [
     }
 ];
 
-var throwIfError = function (error) {
-    if (error) throw error;
-};
+function progress(message) {
+    return function(error) {
+        if (error) {
+            logger.error('db error:', error);
+            throw error;
+        }
+        logger.info(message);
+    };
+}
 
 db.$collection('pages', function (error, collection) {
-    throwIfError(error);
-    collection.remove(throwIfError);
-    collection.insert(pages, throwIfError);
-    collection.ensureIndex("parentId", throwIfError);
+    progress('pages: seed started...')(error);
+    collection.remove(progress('pages: remove'));
+    collection.insert(pages, progress('pages: insert'));
+    collection.ensureIndex("parentId", progress('pages: index'));
 });
+ 

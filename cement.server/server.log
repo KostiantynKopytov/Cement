@@ -3802,3 +3802,8 @@
 {"meta":"../cement/portal/widgets/text/template.html","level":"silly","message":"   --> file:","timestamp":"2013-02-27T11:45:30.391Z"}
 {"meta":"/$menu","level":"silly","message":"   <-- ","timestamp":"2013-02-27T11:45:30.441Z"}
 {"meta":"{\"childPages\":[{\"href\":\"/\",\"title\":\"home\"},{\"href\":\"/about\",\"title\":\"about\"},{\"href\":\"/contact-us\",\"title\":\"contact-us\"}]}","level":"silly","message":"   --> json:","timestamp":"2013-02-27T11:45:30.442Z"}
+{"level":"info","message":"   server is running at http://localhost:10000","timestamp":"2013-02-27T11:46:38.613Z"}
+{"level":"info","message":"   pages: seed started...","timestamp":"2013-02-27T11:46:38.619Z"}
+{"level":"info","message":"   pages: remove","timestamp":"2013-02-27T11:46:38.622Z"}
+{"level":"info","message":"   pages: insert","timestamp":"2013-02-27T11:46:38.623Z"}
+{"level":"info","message":"   pages: index","timestamp":"2013-02-27T11:46:38.624Z"}
