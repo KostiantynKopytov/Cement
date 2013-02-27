@@ -45,10 +45,6 @@
   <ItemGroup>
     <Content Include="admin\widgets\editorPane\directive.js" />
     <Content Include="admin\widgets\editorPane\template.html" />
-    <Content Include="content\bootstrap-responsive.css" />
-    <Content Include="content\bootstrap-responsive.min.css" />
-    <Content Include="content\bootstrap.css" />
-    <Content Include="content\bootstrap.min.css" />
     <Content Include="content\images\glyphicons-halflings-white.png" />
     <Content Include="content\images\glyphicons-halflings.png" />
     <Content Include="content\jasmine\jasmine.css" />
@@ -326,15 +322,14 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>18179</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:18160/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:10000</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

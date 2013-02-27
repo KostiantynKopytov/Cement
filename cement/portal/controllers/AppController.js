@@ -8,8 +8,6 @@
         });
 
         $scope.moveModule = function (source, destination) {
-
-            console.log(source, destination);
             var widget = source.splice(0, 1);
             if (widget.length > 0) {
                 destination.push(widget[0]);
