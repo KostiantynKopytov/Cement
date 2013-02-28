@@ -18,12 +18,12 @@
             collection.find({ _id: path }, { limit: 1 }).nextObject(callback);
         });
     }
-    
+
     function putPage(path, data, callback) {
         path = path || "/";
-        $collection('pages', function (error, collection) {
+        $collection('pages', function(error, collection) {
             if (error) callback(error);
-            logger.silly('update page:', data);
+            logger.silly('update page:', { id: path, data: data });
             delete data._id;
             collection.update({ _id: path }, { $set: data }, callback);
         });

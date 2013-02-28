@@ -1,17 +1,19 @@
 ﻿define(['module!core', 'extensions'], function (module) {
-    module.factory('coreService', ["$http", function ($http) {
-        var noop = function () { };
+    module.factory('coreService', ["$http", '$cacheFactory', function ($http, $cacheFactory) {
+        var cache = $cacheFactory('$page');
         return {
             getPage: function (path) {
                 var url = String.Format("/$page{0}", path || "");
-                return $http.get(url, { cache: true });
+                return $http.get(url, { cache: cache });
             },
             putPage: function (path, data) {
                 var url = String.Format("/$page{0}", path || "");
-                return $http.put(url, data);
+                return $http.put(url, data).success(function () {
+                    cache.removeAll();
+                });
             },
             getMenu: function () {
-                return $http.get("/$menu", { cache: true });
+                return $http.get("/$menu", { cache: cache });
             }
         };
     }]);

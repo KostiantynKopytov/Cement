@@ -32,6 +32,8 @@
                     var data = JSON.parse(post);
                     db.putPage(path, data, function(error) {
                         if (error) throw error;
+                        res.writeHead(200);
+                        res.end();
                     });
                 });
             });
