@@ -13,13 +13,8 @@
                         var url = String.Format("json!/portal/widgets/{0}/{0}*.html~name", $scope.widget);
                         require([url], function(templates) {
                             $scope.templates = templates;
-                            if ($scope.template && (templates.indexOf($scope.template) >= 0)) {
-                                $scope.template = null;
-                            }
                             $scope.$apply();
                         });
-                    } else {
-                        $scope.templates = [];
                     }
                 });
                 $scope.addWidget = function() {
@@ -36,6 +31,12 @@
                         // TODO: handle this
                     });
                 };
+
+                $scope.canAdd = function () {
+                   
+                    return $scope.page && $scope.templates && $scope.page.placeholders[$scope.placeholder] && $scope.widget && $scope.templates.indexOf($scope.template) >= 0;
+                };
+
             },
             templateUrl: '/admin/templates/editor-pane/editor-pane.template.html'
         };

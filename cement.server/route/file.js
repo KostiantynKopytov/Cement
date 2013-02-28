@@ -31,10 +31,10 @@
     };
     
     function serveFile(res, file, contentType) {
-        var date = new Date();
-        date.setHours(date.getHours() + 24);
-        res.setHeader("Cache-Control", "must-revalidate");
-        res.setHeader("Expires", date.toUTCString());
+        //var date = new Date();
+        //date.setHours(date.getHours() + 24);
+        //res.setHeader("Cache-Control", "must-revalidate");
+        //res.setHeader("Expires", date.toUTCString());
         
         logger.silly(' --> file:', file);
         if (fs.existsSync(file) && fs.lstatSync(file).isFile()) {

@@ -27,7 +27,9 @@
                     close: function () {
                         $(element).dialog('destroy').remove();
                         scope.$apply('close()');
-                    }
+                    },
+                    minWidth: 500,
+                    minHeight: 300
                 });
 
                 scope.$watch('title', function (title) {

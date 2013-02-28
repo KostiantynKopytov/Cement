@@ -20,7 +20,7 @@
 
         <br />
 
-        <button ng-disabled="!(placeholder && widget && template)" class="btn" type="submit" ng-click="addWidget()"><i class="icon-plus"></i>Add module</button>
+        <button ng-disabled="!canAdd()" class="btn" type="submit" ng-click="addWidget()"><i class="icon-plus"></i>Add module</button>
 
         <br />
         <button class="btn" type="submit" ng-click="save()"><i class="icon-thumbs-up"></i>Save</button>

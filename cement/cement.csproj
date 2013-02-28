@@ -265,7 +265,7 @@
     <Content Include="tests\index.html" />
     <Content Include="tests\runTests.js" />
     <Content Include="tests\TestSpec1.js" />
-    <Content Include="core\directives\jquery-dialog.directive.js" />
+    <Content Include="core\directives\dialog.directive.js" />
     <None Include="libs\jquery-1.9.1.intellisense.js" />
     <Content Include="libs\jquery-1.9.1.js" />
     <Content Include="libs\jquery-1.9.1.min.js" />
@@ -281,6 +281,7 @@
     <Content Include="shared\requirejs\config.js" />
     <Content Include="shared\requirejs\plugins\css.js" />
     <Content Include="shared\requirejs\plugins\module.js" />
+    <Content Include="portal\widgets\text\text.editor.less" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\styles\less\bootstrap\accordion.less" />
