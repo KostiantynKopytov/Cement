@@ -10,12 +10,17 @@
 
     function getContentType(ext) {
         switch (ext) {
+            case ".htm":
             case ".html":
                 return "text/html";
             case ".css":
                 return "text/css";
             case ".js":
                 return "application/javascript";
+            case ".json":
+                return "application/json";
+            case ".gif":
+                return "image/gif";
             case ".png":
                 return "image/png";
             case ".jpg":
