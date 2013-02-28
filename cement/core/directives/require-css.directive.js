@@ -2,6 +2,8 @@
     module.directive('requireCss', function() {
         return {
             restrict: 'E',
+            template: '',
+            replace: true,
             scope: {},
             link: function($scope, $element, $attrs) {
                 var selector = String.Format("link[href='{0}']", $attrs.href);
