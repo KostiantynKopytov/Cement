@@ -1,4 +1,4 @@
-﻿define(['jquery', 'module!core'], function($, module) {
+﻿define(['jquery', '../module'], function ($, module) {
     module.directive('requireCss', function() {
         return {
             restrict: 'E',

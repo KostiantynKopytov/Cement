@@ -20,14 +20,6 @@
         return (this.match("^" + str) == str);
     };
     
-    // ------ Array extensions ------ //
-    Array.prototype.forEach = function(callback) {
-        _.each(this, callback);
-    };
-    Array.prototype.contains = function (val) {
-        _.contains(this, val);
-    };
-    
     // ------ jQuery extensions ------ //
     $.exists = function (selector) { return ($(selector).length > 0); };
     $.fn.exists = function () { return ($(this).length > 0); };
@@ -40,7 +32,7 @@
     return {
         registerDirectives: function (module, name, templates, factory) {
             templates.forEach(function (template) {
-                var templateUrl = String.Format('/portal/widgets/{0}/{1}.html', name, template);
+                var templateUrl = String.Format('portal/widgets/{0}/{1}.html', name, template);
                 module.directive(name + template.capitalize(), factory(templateUrl));
             });
         }

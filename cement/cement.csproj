@@ -43,6 +43,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="admin\module.js" />
     <Content Include="admin\widgets\editorPane\directive.js" />
     <Content Include="admin\widgets\editorPane\template.html" />
     <Content Include="content\images\glyphicons-halflings-white.png" />
@@ -55,13 +56,14 @@
     <Content Include="core\directives\layout.js" />
     <Content Include="core\directives\placeholder.js" />
     <Content Include="core\directives\requireCss.js" />
+    <Content Include="core\module.js" />
     <Content Include="core\services\coreService.js" />
     <Content Include="index.html" />
-    <Content Include="portal\app.factory.js" />
-    <Content Include="portal\app.js" />
+    <Content Include="app.js" />
     <Content Include="portal\controllers\AppController.js" />
     <Content Include="portal\layouts\CustomLayout.html" />
     <Content Include="portal\layouts\MainLayout.html" />
+    <Content Include="portal\module.js" />
     <Content Include="portal\widgets\navigation\template2.html" />
     <Content Include="portal\widgets\navigation\directive.js" />
     <Content Include="portal\widgets\navigation\template.html" />

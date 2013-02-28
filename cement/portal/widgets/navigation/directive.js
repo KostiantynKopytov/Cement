@@ -1,4 +1,4 @@
-﻿define(['module!core', 'extensions', 'json!./*.html~name'], function (module, extensions, templates) {
+﻿define(['../../module', 'extensions', 'json!./*.html~name'], function (module, extensions, templates) {
     extensions.registerDirectives(module, 'navigation', templates, function (templateUrl) {
         return ['coreService', '$location', function(coreService, $location) {
             return {

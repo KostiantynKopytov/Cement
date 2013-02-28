@@ -1,4 +1,4 @@
-﻿define(['jquery', 'module!core'], function($, module) {
+﻿define(['jquery', '../module'], function ($, module) {
     module.directive('widget', ['$compile', function($compile) {
         return {
             restrict: 'E',

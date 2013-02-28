@@ -1,4 +1,4 @@
-﻿define(['module!core', 'json!/portal/widgets/*~name', 'extensions'], function (module, widgets) {
+﻿define(['../../module', 'json!/portal/widgets/*~name', 'extensions'], function (module, widgets) {
     module.directive('editorPane', [function() {
         return {
             replace: true,
