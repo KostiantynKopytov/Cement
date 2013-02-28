@@ -1,13 +1,11 @@
 // handles files lookup using patterns like *.html
-// TODO: security!
-
 (function (module, require) {
     var glob = require('glob');
     var logger = require('../logger').get();
 
     module.exports = function (router) {
         return router
-            .get(/^([^*]+)([^*]*\*[^$]*)\$?(.*)$/, function (req, res, path, pattern, filter) {
+            .get(/^(\/[^*]+)([^*]*\*[^~]*)~?(.*)$/, function (req, res, path, pattern, filter) {
                 logger.silly(' --- ', { path: path, pattern: pattern });
                 glob(pattern, { root: '../cement/', cwd: '../cement' + path }, function (error, files) {
                     switch (filter) {

@@ -3,7 +3,7 @@
         return {
             restrict: 'E',
             link: function() {
-                var links = $("link[toDelete='true']");
+                var links = $("link[usage='0']");
                 links.remove();
             }
         };

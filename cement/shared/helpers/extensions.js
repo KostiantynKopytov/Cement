@@ -3,7 +3,7 @@
     String.Format = function () {
         var args = arguments;
         return args[0].replace(/\{(\d+)\}/gm, function (match, index) {
-            index = parseInt(index);
+            index = parseInt(index, 10);
             return args[index + 1];
         });
     };

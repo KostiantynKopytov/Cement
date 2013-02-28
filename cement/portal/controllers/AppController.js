@@ -2,7 +2,7 @@
     module.controller('AppController', ["$scope", "$location", "coreService", function ($scope, $location, coreService) {
         $scope.$on("$locationChangeStart", function () {
             coreService.get({ type: 'page', path: $location.path() }, function (page) {
-                $scope.layoutUrl = "/$layout/" + page.layout;
+                $scope.layoutUrl = "/portal/layouts/" + page.layout + ".html";
                 $scope.page = page;
             });
         });

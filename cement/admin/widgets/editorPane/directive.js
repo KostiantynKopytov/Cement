@@ -1,4 +1,4 @@
-﻿define(['module!core', 'json!/portal/widgets/*$name', 'extensions'], function(module, widgets) {
+﻿define(['module!core', 'json!/portal/widgets/*~name', 'extensions'], function(module, widgets) {
     module.directive('editorPane', [function() {
         return {
             replace: true,
@@ -10,7 +10,7 @@
                 $scope.widgets = widgets;
                 $scope.$watch('widget', function () {
                     if ($scope.widget) {
-                        var url = String.Format("json!/portal/widgets/{0}/*.html$name", $scope.widget);
+                        var url = String.Format("json!/portal/widgets/{0}/*.html~name", $scope.widget);
                         require([url], function(templates) {
                             $scope.templates = templates;
                             if ($scope.template && !templates.contains($scope.template)) {

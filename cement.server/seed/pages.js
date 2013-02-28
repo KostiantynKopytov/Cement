@@ -67,8 +67,12 @@
 
     db.$collection('pages', function(error, collection) {
         progress('pages: seed started...')(error);
-        collection.remove(progress('pages: remove'));
-        collection.insert(pages, progress('pages: insert'));
-        collection.ensureIndex("parentId", progress('pages: index'));
+        collection.remove(function(error) {
+            progress('pages: removed')(error);
+            collection.insert(pages, function(error) {
+                progress('pages: inserted')(error);
+                collection.ensureIndex("parentId", progress('pages: indexed'));
+           });
+        });
     });
 })(module, require);

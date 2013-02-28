@@ -246,6 +246,8 @@
     <Content Include="scripts\jasmine\jasmine.js" />
     <Content Include="shared\requirejs\plugins\json.js" />
     <Content Include="shared\requirejs\plugins\text.js" />
+    <Content Include="tests\index.html" />
+    <Content Include="tests\runTests.js" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
