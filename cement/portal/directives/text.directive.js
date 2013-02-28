@@ -1,28 +1,28 @@
-﻿define(['module!portal', 'extensions', 'json!./*.html~name'], function(module) {
+﻿define(['module!portal', 'jquery','extensions', 'json!./*.html~name'], function(module, $) {
     module.directive('text', [function () {
         return {
             restrict: 'E',
             controller: function($scope) {
                 $scope.editMode = false;
-                $scope.toggleEdit = function () {
-                    $scope.editMode = !$scope.editMode;
+
+                $scope.edit = function () {
+                    $scope.newSettings = $.extend({}, $scope.widget.settings);
+                    $scope.editMode = true;
                 };
 
-                $scope.newSettings = {
-                    title: $scope.widget.settings.title,
-                    content: $scope.widget.settings.content
+                $scope.buttons = {
+                    'Ok': function () {
+                        $scope.$apply(function() {
+                            $scope.widget.settings = $.extend($scope.widget.settings, $scope.newSettings);
+                            $scope.editMode = false;
+                        });
+                    },
+                    'Cancel': function() {
+                        $scope.$apply(function() {
+                            $scope.editMode = false;
+                        });
+                    }
                 };
-
-                $scope.applySettings = function () {
-                    $scope.widget.settings.title = $scope.newSettings.title;
-                    $scope.widget.settings.content = $scope.newSettings.content;
-                    $scope.editMode = false;
-                };
-                $scope.clearForm = function () {
-                    $scope.newSettings = {};
-                    $scope.editMode = false;
-                };
-                
             }
         };
     }]);
