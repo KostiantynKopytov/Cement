@@ -5,7 +5,7 @@
     module.exports = function(router) {
         return router
             .get(/^\/\$menu/, function(req, res) {
-                var result = JSON.stringify(db.$menu());
+                var result = JSON.stringify(db.getMenu());
                 logger.silly(' --> json:', result);
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.end(result);

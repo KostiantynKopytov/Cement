@@ -1,9 +1,11 @@
 ﻿define(['module!portal'], function (module) {
     module.controller('AppController', ["$scope", "$location", "coreService", function ($scope, $location, coreService) {
         $scope.$on("$locationChangeStart", function () {
-            coreService.get({ type: 'page', path: $location.path() }, function (page) {
+            coreService.getPage($location.path()).success(function (page) {
                 $scope.layoutUrl = "/portal/layouts/" + page.layout + ".html";
                 $scope.page = page;
+            }).error(function () {
+                // TODO: handle this
             });
         });
 

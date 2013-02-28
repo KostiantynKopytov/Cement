@@ -1,12 +1,12 @@
 ﻿define(['module!admin', 'json!/portal/widgets/*~name'], function (module, widgets) {
-    module.directive('editorPane', [function() {
+    module.directive('editorPane', ['coreService', function(coreService) {
         return {
             replace: true,
             restrict: 'E',
             scope: {
                 page: '='
             },
-            controller: function($scope, $element, $attrs) {
+            controller: function($scope, $location, $element, $attrs) {
                 $scope.widgets = widgets;
                 $scope.$watch('widget', function() {
                     if ($scope.widget) {
@@ -30,6 +30,11 @@
                             settings: {}
                         });
                     }
+                };
+                $scope.save = function() {
+                    coreService.putPage($location.path(), $scope.page).error(function() {
+                        // TODO: handle this
+                    });
                 };
             },
             templateUrl: '/admin/templates/editor-pane/editor-pane.template.html'

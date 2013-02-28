@@ -3,7 +3,7 @@
         return {
             restrict: 'E',
             controller: function($scope, $element, $attrs) {
-                coreService.get({ type: 'menu' }, function(menu) {
+                coreService.getMenu().success(function(menu) {
                     $scope.menu = menu;
                 });
 

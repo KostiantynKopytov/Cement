@@ -1,5 +1,6 @@
 (function(module, require) {
     var mongodb = require('mongodb');
+    var logger = require('./logger').get();
 
     function $collection(name, callback) {
         var server = new mongodb.Server("127.0.0.1", 27017, {});
@@ -10,21 +11,33 @@
         });
     }
 
-    function $page(path, callback) {
+    function getPage(path, callback) {
         path = path || "/";
         $collection('pages', function(error, collection) {
             if (error) callback(error);
             collection.find({ _id: path }, { limit: 1 }).nextObject(callback);
         });
     }
+    
+    function putPage(path, data, callback) {
+        path = path || "/";
+        $collection('pages', function (error, collection) {
+            if (error) callback(error);
+            logger.silly('update page:', data);
+            delete data._id;
+            collection.update({ _id: path }, { $set: data }, callback);
+        });
+    }
 
-    function $menu() {
+    function getMenu() {
         return menu;
     }
 
+    module.exports.getPage = getPage;
+    module.exports.putPage = putPage;
+    module.exports.getMenu = getMenu;
+
     module.exports.$collection = $collection;
-    module.exports.$page = $page;
-    module.exports.$menu = $menu;
 
     var menu = {
         childPages: [{
