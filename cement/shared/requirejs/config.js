@@ -4,13 +4,12 @@
             'module': '/shared/requirejs/plugins/module',
             'text': '/shared/requirejs/plugins/text',
             'json': '/shared/requirejs/plugins/json',
-            'jquery': '/scripts/jquery-1.9.1.min',
-            'underscore': '/scripts/underscore.min',
-            'angular': '/scripts/angular.min',
-            'angular-resource': '/scripts/angular-resource',
-            'angular-mocks': '/scripts/angular-mocks',
+            'jquery': '/libs/jquery-1.9.1.min',
+            'underscore': '/libs/underscore.min',
+            'angular': '/libs/angular/angular.min',
+            'angular-mocks': '/libs/angular/angular-mocks',
             'extensions': '/shared/helpers/extensions',
-            'jquery-ui': '/scripts/jquery-ui-1.10.1.custom.min'
+            'jquery-ui': '/libs/jquery-ui-1.10.1.custom.min'
         },
         shim: {
             'angular': {
@@ -21,9 +20,6 @@
                 init: function(angular) {
                     return angular.mock;
                 }
-            },
-            'angular-resource': {
-                deps: ['angular']
             },
             'jquery': {
                 exports: '$'
