@@ -30,9 +30,9 @@
     };
 
     return {
-        registerDirectives: function (module, name, templates, factory) {
+        registerWidget: function (module, name, templates, factory) {
             templates.forEach(function (template) {
-                var templateUrl = String.Format('portal/widgets/{0}/{1}.html', name, template);
+                var templateUrl = String.Format('{0}/widgets/{1}/{2}.html', module.name, name, template);
                 module.directive(name + template.capitalize(), factory(templateUrl));
             });
         }

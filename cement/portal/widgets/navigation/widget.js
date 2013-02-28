@@ -1,5 +1,5 @@
 ﻿define(['module!portal', 'extensions', 'json!./*.html~name'], function (module, extensions, templates) {
-    extensions.registerDirectives(module, 'navigation', templates, function (templateUrl) {
+    extensions.registerWidget(module, 'navigation', templates, function (templateUrl) {
         return ['coreService', '$location', function(coreService, $location) {
             return {
                 restrict: 'E',
