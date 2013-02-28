@@ -1,5 +1,5 @@
-﻿define(['../requirejs/config'], function () {
-    var tests = ['./core/controllers/PageControllerSpec'];
+﻿define(['../shared/requirejs/config'], function () {
+    var tests = ['./TestSpec1'];
 
     require(tests, function () {
         var jasmineEnv = jasmine.getEnv();
