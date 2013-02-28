@@ -8,13 +8,13 @@
                 var link = $(selector);
 
                 if (!link.exists()) {
-                    link = $('<link type="text/css" rel="stylesheet" usage="1" />').attr('href', $attrs.href).appendTo('head');
+                    link = $('<link type="text/css" rel="stylesheet" />').attr("data-usage", "1").attr('href', $attrs.href).appendTo('head');
                 } else {
-                    link.attr('usage', parseInt(link.attr('usage'), 10) + 1);
+                    link.attr('data-usage', link.attr('data-usage') - (-1));
                 }
                 
                 $scope.$on('$destroy', function() {
-                    link.attr('usage', parseInt(link.attr('usage'), 10) - 1);
+                    link.attr('data-usage', link.attr('data-usage') - 1);
                 });
             }
         };
