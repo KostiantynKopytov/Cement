@@ -1,5 +1,5 @@
 ﻿define(['jquery', 'module!core', 'extensions'], function ($, module) {
-    module.directive('placeholder', ['$compile', function($compile) {
+    module.directive('placeholder', [function() {
         return {
             replace: true,
             template: '<ng-include src="getWidgetTemplateUrl(widget)" ng-repeat="widget in widgets"></ng-include>',
