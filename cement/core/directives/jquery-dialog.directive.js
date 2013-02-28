@@ -1,37 +1,60 @@
 ﻿define(['module!core', 'extensions', 'jquery-ui'], function(module) {
-    var template = "<div id='dialog'><div ng-transclude></div></div>";
-    module.directive('jqueryDialog', function() {
+    module.directive('dialog', function() {
         return {
             restrict: 'E',
+            replace: true,
             transclude: true,
             scope: {
-                showDialog: "=",
                 title: "@",
-                buttons: "="
+                close: "&"
             },
-            link: function(scope, element, attrs) {
+            controller: ['$scope', '$element', '$attrs', function (scope, element, attrs) {
+                scope.buttons = [];
+                this.addButton = function (text, click) {
+                    scope.buttons.push({
+                        text: text,
+                        click: function() {
+                            if (!click()) {
+                                $(element).dialog('close');
+                            }
+                        }
+                    });
+                };
+
                 $(element).dialog({
-                    autoOpen: false,
+                    autoOpen: true,
                     modal: true,
                     close: function () {
-                        if (scope.showDialog) {
-                            scope.$apply('showDialog = false');
-                        }
+                        $(element).dialog('destroy').remove();
+                        scope.$apply('close()');
                     }
                 });
 
-                scope.$watch('showDialog', function (showDialog) {
-                    var isOpen = $(element).dialog('isOpen');
-                    if (showDialog && !isOpen) {
-                        $(element).dialog('option', 'buttons', scope.buttons);
-                        $(element).dialog('option', 'title', scope.title);
-                        $(element).dialog('open');
-                    } else if (!showDialog && isOpen) {
-                        $(element).dialog('close');
-                    }
+                scope.$watch('title', function (title) {
+                    $(element).dialog('option', 'title', title);
                 });
+                
+                scope.$watch('buttons.length', function (buttons) {
+                    $(element).dialog('option', 'buttons', scope.buttons);
+                });
+            }],
+            template: "<div ng-transclude></div>"
+        };
+    });
+
+    module.directive('dialogButton', function () {
+        return {
+            restrict: 'E',
+            scope: {
+                text: '@',
+                click: '&'
             },
-            template: template
+            require: '^dialog',
+            link: function(scope, element, attrs, controller) {
+                scope.$watch('click', function () {
+                    controller.addButton(scope.text, function () { return scope.$apply('click()'); });
+                });
+            }
         };
     });
 });

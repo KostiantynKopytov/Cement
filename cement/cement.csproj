@@ -79,6 +79,7 @@
     <Content Include="portal\directives\navigation.directive.js" />
     <Content Include="portal\widgets\navigation\navigation.default.html" />
     <Content Include="portal\directives\text.directive.js" />
+    <Content Include="portal\widgets\text\text.editor.html" />
     <Content Include="portal\widgets\text\text.default.html" />
     <Content Include="scripts\angular-bootstrap-prettify.js" />
     <Content Include="scripts\angular-bootstrap-prettify.min.js" />

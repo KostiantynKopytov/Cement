@@ -4,10 +4,5 @@
     
     <button class="btn" ng-click="edit()">Edit</button>
 
-    <jquery-dialog show-dialog="editMode" buttons="buttons" title="Settings">
-        title:
-        <input ng-model="newSettings.title" />
-        content:
-        <input ng-model="newSettings.content" />
-    </jquery-dialog>
+    <ng-include src="editorUrl"></ng-include>
 </text>
