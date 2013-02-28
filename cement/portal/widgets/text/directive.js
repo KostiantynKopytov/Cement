@@ -1,4 +1,4 @@
-﻿define(['../../module', 'extensions', 'json!./*.html~name'], function (module, extensions, templates) {
+﻿define(['module!portal', 'extensions', 'json!./*.html~name'], function (module, extensions, templates) {
     extensions.registerDirectives(module, 'text', templates, function (templateUrl) {
         return [function () {
             return {

@@ -1,4 +1,4 @@
-﻿define(['../module', 'extensions'], function (module) {
+﻿define(['module!core', 'extensions'], function (module) {
     module.directive('layout', function() {
         return {
             restrict: 'E',

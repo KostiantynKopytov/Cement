@@ -1,4 +1,4 @@
-﻿define(['jquery', '../module'], function ($, module) {
+﻿define(['jquery', 'module!core'], function ($, module) {
     module.directive('placeholder', ['$compile', function($compile) {
         return {
             replace: true,

@@ -1,4 +1,4 @@
-﻿define(['../../module', 'json!/portal/widgets/*~name', 'extensions'], function (module, widgets) {
+﻿define(['module!admin', 'json!/portal/widgets/*~name', 'extensions'], function (module, widgets) {
     module.directive('editorPane', [function() {
         return {
             replace: true,
