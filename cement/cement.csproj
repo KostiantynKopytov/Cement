@@ -43,29 +43,28 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="admin\widgets\editorPane\widget.js" />
-    <Content Include="admin\widgets\editorPane\template.html" />
+    <Content Include="admin\directives\editor-pane.directive.js" />
+    <Content Include="admin\templates\editor-pane\editor-pane.template.html" />
     <Content Include="content\images\glyphicons-halflings-white.png" />
     <Content Include="content\images\glyphicons-halflings.png" />
     <Content Include="content\jasmine\jasmine.css" />
     <Content Include="content\jasmine\jasmine_favicon.png" />
     <Content Include="content\styles\jquery-ui-1.10.1.custom.css" />
     <Content Include="content\styles\jquery-ui-1.10.1.custom.min.css" />
-    <Content Include="core\directives\widget.js" />
-    <Content Include="core\directives\layout.js" />
-    <Content Include="core\directives\placeholder.js" />
-    <Content Include="core\directives\requireCss.js" />
-    <Content Include="core\services\coreService.js" />
+    <Content Include="core\directives\layout.directive.js" />
+    <Content Include="core\directives\placeholder.directive.js" />
+    <Content Include="core\directives\require-css.directive.js" />
+    <Content Include="core\services\core.service.js" />
     <Content Include="index.html" />
     <Content Include="app.js" />
-    <Content Include="portal\controllers\AppController.js" />
+    <Content Include="portal\controllers\app.controller.js" />
     <Content Include="portal\layouts\CustomLayout.html" />
     <Content Include="portal\layouts\MainLayout.html" />
-    <Content Include="portal\widgets\navigation\template2.html" />
-    <Content Include="portal\widgets\navigation\widget.js" />
-    <Content Include="portal\widgets\navigation\template.html" />
-    <Content Include="portal\widgets\text\widget.js" />
-    <Content Include="portal\widgets\text\template.html" />
+    <Content Include="portal\widgets\navigation\navigation.vertical.html" />
+    <Content Include="portal\directives\navigation.directive.js" />
+    <Content Include="portal\widgets\navigation\navigation.default.html" />
+    <Content Include="portal\directives\text.directive.js" />
+    <Content Include="portal\widgets\text\text.default.html" />
     <Content Include="scripts\angular-bootstrap-prettify.js" />
     <Content Include="scripts\angular-bootstrap-prettify.min.js" />
     <Content Include="scripts\angular-bootstrap.js" />
