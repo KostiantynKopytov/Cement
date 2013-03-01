@@ -69,6 +69,7 @@
     <Content Include="content\styles\ui-lightness\images\ui-icons_ffffff_256x240.png" />
     <Content Include="content\styles\ui-lightness\jquery-ui-1.10.1.custom.css" />
     <Content Include="content\styles\ui-lightness\jquery-ui-1.10.1.custom.min.css" />
+    <Content Include="core\directives\widget.directive.js" />
     <Content Include="core\directives\layout.directive.js" />
     <Content Include="core\directives\placeholder.directive.js" />
     <Content Include="core\directives\require-css.directive.js" />
@@ -76,6 +77,7 @@
     <Content Include="index.html" />
     <Content Include="app.js" />
     <Content Include="portal\controllers\app.controller.js" />
+    <Content Include="portal\controllers\text.controller.js" />
     <Content Include="portal\layouts\CustomLayout.html" />
     <Content Include="portal\layouts\MainLayout.html" />
     <Content Include="portal\widgets\navigation\navigation.widget.vertical.html" />

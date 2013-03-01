@@ -1,6 +1,7 @@
-﻿define(['module!portal', 'extensions'], function(module, extensions) {
+﻿define(['module!portal', 'name!.', 'extensions'], function (module, widgetUrl, extensions) {
     module.directive('ctNavigation', ['coreService', '$location', function(coreService, $location) {
         return {
+            templateUrl: widgetUrl + '/navigation.widget.html',
             restrict: 'E',
             controller: function($scope, $element, $attrs) {
                 coreService.getMenu().success(function(menu) {
