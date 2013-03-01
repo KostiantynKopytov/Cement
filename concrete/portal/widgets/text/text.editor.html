@@ -2,8 +2,12 @@
 
 <ct-dialog on-close="cancel()" title="Settings">
     <div class="widget-text-editor">
+ 
         <label for="content">content:</label>
-        <textarea id="content" ng-model="editor.content"></textarea>
+        <textarea id="content" ng-model="settings.content"></textarea>
+
+        <label for="container">container title:</label>
+        <input id="container" ng-model="container.title"></input>
         
         <ct-dialog-button on-click="ok()">Ok</ct-dialog-button>
         <ct-dialog-button on-click="cancel()">Cancel</ct-dialog-button>

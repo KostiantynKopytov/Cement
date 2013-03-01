@@ -76,11 +76,11 @@
     <Content Include="core\services\core.service.js" />
     <Content Include="index.html" />
     <Content Include="app.js" />
+    <Content Include="portal\containers\default\default.container.html" />
+    <Content Include="portal\containers\default\default.container.js" />
     <Content Include="portal\controllers\app.controller.js" />
-    <Content Include="portal\controllers\text.controller.js" />
     <Content Include="portal\layouts\CustomLayout.html" />
     <Content Include="portal\layouts\MainLayout.html" />
-    <Content Include="portal\widgets\navigation\navigation.widget.vertical.html" />
     <Content Include="portal\widgets\navigation\navigation.widget.js" />
     <Content Include="portal\widgets\navigation\navigation.widget.html" />
     <Content Include="portal\widgets\text\text.widget.js" />

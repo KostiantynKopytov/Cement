@@ -14,12 +14,11 @@
                     { name: "navigation" }
                 ],
                 left: [
-                    { name: "text", settings: { title: "Lorem ipsum", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.aaaaaaaaaaaaaaadwdawdadawd" } }
+                    { name: "text", title: "Lorem ipsum", container: { name: 'default', title: 'test title' }, settings: { content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.aaaaaaaaaaaaaaadwdawdadawd" } }
                 ],
                 content: [
-                    { name: "text", settings: { title: "Module 1", content: "<b>Phasellus</b> odio felis, tempus eget rhoncus quis, placerat sed purus. Nulla metus leo, cursus nec auctor quis, volutpat nec urna." } },
-                    { name: "text", settings: { title: "Module 2", content: "Aenean viverra ultricies sapien nec porttitor." } }
-                ],
+                  
+                ]
             }
         }, {
             _id: "/about",
@@ -29,11 +28,11 @@
             placeholders:
             {
                 top: [
-                    { name: "navigation", settings: { template: "template2" } }
+                    { name: "navigation" }
                 ],
                 content: [
-                    { name: "text", settings: { title: "Module 1" } }, { name: "text", settings: { title: "Module 2" } }
-                ],
+                   
+                ]
             }
         }, {
             _id: "/contact-us",
@@ -46,11 +45,11 @@
                     { name: "navigation" }
                 ],
                 left: [
-                    { name: "text", settings: { title: "Module 2" } }
+                  
                 ],
                 content: [
-                    { name: "text", settings: { title: "Module 1" } }, { name: "text", settings: { title: "Module 2" } }
-                ],
+                   
+                ]
             }
         }
     ];
