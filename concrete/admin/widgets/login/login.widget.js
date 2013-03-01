@@ -1,10 +1,12 @@
 ﻿define(['module!admin', 'name!.'], function (module, widgetUrl) {
-    module.directive('ctLogin', ['coreService', function(coreService) {
+    module.directive('ctLogin', [function() {
         return {
             replace: true,
             restrict: 'E',
-            controller: function ($scope, $location, $element, $attrs) {
-            },
+            scope: {},
+            controller: ['$scope', function (scope) {
+                scope.visible = true;
+            }],
             templateUrl: widgetUrl + '/login.widget.html'
         };
     }]);

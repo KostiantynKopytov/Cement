@@ -45,6 +45,7 @@
   <ItemGroup>
     <Content Include="admin\widgets\editor-pane\editor-pane.widget.js" />
     <Content Include="admin\widgets\editor-pane\editor-pane.widget.html" />
+    <Content Include="admin\widgets\login\login.popup.html" />
     <Content Include="admin\widgets\login\login.widget.html" />
     <Content Include="admin\widgets\login\login.widget.js" />
     <Content Include="content\images\glyphicons-halflings-white.png" />
