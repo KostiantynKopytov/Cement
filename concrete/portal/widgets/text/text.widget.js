@@ -5,10 +5,7 @@
             replace: true,
             restrict: 'E',
             scope: {
-                content: '='
-            },
-            link: function() {
-                console.log('ct-text');
+                settings: '='
             }
         };
     }]);

@@ -13,11 +13,6 @@
             <option value="">(blank)</option>
         </select>
         
-        <label>Templates</label>
-        <select ng-disabled="!widget" ng-model="template" ng-options="value for value in templates">
-            <option value="">(blank)</option>
-        </select>
-
         <br />
 
         <button ng-disabled="!canAdd()" class="btn" type="submit" ng-click="addWidget()"><i class="icon-plus"></i>Add module</button>

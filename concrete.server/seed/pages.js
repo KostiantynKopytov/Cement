@@ -11,10 +11,10 @@
             placeholders:
             {
                 top: [
-                    { name: "navigation" }
+                    { name: "navigation", container: { name: 'default', title: 'test title' }}
                 ],
                 left: [
-                    { name: "text", title: "Lorem ipsum", container: { name: 'default', title: 'test title' }, settings: { content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.aaaaaaaaaaaaaaadwdawdadawd" } }
+                    { title: "Lorem ipsum", container: { name: 'default', title: 'test title' }, directive: { name: "text", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.aaaaaaaaaaaaaaadwdawdadawd" } }
                 ],
                 content: [
                   
@@ -28,7 +28,7 @@
             placeholders:
             {
                 top: [
-                    { name: "navigation" }
+                    { name: "navigation", container: { name: 'default', title: 'test title' } }
                 ],
                 content: [
                    
@@ -42,7 +42,7 @@
             placeholders:
             {
                 top: [
-                    { name: "navigation" }
+                    { name: "navigation", container: { name: 'default', title: 'test title' } }
                 ],
                 left: [
                   

@@ -76,6 +76,7 @@
     <Content Include="core\services\core.service.js" />
     <Content Include="index.html" />
     <Content Include="app.js" />
+    <Content Include="portal\containers\default\default.editor.html" />
     <Content Include="portal\containers\default\default.container.html" />
     <Content Include="portal\containers\default\default.container.js" />
     <Content Include="portal\controllers\app.controller.js" />
