@@ -1,5 +1,5 @@
-﻿define(['module!admin', 'json!/portal/widgets/*~name'], function (module, widgets) {
-    module.directive('editorPane', ['coreService', function(coreService) {
+﻿define(['module!admin', 'name!.', 'json!/portal/widgets/*~name'], function (module, widgetUrl, widgets) {
+    module.directive('ctEditorPane', ['coreService', function(coreService) {
         return {
             replace: true,
             restrict: 'E',
@@ -38,7 +38,7 @@
                 };
 
             },
-            templateUrl: '/admin/templates/editor-pane/editor-pane.template.html'
+            templateUrl: widgetUrl + '/editor-pane.widget.html'
         };
     }]);
 });

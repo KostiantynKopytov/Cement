@@ -6,17 +6,17 @@
             transclude: true,
             scope: {
                 title: "@",
-                close: "&"
+                onClose: "&"
             },
             controller: ['$scope', '$element', '$attrs', function (scope, element, attrs) {
                 scope.buttons = [];
                 this.addButton = function (text, click) {
                     scope.buttons.push({
                         text: text,
-                        click: function() {
-                            if (!click()) {
-                                $(element).dialog('close');
-                            }
+                        click: function () {
+                            scope.$apply(function() {
+                                click();
+                            });
                         }
                     });
                 };
@@ -25,8 +25,9 @@
                     autoOpen: true,
                     modal: true,
                     close: function () {
-                        $(element).dialog('destroy').remove();
-                        scope.$apply('close()');
+                        scope.$apply(function () {
+                            scope.onClose();
+                        });
                     },
                     minWidth: 500,
                     minHeight: 300
@@ -39,24 +40,30 @@
                 scope.$watch('buttons.length', function () {
                     $(element).dialog('option', 'buttons', scope.buttons);
                 });
+
+                scope.$on('$destroy', function () {
+                    $(element).dialog('destroy');
+                });
             }],
             template: "<div ng-transclude></div>"
         };
     });
 
-    module.directive('ctDialogButton', function () {
+    module.directive('ctDialogButton', ['$compile', function ($compile) {
         return {
             restrict: 'E',
             scope: {
-                text: '@',
-                click: '&'
+                onClick: '&'
             },
             require: '^ctDialog',
             link: function(scope, element, attrs, controller) {
-                scope.$watch('click', function () {
-                    controller.addButton(scope.text, function () { return scope.$apply('click()'); });
+                var content = element.contents();
+                scope.$watch('onClick', function () {
+                    var compiledContent = $compile(content)(scope);
+                    controller.addButton(compiledContent.html(), scope.onClick);
                 });
+                $(element).remove();
             }
         };
-    });
+    }]);
 });

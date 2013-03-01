@@ -43,8 +43,10 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="admin\directives\editor-pane.directive.js" />
-    <Content Include="admin\templates\editor-pane\editor-pane.template.html" />
+    <Content Include="admin\widgets\editor-pane\editor-pane.widget.js" />
+    <Content Include="admin\widgets\editor-pane\editor-pane.widget.html" />
+    <Content Include="admin\widgets\login\login.widget.html" />
+    <Content Include="admin\widgets\login\login.widget.js" />
     <Content Include="content\images\glyphicons-halflings-white.png" />
     <Content Include="content\images\glyphicons-halflings.png" />
     <Content Include="content\jasmine\jasmine.css" />

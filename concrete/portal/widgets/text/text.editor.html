@@ -1,11 +1,11 @@
 ﻿<ct-require-css href="/portal/widgets/text/text.editor.less"></ct-require-css>
 
-<ct-dialog close="cancel()" title="Settings">
+<ct-dialog on-close="cancel()" title="Settings">
     <div class="widget-text-editor">
         <label for="content">content:</label>
         <textarea id="content" ng-model="newSettings.content"></textarea>
         
-        <ct-dialog-button text="Ok" click="ok()" ></ct-dialog-button>
-        <ct-dialog-button text="Cancel" click="cancel()"></ct-dialog-button>
+        <ct-dialog-button on-click="ok()">Ok</ct-dialog-button>
+        <ct-dialog-button on-click="cancel()">Cancel</ct-dialog-button>
     </div>
 </ct-dialog>
