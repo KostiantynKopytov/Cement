@@ -4,7 +4,7 @@
         <a class="editor-pane-close close" ng-href="" ng-click="opened = false">×</a>
 
         <label>Placeholder</label>
-        <select ng-model="placeholder" ng-options="key as key for (key, value) in page.placeholders">
+        <select ng-model="placeholder" ng-options="p as p.name for p in placeholders">
             <option value="">(blank)</option>
         </select>
 
@@ -22,7 +22,7 @@
     </div>    
 
 
-    <a class="editor-pane-open" ng-click="opened = true" ng-show="!opened"><i class="icon-chevron-right"></i></a>
+    <a class="editor-pane-open" ng-click="opened = true" ng-show="!opened"><i class="icon-chevron-left"></i></a>
 </div>
 
 

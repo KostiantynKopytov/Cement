@@ -82,6 +82,8 @@
     <Content Include="portal\controllers\app.controller.js" />
     <Content Include="portal\layouts\CustomLayout.html" />
     <Content Include="portal\layouts\MainLayout.html" />
+    <Content Include="portal\widgets\main-layout\main-layout.widget.html" />
+    <Content Include="portal\widgets\main-layout\main-layout.widget.js" />
     <Content Include="portal\widgets\navigation\navigation.widget.js" />
     <Content Include="portal\widgets\navigation\navigation.widget.html" />
     <Content Include="portal\widgets\text\text.widget.js" />

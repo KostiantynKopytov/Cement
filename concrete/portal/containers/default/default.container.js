@@ -6,7 +6,7 @@
             templateUrl: '/portal/containers/default/default.container.html',
             scope: {
                 container: '='
-            }
+            },
         };
     }]);
 });

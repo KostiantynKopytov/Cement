@@ -2,6 +2,9 @@
     module.directive('ctWidget', ['$compile', function($compile) {
         return {
             restrict: 'E',
+            scope: {
+                widget: '='
+            },
             controller: ['$scope', '$element', '$attrs', function(scope, element, attrs) {
                 scope.edit = function() {
                     scope.editor = {

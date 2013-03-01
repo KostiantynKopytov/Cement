@@ -20,7 +20,7 @@
             .get(/^\/\$page(\/.*)/, function (req, res, path) {
                 db.getPage(path, function (error, data) {
                     if (error) throw error;
-                    var result = JSON.stringify(data);
+                    var result = JSON.stringify(data || {});
                     logger.silly(' --> json:', result);
                     res.writeHead(200, { 'Content-Type': 'application/json' });
                     res.end(result);

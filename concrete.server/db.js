@@ -25,7 +25,7 @@
             if (error) callback(error);
             logger.silly('update page:', { id: path, data: data });
             delete data._id;
-            collection.update({ _id: path }, { $set: data }, callback);
+            collection.update({ _id: path }, { $set: data }, { upsert: true }, callback);
         });
     }
 
