@@ -8,10 +8,16 @@
             },
             controller: ['$scope', '$element', '$attrs', '$location', function ($scope, $element, $attrs, $location) {
                 $scope.$watch(function () {
-                    return $('[ct-placeholder]').length;
+                    var key = $('[ct-placeholder]').map(function(index, val) {
+                        return $(val).data('$scope').$id
+                    }).get().join('|');
+                    return key;
                 }, function () {
                     $scope.placeholders = $('[ct-placeholder]').map(function (index, val) {
-                        return { scope: $(val).data('$scope'), name: $(val).attr('widgets') };
+                        return {
+                            scope: $(val).data('$scope'),
+                            name: $(val).attr('widgets')
+                        };
                     }).get();
                 });
                 $scope.widgets = widgets;

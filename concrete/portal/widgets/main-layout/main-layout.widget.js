@@ -6,14 +6,7 @@
             restrict: 'A',
             scope: {
                 settings: '='
-            },
-            controller: ['$scope', function(scope) {
-//                scope.settings = {
-//                    top: [],
-//                    left: [],
-//                    content: [],
-//                };
-            }]
+            }
         };
     }]);
 });

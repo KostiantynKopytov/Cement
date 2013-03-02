@@ -5,16 +5,17 @@
             'module': '/shared/requirejs/plugins/module',
             'text': '/shared/requirejs/plugins/text',
             'json': '/shared/requirejs/plugins/json',
-            'jquery': '/libs/jquery-1.9.1',
-            'underscore': '/libs/underscore',
-            'angular': '/libs/angular/angular',
+            'jquery': '/libs/jquery-1.9.1.min',
+            'underscore': '/libs/underscore.min',
+            'angular': '/libs/angular/angular.min',
             'angular-mocks': '/libs/angular/angular-mocks',
             'extensions': '/shared/helpers/extensions',
-            'jquery-ui': '/libs/jquery-ui-1.10.1.custom',
+            'jquery-ui': '/libs/jquery-ui-1.10.1.custom.min',
             'json2': '/libs/json2'
         },
         shim: {
             'angular': {
+                deps: ['jquery'],
                 exports: 'angular'
             },
             'angular-mocks': {

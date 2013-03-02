@@ -3,7 +3,7 @@
         return {
 //            replace: true,
             template: '<div ct-widget widget="widget" ng-repeat="widget in widgets"></div>',
-            restrict: 'EA',
+            restrict: 'A',
             scope: {
                 widgets: '='
             },
@@ -13,16 +13,17 @@
 
                 var sender = null;
                 var senderIndex = 0;
+                
                 $(element).sortable({
                     connectWith: '[ct-placeholder]',
+                    items: '[ct-widget]',
                     cursor: 'pointer',
                     cursorAt: { top: 0, left: 0 },
                     distance: 10,
-                    forcePlaceholderSize: true,
                     forceHelperSize: true,
                     tolerance: "pointer",
                     start: function (event, ui) {
-                        ui.placeholder.attr('style', '').addClass('placeholder-targetplace').html(ui.item.html());
+                        ui.placeholder.attr('style', '').addClass('ct-placeholder-targetplace').html(ui.item.clone().html());
                         sender = ui.item.parent().data('$scope');
                         senderIndex = ui.item.index();
                     },
@@ -36,10 +37,12 @@
                         receiver.widgets = receiver.widgets || [];
                         receiver.widgets.splice(receiverIndex, 0, item.widget);
                         scope.$apply();
+
+                        console.log('stop');
                     }
                 }).droppable({
                     greedy: true,
-                    activeClass: 'placeholder-active'
+                    activeClass: 'ct-placeholder-active'
                 }).disableSelection();
 
                 scope.$on('$destory', function() {
