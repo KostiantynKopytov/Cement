@@ -1,12 +1,16 @@
-﻿define(['jquery', 'module!core', 'extensions'], function ($, module) {
+﻿define(['jquery', 'module!core', 'extensions', 'jquery-ui'], function ($, module) {
     module.directive('ctPlaceholder', ['$compile', function() {
         return {
 //            replace: true,
-            template: '<ct-widget widget="widget" ng-repeat="widget in widgets"></ct-widget>',
-            restrict: 'E',
+            template: '<li ct-widget widget="widget" ng-repeat="widget in widgets"></li>',
+            restrict: 'EA',
             scope: {
                 widgets: '='
             },
+            link: function (scope, element, attrs) {
+                var links = $("link[data-usage='0']");
+                links.remove();
+            }
         };
     }]);
 });

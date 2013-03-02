@@ -1,7 +1,7 @@
 ﻿define(['jquery', 'module!core', 'extensions'], function($, module) {
     module.directive('ctWidget', ['$compile', function($compile) {
         return {
-            restrict: 'E',
+            restrict: 'EA',
             scope: {
                 widget: '='
             },
@@ -25,7 +25,7 @@
             }],
             link: function(scope, element, attrs) {
                 scope.$watch('widget', function(widget) {
-                    var jqContainer = $('<ct-container-' + widget.container.name + ' container="widget.container" />');
+                    var jqContainer = $('<div ct-container-' + widget.container.name + ' container="widget.container" />');
                     var jqWidget = $('<ct-' + widget.name + ' settings="widget.settings"/>');
 
                     jqContainer.append(jqWidget);

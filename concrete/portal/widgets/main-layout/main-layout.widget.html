@@ -1,17 +1,17 @@
-﻿<ct-layout>
+﻿<div>
     <ct-require-css href="/content/styles/less/main.layout.less"></ct-require-css>
     <ct-require-css href="/content/styles/ui-lightness/jquery-ui-1.10.1.custom.min.css"></ct-require-css>
     
 
     <div class="container">
-        <ct-placeholder widgets="settings.top"></ct-placeholder>
+        <ul ct-placeholder widgets="settings.top"></ul>
         <div class="row">
             <div class="span2">
-                <ct-placeholder widgets="settings.left"></ct-placeholder>
+                <ul ct-placeholder widgets="settings.left"></ul>
             </div>
             <div class="span10">       
                 <div class="pane">
-                    <ct-placeholder widgets="settings.content"></ct-placeholder>
+                    <ul ct-placeholder widgets="settings.content"></ul>
                     <br />
                     <button class="btn" type="button" ng-click="changeTitle()"><i class="icon-font"></i> change module title</button>
                     <button class="btn" type="button" ng-click="moveWidget(page.placeholders.content, page.placeholders.left)"><i class="icon-chevron-left"></i> move left</button>
@@ -20,5 +20,5 @@
             </div>
         </div>
     </div>
-</ct-layout>
+</div>
 
