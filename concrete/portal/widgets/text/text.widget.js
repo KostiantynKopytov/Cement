@@ -1,7 +1,7 @@
-﻿define(['module!portal', 'jquery', 'name!.'], function(module, $, widgetUrl) {
+﻿define(['module!portal'], function(module) {
     module.directive('ctText', [function() {
         return {
-            templateUrl: widgetUrl + '/text.widget.html',
+            templateUrl: '/portal/widgets/text/text.widget.html',
             replace: true,
             restrict: 'A',
             scope: {

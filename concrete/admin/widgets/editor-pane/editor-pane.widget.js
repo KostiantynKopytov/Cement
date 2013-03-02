@@ -1,4 +1,4 @@
-﻿define(['module!admin', 'jquery', 'name!.', 'json!/portal/widgets/*~name', 'angular'], function (module, $, widgetUrl, widgets, angular) {
+﻿define(['module!admin', 'jquery', 'json!/portal/widgets/*~name', 'angular'], function (module, $, widgets, angular) {
     module.directive('ctEditorPane', ['coreService', function(coreService) {
         return {
             replace: true,
@@ -43,7 +43,7 @@
                 };
 
             }],
-            templateUrl: widgetUrl + '/editor-pane.widget.html'
+            templateUrl: '/admin/widgets/editor-pane/editor-pane.widget.html'
         };
     }]);
 });

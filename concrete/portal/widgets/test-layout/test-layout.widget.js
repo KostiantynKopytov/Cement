@@ -1,7 +1,7 @@
-﻿define(['module!portal', 'jquery', 'name!.'], function(module, $, widgetUrl) {
+﻿define(['module!portal'], function(module) {
     module.directive('ctTestLayout', [function() {
         return {
-            templateUrl: widgetUrl + '/test-layout.widget.html',
+            templateUrl: '/portal/widgets/test-layout/test-layout.widget.html',
             replace: true,
             restrict: 'A',
             scope: {
