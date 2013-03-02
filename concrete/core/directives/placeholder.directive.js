@@ -2,7 +2,7 @@
     module.directive('ctPlaceholder', ['$compile', function() {
         return {
 //            replace: true,
-            template: '<li ct-widget widget="widget" ng-repeat="widget in widgets"></li>',
+            template: '<div ct-widget widget="widget" ng-repeat="widget in widgets"></div>',
             restrict: 'EA',
             scope: {
                 widgets: '='

@@ -31,16 +31,22 @@
     cursor: pointer;
 }
 
+.btn-widget-editor {
+	opacity: 0.3;
+}
+
+[ng-transclude]:hover > .btn-widget-editor {
+	opacity: 1;
+}
+
 [ct-placeholder] {
-	min-width: 100px;
-	min-height: 50px;
+	border: 1px dotted white;
 }
 
 .placeholder-targetplace {
-	background-color: #F0F0C0;
-	border: 1px solid red;
+	opacity: 0.5;
 }
 
 [ct-placeholder].placeholder-active {
-	border: 1px solid #E0E080;
+	border: 1px dashed #E0E080;
 }

@@ -23,29 +23,49 @@
         $scope.$watch(function () {
             return $('[ct-placeholder], [ct-widget]').length;
         }, function () {
+            var item = null;
+            var receiver = null;
+            var receiverIndex = 0;
+            var sender = null;
+            var senderIndex = 0;
             console.log('refresh drag & drop');
-            $('[ct-placeholder].ui-sortable').sortable('destroy');
-            $('[ct-placeholder].ui-droppable').droppable('destroy');
-            $('[ct-placeholder]').sortable({
-                connectWith: '[ct-placeholder]',
+            $('.droppable.ui-sortable').sortable('destroy');
+            $('.droppable.ui-droppable').droppable('destroy');
+            $('.droppable').sortable({
+                connectWith: '.droppable',
                 cursor: 'move',
                 cursorAt: { top: 0, left: 0 },
-                helper: function() {
-                    return $('<div/>');
-                },
+                forcePlaceholderSize: true,
+                forceHelperSize: true,
                 tolerance: "pointer",
                 distance: 10,
+                over: function(event, ui) {
+                    var parent = ui.placeholder.parent();
+                    receiver = parent.data('$scope');
+                    receiverIndex = ui.placeholder.index();
+                },
                 activate: function (event, ui) {
+                    $(".droppable").sortable("refresh");
                     ui.placeholder && ui.placeholder.attr('style', '').addClass('placeholder-targetplace').html(ui.item.html());
-                    console.log('activate', event, ui);
+                    var parent = ui.placeholder.parent();
+                    receiver = parent.data('$scope');
+                    receiverIndex = ui.placeholder.index();
                 },
                 receive: function (event, ui) {
-                    console.log('receive', event, ui);
-                },
+                    item = ui.item.data('$scope');
+                    sender = ui.sender.data('$scope');
+                    senderIndex = sender.widgets.indexOf(item.widget);
+                    console.log('beforeStop', sender.widgets, senderIndex, receiver.widgets, receiverIndex);
+
+                    sender.widgets.splice(senderIndex, 1);
+                    receiver.widgets = receiver.widgets || [];
+                    receiver.widgets.splice(receiverIndex, 0, item.widget);
+                    $scope.$apply();
+                }
             }).droppable({
                 greedy: true,
                 activeClass: 'placeholder-active'
-            });
+            }).disableSelection();
         });
 
     }]);

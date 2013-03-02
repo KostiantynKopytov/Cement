@@ -30,7 +30,7 @@
 
                     jqContainer.append(jqWidget);
                     jqContainer.append($('<ng-include />').attr('src', 'editor.widgetUrl'));
-                    jqContainer.append('<button class="btn" ng-click="edit()">Edit</button>');
+                    jqContainer.append('<button class="btn btn-widget-editor" ng-click="edit()">Edit</button>');
                     var compiled = $compile(jqContainer)(scope);
                     element.html('');
                     element.append(compiled);
