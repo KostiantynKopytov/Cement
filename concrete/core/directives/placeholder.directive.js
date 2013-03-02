@@ -11,41 +11,50 @@
                 var links = $("link[data-usage='0']");
                 links.remove();
                 
-                var item = null;
-                var receiver = null;
-                var receiverIndex = 0;
                 var sender = null;
                 var senderIndex = 0;
                 $(element).sortable({
                     connectWith: '[ct-placeholder]',
-                    cursor: 'move',
+                    cursor: 'pointer',
                     cursorAt: { top: 0, left: 0 },
+                    distance: 10,
                     forcePlaceholderSize: true,
                     forceHelperSize: true,
                     tolerance: "pointer",
-                    distance: 10,
-                    over: function (event, ui) {
-                        var parent = ui.placeholder.parent();
-                        receiver = parent.data('$scope');
-                        receiverIndex = ui.placeholder.index();
+                    scroll: false,
+                    start: function (event, ui) {
+                        console.log('start drag', ui);
+                        $(element).sortable("refresh");
+                        ui.placeholder.attr('style', '').addClass('placeholder-targetplace').html(ui.item.html());
+                        sender = ui.item.parent().data('$scope');
+                        senderIndex = ui.item.index();
                     },
-                    activate: function (event, ui) {
-                        $("[ct-placeholder]").sortable("refresh");
-                        ui.placeholder && ui.placeholder.attr('style', '').addClass('placeholder-targetplace').html(ui.item.html());
-                        var parent = ui.placeholder.parent();
-                        receiver = parent.data('$scope');
-                        receiverIndex = ui.placeholder.index();
+                    remove: function (event, ui) {
+                        console.log('remove', ui);
                     },
                     receive: function (event, ui) {
-                        item = ui.item.data('$scope');
-                        sender = ui.sender.data('$scope');
-                        senderIndex = sender.widgets.indexOf(item.widget);
-                        console.log('beforeStop', sender.widgets, senderIndex, receiver.widgets, receiverIndex);
+                        console.log('receive', ui);
+                    },
+                    update: function (event, ui) {
+                        console.log('update', ui);
+                    },
+                    beforeStop: function (event, ui) {
+                        console.log('beforeStop', ui);
+                    },
+                    sort: function (event, ui) {
+                        console.log('sort', ui);
+                    },
+                    stop: function (event, ui) {
+                        console.log('stop drag', ui);
+                        var item = ui.item.data('$scope');
+
+                        var receiver = ui.item.parent().data('$scope');
+                        var receiverIndex = ui.item.index();
 
                         sender.widgets.splice(senderIndex, 1);
                         receiver.widgets = receiver.widgets || [];
                         receiver.widgets.splice(receiverIndex, 0, item.widget);
-                        $scope.$apply();
+                        scope.$apply();
                     }
                 }).droppable({
                     greedy: true,
