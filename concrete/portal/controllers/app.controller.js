@@ -28,13 +28,23 @@
             $('[ct-placeholder].ui-droppable').droppable('destroy');
             $('[ct-placeholder]').sortable({
                 connectWith: '[ct-placeholder]',
-                cursor: 'pointer',
-                cursorAt: { top: -10, left: -10 },
-                distance: 5
+                cursor: 'move',
+                cursorAt: { top: 0, left: 0 },
+                helper: function() {
+                    return $('<div/>');
+                },
+                tolerance: "pointer",
+                distance: 10,
+                activate: function (event, ui) {
+                    ui.placeholder && ui.placeholder.attr('style', '').addClass('placeholder-targetplace').html(ui.item.html());
+                    console.log('activate', event, ui);
+                },
+                receive: function (event, ui) {
+                    console.log('receive', event, ui);
+                },
             }).droppable({
-                hoverClass: 'ui-state-hover',
-                greedy: true
-//                activeClass: 'ui-state-active'
+                greedy: true,
+                activeClass: 'placeholder-active'
             });
         });
 
