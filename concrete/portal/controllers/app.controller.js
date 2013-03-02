@@ -1,6 +1,6 @@
 ﻿define(['module!portal'], function(module) {
     module.controller('AppController', ["$scope", "$location", "coreService", function($scope, $location, coreService) {
-        $scope.$on("$locationChangeStart", function() {
+        $scope.$on("$locationChangeSuccess", function () {
             coreService.getPage($location.path()).success(function (page) {
                 $scope.page = page || {};
             }).error(function() {
@@ -8,7 +8,7 @@
                 $scope.page = {};
             });
         });
-
+        
         $scope.moveWidget = function(source, destination) {
             var widget = source.splice(0, 1);
             if (widget.length > 0) {
@@ -28,7 +28,6 @@
             var receiverIndex = 0;
             var sender = null;
             var senderIndex = 0;
-            console.log('refresh drag & drop');
             $('.droppable.ui-sortable').sortable('destroy');
             $('.droppable.ui-droppable').droppable('destroy');
             $('.droppable').sortable({
