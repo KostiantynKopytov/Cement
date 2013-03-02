@@ -1,7 +1,6 @@
 ﻿define(['module!core', 'extensions', 'jquery-ui'], function(module) {
     module.directive('ctDialog', function() {
         return {
-            restrict: 'E',
             replace: true,
             transclude: true,
             scope: {
@@ -51,7 +50,7 @@
 
     module.directive('ctDialogButton', ['$compile', function ($compile) {
         return {
-            restrict: 'E',
+            restrict: 'A',
             scope: {
                 onClick: '&'
             },

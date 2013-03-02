@@ -26,10 +26,10 @@
             link: function(scope, element, attrs) {
                 scope.$watch('widget', function(widget) {
                     var jqContainer = $('<div ct-container-' + widget.container.name + ' container="widget.container" />');
-                    var jqWidget = $('<ct-' + widget.name + ' settings="widget.settings"/>');
+                    var jqWidget = $('<div ct-' + widget.name + ' settings="widget.settings"/>');
 
                     jqContainer.append(jqWidget);
-                    jqContainer.append($('<ng-include />').attr('src', 'editor.widgetUrl'));
+                    jqContainer.append($('<div ng-include />').attr('src', 'editor.widgetUrl'));
                     jqContainer.append('<button class="btn btn-widget-editor" ng-click="edit()">Edit</button>');
                     var compiled = $compile(jqContainer)(scope);
                     element.html('');

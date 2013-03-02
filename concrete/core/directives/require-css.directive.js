@@ -1,7 +1,7 @@
 ﻿define(['jquery', 'module!core'], function($, module) {
     module.directive('ctRequireCss', function() {
         return {
-            restrict: 'E',
+            restrict: 'A',
             template: '',
             replace: true,
             scope: {},

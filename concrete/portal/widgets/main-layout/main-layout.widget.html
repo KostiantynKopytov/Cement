@@ -1,16 +1,16 @@
 ﻿<div>
-    <ct-require-css href="/content/styles/less/main.layout.less"></ct-require-css>
-    <ct-require-css href="/content/styles/ui-lightness/jquery-ui-1.10.1.custom.min.css"></ct-require-css>
+    <div ct-require-css href="/content/styles/less/main.layout.less"></div>
+    <div ct-require-css href="/content/styles/ui-lightness/jquery-ui-1.10.1.custom.min.css"></div>
 
     <div class="container">
-        <ul ct-placeholder class="droppable" widgets="settings.top"></ul>
+        <div ct-placeholder widgets="settings.top"></div>
         <div class="row">
             <div class="span2">
-                <ul ct-placeholder class="droppable" widgets="settings.left"></ul>
+                <div ct-placeholder class="droppable" widgets="settings.left"></div>
             </div>
             <div class="span10">       
                 <div class="pane">
-                    <ul ct-placeholder class="droppable" widgets="settings.content"></ul>
+                    <div ct-placeholder class="droppable" widgets="settings.content"></div>
                     <br />
                     <button class="btn" type="button" ng-click="changeTitle()"><i class="icon-font"></i> change module title</button>
                     <button class="btn" type="button" ng-click="moveWidget(page.placeholders.content, page.placeholders.left)"><i class="icon-chevron-left"></i> move left</button>

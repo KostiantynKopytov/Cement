@@ -2,7 +2,7 @@
     module.directive('ctNavigation', ['coreService', '$location', function(coreService, $location) {
         return {
             templateUrl: widgetUrl + '/navigation.widget.html',
-            restrict: 'E',
+            restrict: 'A',
             controller: function($scope, $element, $attrs) {
                 coreService.getMenu().success(function(menu) {
                     $scope.menu = menu;

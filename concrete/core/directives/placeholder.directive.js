@@ -10,7 +10,7 @@
             link: function (scope, element, attrs) {
                 var links = $("link[data-usage='0']");
                 links.remove();
-                
+
                 var sender = null;
                 var senderIndex = 0;
                 $(element).sortable({
@@ -21,31 +21,12 @@
                     forcePlaceholderSize: true,
                     forceHelperSize: true,
                     tolerance: "pointer",
-                    scroll: false,
                     start: function (event, ui) {
-                        console.log('start drag', ui);
-                        $(element).sortable("refresh");
                         ui.placeholder.attr('style', '').addClass('placeholder-targetplace').html(ui.item.html());
                         sender = ui.item.parent().data('$scope');
                         senderIndex = ui.item.index();
                     },
-                    remove: function (event, ui) {
-                        console.log('remove', ui);
-                    },
-                    receive: function (event, ui) {
-                        console.log('receive', ui);
-                    },
-                    update: function (event, ui) {
-                        console.log('update', ui);
-                    },
-                    beforeStop: function (event, ui) {
-                        console.log('beforeStop', ui);
-                    },
-                    sort: function (event, ui) {
-                        console.log('sort', ui);
-                    },
                     stop: function (event, ui) {
-                        console.log('stop drag', ui);
                         var item = ui.item.data('$scope');
 
                         var receiver = ui.item.parent().data('$scope');

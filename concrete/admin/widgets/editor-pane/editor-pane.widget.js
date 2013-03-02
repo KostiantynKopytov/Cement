@@ -2,7 +2,7 @@
     module.directive('ctEditorPane', ['coreService', function(coreService) {
         return {
             replace: true,
-            restrict: 'E',
+            restrict: 'A',
             scope: {
                 page: '='
             },

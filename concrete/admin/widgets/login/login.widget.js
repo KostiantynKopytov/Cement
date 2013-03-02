@@ -2,7 +2,7 @@
     module.directive('ctLogin', [function() {
         return {
             replace: true,
-            restrict: 'E',
+            restrict: 'A',
             scope: {},
             controller: ['$scope', function (scope) {
                 scope.visible = true;

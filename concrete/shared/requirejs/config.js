@@ -10,11 +10,12 @@
             'angular': '/libs/angular/angular',
             'angular-mocks': '/libs/angular/angular-mocks',
             'extensions': '/shared/helpers/extensions',
-            'jquery-ui': '/libs/jquery-ui-1.10.1.custom'
+            'jquery-ui': '/libs/jquery-ui-1.10.1.custom',
+            'json2': '/libs/json2'
         },
         shim: {
             'angular': {
-                exports: 'angular',
+                exports: 'angular'
             },
             'angular-mocks': {
                 deps: ['angular'],
@@ -40,5 +41,5 @@
     };
 })(requirejs);
 
-define(['jquery', 'underscore', 'angular', 'extensions'], function() {
+define(['jquery', 'underscore', 'angular', 'extensions', 'json2'], function() {
 });

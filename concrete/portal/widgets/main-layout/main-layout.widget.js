@@ -3,7 +3,7 @@
         return {
             templateUrl: widgetUrl + '/main-layout.widget.html',
             replace: true,
-            restrict: 'E',
+            restrict: 'A',
             scope: {
                 settings: '='
             },
