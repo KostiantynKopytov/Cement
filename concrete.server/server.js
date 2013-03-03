@@ -8,6 +8,7 @@
 
     require('./route/lookupForFiles')(router);
     require('./route/$page')(router);
+    require('./route/$entity')(router);
     require('./route/$menu')(router);
     require('./route/content')(router);
     require('./route/index')(router);

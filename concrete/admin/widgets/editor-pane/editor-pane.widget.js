@@ -9,7 +9,7 @@
             controller: ['$scope', '$element', '$attrs', '$location', function ($scope, $element, $attrs, $location) {
                 $scope.$watch(function () {
                     var key = $('[ct-placeholder]').map(function(index, val) {
-                        return $(val).data('$scope').$id
+                        return $(val).data('$scope').$id;
                     }).get().join('|');
                     return key;
                 }, function () {
@@ -19,15 +19,18 @@
                             name: $(val).attr('widgets')
                         };
                     }).get();
+                    console.log($scope.placeholders);
                 });
                 $scope.widgets = widgets;
-                $scope.addWidget = function() {
+                $scope.addWidget = function () {
+                    console.log($scope.placeholder.scope.widgets);
                     $scope.placeholder.scope.widgets = $scope.placeholder.scope.widgets || [];
                     $scope.placeholder.scope.widgets.push({
                         name: $scope.widget,
                         settings: {},
                         container: { name: "default" }
                     });
+                    console.log($scope.placeholder.scope.widgets);
                 };
                 $scope.save = function() {
                     var json = angular.toJson($scope.page);
@@ -35,6 +38,7 @@
                     coreService.putPage($location.path(), json).error(function () {
                         // TODO: handle this
                     });
+                    $scope.$root.$broadcast('ctSave');
                 };
 
                 $scope.canAdd = function () {

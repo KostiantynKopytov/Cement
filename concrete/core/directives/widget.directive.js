@@ -1,20 +1,20 @@
 ﻿define(['jquery', 'module!core', 'extensions'], function($, module) {
     module.directive('ctWidget', ['$compile', function($compile) {
         return {
-            restrict: 'EA',
+            restrict: 'A',
             scope: {
-                widget: '='
+                name: '@',
+                settings: '='
             },
             controller: ['$scope', '$element', '$attrs', function(scope, element, attrs) {
                 scope.edit = function() {
                     scope.editor = {
-                        widgetUrl: String.Format("/portal/widgets/{0}/{0}.editor.html", scope.widget.name),
-                        containerUrl: String.Format("/portal/containers/{0}/{0}.editor.html", scope.widget.container.name),
-                        container: $.extend({}, scope.widget.container),
-                        settings: $.extend({}, scope.widget.settings),
-                        ok: function() {
-                            $.extend(scope.widget.container, scope.editor.container);
-                            $.extend(scope.widget.settings, scope.editor.settings);
+                        widgetUrl: String.Format("/portal/widgets/{0}/{0}.editor.html", scope.name),
+                        settings: $.extend({}, scope.settings),
+                        ok: function () {
+                            
+                            scope.settings = $.extend({}, scope.settings, scope.editor.settings);
+                            console.log(scope.settings);
                             scope.editor = null;
                         },
                         cancel: function() {
@@ -24,14 +24,14 @@
                 };
             }],
             link: function(scope, element, attrs) {
-                scope.$watch('widget', function(widget) {
-                    var jqContainer = $('<div ct-container-' + widget.container.name + ' container="widget.container" />');
-                    var jqWidget = $('<div ct-' + widget.name + ' settings="widget.settings"/>');
+                scope.$watch('name', function (name) {
+                    var wrapper = $('<div />');
+                    var jqWidget = $('<div ct-' + scope.name + ' settings="settings"/>');
 
-                    jqContainer.append(jqWidget);
-                    jqContainer.append($('<div ng-include />').attr('src', 'editor.widgetUrl'));
-                    jqContainer.append('<button class="btn btn-widget-editor" ng-click="edit()">Edit</button>');
-                    var compiled = $compile(jqContainer)(scope);
+                    wrapper.append(jqWidget);
+                    wrapper.append($('<div ng-include />').attr('src', 'editor.widgetUrl'));
+                    wrapper.append('<button class="btn btn-widget-editor" ng-click="edit()">Edit</button>');
+                    var compiled = $compile(wrapper)(scope);
                     element.html('');
                     element.append(compiled);
                 });

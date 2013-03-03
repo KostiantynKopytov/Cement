@@ -2,7 +2,7 @@
     module.directive('ctPlaceholder', ['$compile', function() {
         return {
 //            replace: true,
-            template: '<div ct-widget widget="widget" ng-repeat="widget in widgets"></div>',
+            template: '<div ct-widget name="{{ widget.name }}" settings="widget.settings" ng-repeat="widget in widgets"></div>',
             restrict: 'A',
             scope: {
                 widgets: '='
@@ -35,7 +35,7 @@
 
                         sender.widgets.splice(senderIndex, 1);
                         receiver.widgets = receiver.widgets || [];
-                        receiver.widgets.splice(receiverIndex, 0, item.widget);
+                        receiver.widgets.splice(receiverIndex, 0, { name: item.name, settings: item.settings });
                         scope.$apply();
 
                         console.log('stop');
