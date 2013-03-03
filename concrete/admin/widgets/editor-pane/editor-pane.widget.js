@@ -27,8 +27,7 @@
                     $scope.placeholder.scope.widgets = $scope.placeholder.scope.widgets || [];
                     $scope.placeholder.scope.widgets.push({
                         name: $scope.widget,
-                        settings: {},
-                        container: { name: "default" }
+                        settings: {}
                     });
                     console.log($scope.placeholder.scope.widgets);
                 };
