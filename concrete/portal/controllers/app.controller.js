@@ -8,12 +8,14 @@
             });
         });
 
-        $scope.$on("ctSave", function() {
+        $scope.save = function () {
+            $scope.$root.$broadcast('ctSave');
+
             var json = angular.toJson({ page: $scope.page, title: $scope.title });
             console.log('saving', json);
-            coreService.putPage($location.path(), json).error(function() {
+            coreService.putPage($location.path(), json).error(function () {
                 // TODO: handle this
             });
-        });
+        };
     }]);
 });

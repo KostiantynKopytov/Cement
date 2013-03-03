@@ -34,10 +34,6 @@
                     console.log('added to:', $scope.placeholder.scope.widgets);
                 };
 
-                $scope.save = function () {
-                    $scope.$root.$broadcast('ctSave');
-                };
-
                 $scope.canAdd = function () {
                     return $scope.placeholder && $scope.widgetType;
                 };

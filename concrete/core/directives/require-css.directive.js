@@ -12,11 +12,11 @@
                 if (!link.exists()) {
                     link = $('<link type="text/css" rel="stylesheet" />').attr("data-usage", "1").attr('href', $attrs.ctRequireCss).appendTo('head');
                 } else {
-                    link.attr('data-usage', link.attr('data-usage') - (-1));
+                    link.attr('data-usage', (link.attr('data-usage') || 0) - (-1));
                 }
 
                 $scope.$on('$destroy', function() {
-                    link.attr('data-usage', link.attr('data-usage') - 1);
+                    link.attr('data-usage', (link.attr('data-usage') || 0) - 1);
                 });
             }
         };
