@@ -3,13 +3,13 @@
         return {
             restrict: 'A',
             scope: {
-                name: '@ctWidget',
+                type: '@ctWidget',
                 data: '='
             },
             controller: ['$scope', '$element', '$attrs', function(scope, element, attrs) {
                 scope.edit = function() {
                     scope.editor = {
-                        widgetUrl: String.Format("/portal/widgets/{0}/{0}.editor.html", scope.name),
+                        widgetUrl: String.Format("/portal/widgets/{0}/{0}.editor.html", scope.type),
                         data: ext.extend(scope.data),
                         ok: function () {
                             scope.data = ext.extend(scope.data, scope.editor.data);
@@ -23,18 +23,17 @@
                 };
             }],
             link: function(scope, element, attrs) {
-                scope.$watch('name', function (name) {
-                    var wrapper = $('<div />');
-                    var jqWidget = $('<div ct-' + name + '="data"/>');
+                scope.$watch('type', function (type) {
+                    var wrapper = $('<div ng-dblclick="edit()" />');
+                    var jqWidget = $('<div ct-' + type + '="data" />');
 
                     wrapper.append(jqWidget);
                     wrapper.append($('<div ng-include />').attr('src', 'editor.widgetUrl'));
-                    wrapper.append('<button class="btn btn-widget-editor" ng-click="edit()">Edit</button>');
                     var compiled = $compile(wrapper)(scope);
                     element.html('');
                     element.append(compiled);
 
-                    console.log('widget compiled:', name, scope.data);
+                    console.log('widget compiled:', type, scope.data);
                 });
             }
         };

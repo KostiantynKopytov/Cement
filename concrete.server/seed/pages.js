@@ -24,4 +24,11 @@
             });
         });
     });
+    
+    db.$collection('news', function (error, collection) {
+        progress('news: seed started...')(error);
+        collection.remove(function (error) {
+            progress('news: removed')(error);
+        });
+    });
 })(module, require);

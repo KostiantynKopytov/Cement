@@ -9,20 +9,17 @@
         </select>
 
         <label>Widgets</label>
-        <select ng-model="widgetName" ng-options="value for value in widgetNames">
+        <select ng-model="widgetType" ng-options="value for value in widgetTypes">
             <option value="">(blank)</option>
         </select>
         
         <br />
 
         <button ng-disabled="!canAdd()" class="btn" type="submit" ng-click="addWidget()"><i class="icon-plus"></i>Add module</button>
-
-        <br />
-        <button class="btn" type="submit" ng-click="save()"><i class="icon-thumbs-up"></i>Save</button>
     </div>    
 
 
-    <a class="editor-pane-open" ng-click="opened = true" ng-show="!opened"><i class="icon-chevron-left"></i></a>
+    <a class="editor-pane-open" ng-click="opened = !opened"><i class="{{opened && 'icon-chevron-right' || 'icon-chevron-left'}}"></i></a>
 </div>
 
 

@@ -1,4 +1,4 @@
-﻿define(['module!core', 'extensions'], function (module) {
+﻿define(['module!core', 'angular', 'extensions'], function (module, angular) {
     module.factory('dbService', ["$http", '$cacheFactory', function ($http, $cacheFactory) {
         var cache = $cacheFactory('$db');
         return {
@@ -8,7 +8,7 @@
             },
             putEntity: function (entityType, entityId, data) {
                 var url = String.Format("/$entity/{0}/{1}", entityType, entityId);
-                return $http.put(url, data).success(function () {
+                return $http.put(url, angular.toJson(data)).success(function () {
                     cache.removeAll();
                 });
             }
