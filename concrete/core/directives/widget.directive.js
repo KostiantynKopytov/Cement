@@ -1,20 +1,19 @@
-﻿define(['jquery', 'module!core', 'extensions'], function($, module) {
+﻿define(['jquery', 'module!core', 'extensions'], function($, module, ext) {
     module.directive('ctWidget', ['$compile', function($compile) {
         return {
             restrict: 'A',
             scope: {
-                name: '@',
-                settings: '='
+                name: '@ctWidget',
+                data: '='
             },
             controller: ['$scope', '$element', '$attrs', function(scope, element, attrs) {
                 scope.edit = function() {
                     scope.editor = {
                         widgetUrl: String.Format("/portal/widgets/{0}/{0}.editor.html", scope.name),
-                        settings: $.extend({}, scope.settings),
+                        data: ext.extend(scope.data),
                         ok: function () {
-                            
-                            scope.settings = $.extend({}, scope.settings, scope.editor.settings);
-                            console.log(scope.settings);
+                            scope.data = ext.extend(scope.data, scope.editor.data);
+                            console.log(scope.data);
                             scope.editor = null;
                         },
                         cancel: function() {
@@ -26,7 +25,7 @@
             link: function(scope, element, attrs) {
                 scope.$watch('name', function (name) {
                     var wrapper = $('<div />');
-                    var jqWidget = $('<div ct-' + scope.name + ' settings="settings"/>');
+                    var jqWidget = $('<div ct-' + name + '="data"/>');
 
                     wrapper.append(jqWidget);
                     wrapper.append($('<div ng-include />').attr('src', 'editor.widgetUrl'));
@@ -34,6 +33,8 @@
                     var compiled = $compile(wrapper)(scope);
                     element.html('');
                     element.append(compiled);
+
+                    console.log('widget compiled:', name, scope.data);
                 });
             }
         };

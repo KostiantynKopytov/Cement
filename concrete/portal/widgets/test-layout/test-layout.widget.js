@@ -5,7 +5,7 @@
             replace: true,
             restrict: 'A',
             scope: {
-                settings: '='
+                data: '=ctTestLayout'
             }
         };
     }]);

@@ -30,12 +30,8 @@
     };
 
     return {
-        registerWidget: function (module, name, templates, factory) {
-            templates.forEach(function (template) {
-                var templateUrl = String.Format('{0}/widgets/{1}/{2}.html', module.name, name, template);
-                module.directive(name + template.capitalize(), factory(templateUrl));
-            });
+        extend: function (obj) {
+            return typeof(obj) === "Object" ? $.extend.apply($, arguments) : arguments[arguments.length - 1];
         }
     };
-
 });

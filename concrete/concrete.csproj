@@ -70,7 +70,6 @@
     <Content Include="content\styles\ui-lightness\jquery-ui-1.10.1.custom.css" />
     <Content Include="content\styles\ui-lightness\jquery-ui-1.10.1.custom.min.css" />
     <Content Include="core\directives\widget.directive.js" />
-    <Content Include="core\directives\layout.directive.js" />
     <Content Include="core\directives\placeholder.directive.js" />
     <Content Include="core\directives\require-css.directive.js" />
     <Content Include="core\services\db.service.js" />

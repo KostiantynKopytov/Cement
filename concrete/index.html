@@ -6,13 +6,13 @@
         <script type="text/javascript" data-main="/app" src="/libs/require.js"></script>
     </head>
     <body>
-        <div ct-require-css href="/content/styles/less/bootstrap/bootstrap.less"></div>
-        <div ct-require-css href="/content/styles/less/main.less"></div>
+        <div ct-require-css="/content/styles/less/bootstrap/bootstrap.less"></div>
+        <div ct-require-css="/content/styles/less/main.less"></div>
 
         <div ct-login></div>
         
-        <div ct-editor-pane page="page"></div>
+        <div ct-editor-pane></div>
         
-        <div ct-placeholder widgets="page.widgets"></div>
+        <div ct-placeholder="page.content"></div>
     </body>
 </html>

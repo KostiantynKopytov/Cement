@@ -5,7 +5,7 @@
             replace: true,
             restrict: 'A',
             scope: {
-                settings: '='
+                data: '=ctNewsDetails'
             },
             controller: ['$scope', '$location', 'dbService', function ($scope, $location, dbService) {
                 var id = $location.search().id;

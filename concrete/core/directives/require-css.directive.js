@@ -6,11 +6,11 @@
             replace: true,
             scope: {},
             link: function($scope, $element, $attrs) {
-                var selector = String.Format("link[href='{0}']", $attrs.href);
+                var selector = String.Format("link[href='{0}']", $attrs.ctRequireCss);
                 var link = $(selector);
 
                 if (!link.exists()) {
-                    link = $('<link type="text/css" rel="stylesheet" />').attr("data-usage", "1").attr('href', $attrs.href).appendTo('head');
+                    link = $('<link type="text/css" rel="stylesheet" />').attr("data-usage", "1").attr('href', $attrs.ctRequireCss).appendTo('head');
                 } else {
                     link.attr('data-usage', link.attr('data-usage') - (-1));
                 }

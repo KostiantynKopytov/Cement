@@ -1,23 +1,19 @@
-﻿define(['module!portal'], function(module) {
+﻿define(['module!portal', 'jquery'], function(module, $) {
     module.controller('AppController', ["$scope", "$location", "coreService", function($scope, $location, coreService) {
         $scope.$on("$locationChangeSuccess", function () {
             coreService.getPage($location.path()).success(function (page) {
-                $scope.page = page || {};
+                $scope.page = page;
             }).error(function() {
                 // TODO: handle this
-                $scope.page = {};
             });
         });
-        
-        $scope.moveWidget = function(source, destination) {
-            var widget = source.splice(0, 1);
-            if (widget.length > 0) {
-                destination.push(widget[0]);
-            }
-        };
 
-        $scope.changeTitle = function() {
-            $scope.page.placeholders.left[0].settings.title += " vasya";
-        };
+        $scope.$on("ctSave", function() {
+            var json = angular.toJson($scope.page);
+            console.log('saving', json);
+            coreService.putPage($location.path(), json).error(function() {
+                // TODO: handle this
+            });
+        });
     }]);
 });

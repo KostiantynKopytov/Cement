@@ -1,12 +1,16 @@
-﻿define(['module!admin', 'jquery', 'json!/portal/widgets/*~name', 'angular'], function (module, $, widgets, angular) {
-    module.directive('ctEditorPane', ['coreService', function(coreService) {
+﻿define(['module!admin', 'jquery', 'json!/portal/widgets/*~name'], function (module, $, widgetNames) {
+
+    var getParentPlaceholderName = function (jqName) {
+        var parent = jqName.parents('[ct-placeholder]');
+        return (parent.length && getParentPlaceholderName(parent)) + (parent.length && (parent.attr('ct-placeholder') + ".")) || "";
+    };
+
+    module.directive('ctEditorPane', [function() {
         return {
             replace: true,
             restrict: 'A',
-            scope: {
-                page: '='
-            },
-            controller: ['$scope', '$element', '$attrs', '$location', function ($scope, $element, $attrs, $location) {
+            scope: {},
+            controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
                 $scope.$watch(function () {
                     var key = $('[ct-placeholder]').map(function(index, val) {
                         return $(val).data('$scope').$id;
@@ -15,34 +19,27 @@
                 }, function () {
                     $scope.placeholders = $('[ct-placeholder]').map(function (index, val) {
                         return {
-                            scope: $(val).data('$scope'),
-                            name: $(val).attr('widgets')
+                            name: getParentPlaceholderName($(val)) + $(val).attr('ct-placeholder'),
+                            scope: $(val).data('$scope')
                         };
                     }).get();
-                    console.log($scope.placeholders);
+                    console.log('updated placeholders:', $scope.placeholders);
                 });
-                $scope.widgets = widgets;
+                $scope.widgetNames = widgetNames;
                 $scope.addWidget = function () {
-                    console.log($scope.placeholder.scope.widgets);
                     $scope.placeholder.scope.widgets = $scope.placeholder.scope.widgets || [];
                     $scope.placeholder.scope.widgets.push({
-                        name: $scope.widget,
-                        settings: {}
+                        name: $scope.widgetName
                     });
-                    console.log($scope.placeholder.scope.widgets);
+                    console.log('added to:', $scope.placeholder.scope.widgets);
                 };
-                $scope.save = function() {
-                    var json = angular.toJson($scope.page);
-                    console.log('saving', json);
-                    coreService.putPage($location.path(), json).error(function () {
-                        // TODO: handle this
-                    });
+
+                $scope.save = function () {
                     $scope.$root.$broadcast('ctSave');
                 };
 
                 $scope.canAdd = function () {
-                    var placeholder = $scope.placeholder;
-                    return $scope.page && placeholder && $scope.widget;
+                    return $scope.placeholder && $scope.widgetName;
                 };
 
             }],
