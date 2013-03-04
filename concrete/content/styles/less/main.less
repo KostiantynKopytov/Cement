@@ -49,15 +49,23 @@
 	opacity: 1;
 }
 
+[ct-widget] {
+	border: 1px dotted transparent;
+
+	&:hover {
+		border-color: black;
+	}
+}
+
 [ct-placeholder] {
 	margin: 1px;
 	padding: 1px;
-	border: 1px dotted #808080;
 	
-	.ct-placeholder-targetplace {
+	&.ct-placeholder-targetplace {
 	}
 
-	.ct-placeholder-active {
+	&.ct-placeholder-active {
 		min-height: 100px;
+		border: 1px dotted #808080;
 	}
 }
