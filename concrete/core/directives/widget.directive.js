@@ -10,7 +10,7 @@
                 scope.edit = function(event) {
                     scope.editor = {
                         widgetUrl: String.Format("/portal/widgets/{0}/{0}.editor.html", scope.type),
-                        data: ext.extend(scope.data),
+                        data: ext.extend({}, scope.data),
                         ok: function () {
                             scope.data = ext.extend(scope.data, scope.editor.data);
                             console.log(scope.data);

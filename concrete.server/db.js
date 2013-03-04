@@ -2,30 +2,31 @@
     var Q = require('q');
     var mongodb = require('mongodb');
 
-    var getCollection = function(name) {
-        var server = new mongodb.Server("127.0.0.1", 27017, {});
-        var db = new mongodb.Db('test', server, { w: 1 });
-        return Q.ninvoke(db, "open").then(function (client) {
-            return Q(new mongodb.Collection(client, name));
+    var getCollection = function (name) {
+        return Q.try(function() {
+            var server = new mongodb.Server('127.0.0.1', 27017, {});
+            return new mongodb.Db('test', server, { w: 1 });
+        }).ninvoke('open').then(function (client) {
+            return new mongodb.Collection(client, name);
         });
     };
 
     var hasEntity = function(type, id) {
-        return getCollection(type).ninvoke("findOne", { _id: id }).then(function (data) {
-            return Q(data ? true : false);
+        return getCollection(type).ninvoke('findOne', { _id: id }).then(function (data) {
+            return data ? true : false;
         });
     };
 
     var getEntity = function(type, id) {
-        return getCollection(type).ninvoke("findOne", { _id: id });
+        return getCollection(type).ninvoke('findOne', { _id: id });
     };
 
     var putEntity = function(type, id, data) {
-        return getCollection(type).ninvoke("update", { _id: id }, { $set: data }, { upsert: true });
+        return getCollection(type).ninvoke('update', { _id: id }, { $set: data }, { upsert: true });
     };
 
     var getMenu = function() {
-        return getCollection('pages').ninvoke("aggregate", [{ $group: { _id: "$parentId", childPages: { $addToSet: "$_id" } } }]);
+        return getCollection('pages').ninvoke('aggregate', [{ $group: { _id: '$parentId', childPages: { $addToSet: '$_id' } } }]);
     };
 
     module.exports.hasEntity = hasEntity;
