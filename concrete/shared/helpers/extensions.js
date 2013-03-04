@@ -19,7 +19,7 @@
     String.prototype.startsWith = function (str) {
         return (this.match("^" + str) == str);
     };
-    
+
     // ------ jQuery extensions ------ //
     $.exists = function (selector) { return ($(selector).length > 0); };
     $.fn.exists = function () { return ($(this).length > 0); };
@@ -27,6 +27,14 @@
     //outer Html
     $.fn.outerHtml = function () {
         return $('<div />').html(this.clone()).html();
+    };
+    $.fn.transform = function () {
+        var transform = String.Format.apply(null, arguments);
+        return this.css('transform', transform).css('-webkit-transform', transform).css('-ms-transform', transform).css('-moz-transform', transform).css('-o-transform', transform);
+    };
+    $.fn.transformOrigin = function (x, y, z) {
+        var origin = String.Format('{0} {1}', x, y, z);
+        return this.css('transform-origin', origin).css('-webkit-transform-origin', origin).css('-ms-transform-origin', origin).css('-moz-transform-origin', origin).css('-o-transform-origin', origin);
     };
 
     return {
