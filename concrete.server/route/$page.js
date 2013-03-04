@@ -1,38 +1,80 @@
-(function (module, require) {
+(function(module, require) {
     var db = require('../db');
-    var logger = require('../logger').get();
-    
+
     function readPost(req, callback) {
         var post = '';
-        req.on('data', function (chunk) {
+        req.on('data', function(chunk) {
             post += chunk;
         });
-        req.on('end', function () {
+        req.on('end', function() {
             callback(null, post);
         });
-        req.on('error', function (error) {
+        req.on('error', function(error) {
             callback(error);
         });
     }
 
-    module.exports = function (router) {
+    var pageRegex = /^\/\$page((.*\/)([^/]+))\/?$/;
+
+    module.exports = function(router) {
         return router
-            .get(/^\/\$page(\/.*)/, function (req, res, path) {
-                db.getPage(path, function (error, data) {
-                    if (error) throw error;
-                    var result = JSON.stringify(data || {});
-                    logger.silly(' --> json:', result);
-                    res.writeHead(200, { 'Content-Type': 'application/json' });
-                    res.end(result);
+            .get(pageRegex, function(req, res, path, parent) {
+                db.getEntity('pages', path, function(error, data) {
+                    if (error) {
+                        res.writeHead(500, error);
+                        res.end();
+                    } else if (data) {
+                        var result = JSON.stringify(data);
+                        res.writeHead(200, { 'Content-Type': 'application/json' });
+                        res.end(result);
+                    } else if (parent) {
+                        db.hasEntity('pages', parent, function(error, result) {
+                            if (error) {
+                                res.writeHead(500, error);
+                                res.end();
+                            } else if (!result) {
+                                res.writeHead(500, 'No parent page: ' + parent);
+                                res.end();
+                            } else {
+                                res.writeHead(200, { 'Content-Type': 'application/json' });
+                                res.end("{}");
+                            }
+                        });
+                    } else {
+                        res.writeHead(200, { 'Content-Type': 'application/json' });
+                        res.end("{}");
+                    }
                 });
             })
-            .put(/^\/\$page(\/.*)/, function (req, res, path) {
-                readPost(req, function (error, post) {
-                    if (error) throw error;
+            .put(pageRegex, function(req, res, path, parent) {
+                readPost(req, function(error, post) {
+                    if (error) {
+                        res.writeHead(500, error);
+                        res.end();
+                        return;
+                    }
                     var data = JSON.parse(post);
-                    db.putPage(path, data, function(error) {
+                    if (parent) {
+                        db.hasEntity('pages', parent, function(error, result) {
+                            if (error) {
+                                res.writeHead(500, error);
+                                res.end();
+                            } else if (result) {
+                                data.parentId = parent;
+                                db.putEntity('pages', path, data, function(error) {
+                                    if (error) throw error;
+                                    res.writeHead(200, 'OK');
+                                    res.end();
+                                });
+                            } else {
+                                res.writeHead(500, 'No parent page: ' + parent);
+                                res.end();
+                            }
+                        });
+                    }
+                    db.putEntity('pages', path, data, function(error) {
                         if (error) throw error;
-                        res.writeHead(200);
+                        res.writeHead(200, 'OK');
                         res.end();
                     });
                 });

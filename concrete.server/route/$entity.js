@@ -21,7 +21,7 @@
                 db.getEntity(type, id, function (error, data) {
                     if (error) throw error;
                     var result = JSON.stringify(data || {});
-                    logger.silly(' --> json:', result);
+                    logger.silly('--> json:', result);
                     res.writeHead(200, { 'Content-Type': 'application/json' });
                     res.end(result);
                 });

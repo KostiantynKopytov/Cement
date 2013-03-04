@@ -1,11 +1,11 @@
 ﻿define(['module!portal'], function(module) {
-    module.directive('ctTestLayout', [function() {
+    module.directive('ctMultiColumn', [function() {
         return {
-            templateUrl: '/portal/widgets/test-layout/test-layout.widget.html',
+            templateUrl: '/portal/widgets/multi-column/multi-column.widget.html',
             replace: true,
             restrict: 'A',
             scope: {
-                data: '=ctTestLayout'
+                data: '=ctMultiColumn'
             }
         };
     }]);

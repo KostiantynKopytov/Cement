@@ -39,26 +39,27 @@
     position: fixed;
 	bottom: 0px;
 	opacity: 0.2;
+	
+	&:hover {
+		opacity: 1;
+	}
 }
 
-.btn-save:hover {
-	opacity: 1;
-}
+[ct-widget] {
+	border: 1px dotted transparent;
 
-[ct-widget]:hover > .btn-widget-editor {
-	opacity: 1;
+	&:hover {
+		border-color: black;
+	}
 }
 
 [ct-placeholder] {
-	margin: 1px;
-	padding: 1px;
-	border: 1px dotted #808080;
-}
+	.ct-placeholder-targetplace {
+		border: 1px dotted black;
+	}
 
-[ct-placeholder] .ct-placeholder-targetplace {
-	opacity: 0.5;
-}
-
-[ct-placeholder].ct-placeholder-active {
-	min-height: 100px;
+	&.ct-placeholder-active {
+		min-height: 100px;
+		border: 1px dotted #808080;
+	}
 }

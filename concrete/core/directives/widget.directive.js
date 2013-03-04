@@ -7,7 +7,7 @@
                 data: '='
             },
             controller: ['$scope', '$element', '$attrs', function(scope, element, attrs) {
-                scope.edit = function() {
+                scope.edit = function(event) {
                     scope.editor = {
                         widgetUrl: String.Format("/portal/widgets/{0}/{0}.editor.html", scope.type),
                         data: ext.extend(scope.data),
@@ -20,11 +20,12 @@
                             scope.editor = null;
                         }
                     };
+                    event.stopPropagation();
                 };
             }],
             link: function(scope, element, attrs) {
                 scope.$watch('type', function (type) {
-                    var wrapper = $('<div ng-dblclick="edit()" />');
+                    var wrapper = $('<div ng-dblclick="edit($event)" />');
                     var jqWidget = $('<div ct-' + type + '="data" />');
 
                     wrapper.append(jqWidget);
