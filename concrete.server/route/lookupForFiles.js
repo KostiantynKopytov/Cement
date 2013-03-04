@@ -7,7 +7,7 @@
     module.exports = function (router) {
         return router
             .get(/^\/([^*]*)([^*]*\*[^~]*)~?(.*)$/, function (req, res, path, pattern, filter) {
-                logger.silly(' --- ', { path: path, pattern: pattern });
+                logger.silly('--- ', { path: path, pattern: pattern });
                 glob(path + pattern, { root: '../concrete', cwd: '../concrete' }, function (error, files) {
                     switch (filter) {
                         case "noext":
@@ -33,7 +33,7 @@
                     }
                     if (!error) {
                         var result = JSON.stringify(files);
-                        logger.silly(' --> widgets:', result);
+                        logger.silly('--> widgets:', result);
                         res.writeHead(200, { 'Content-Type': 'application/json' });
                         res.end(result);
                     }

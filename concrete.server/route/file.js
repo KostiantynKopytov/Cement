@@ -19,6 +19,8 @@
                 return "application/javascript";
             case ".json":
                 return "application/json";
+            case ".ico":
+                return "image/icon";
             case ".gif":
                 return "image/gif";
             case ".png":
@@ -36,8 +38,8 @@
         //res.setHeader("Cache-Control", "must-revalidate");
         //res.setHeader("Expires", date.toUTCString());
         
-        logger.silly(' --> file:', file);
         if (fs.existsSync(file) && fs.lstatSync(file).isFile()) {
+            logger.silly('--> file:', file);
             if (file.endsWith('.less')) {
                 //                if (lessCache[file]) {
                 //                    res.writeHead(200, { 'Content-Type': 'text/css' });
@@ -58,16 +60,16 @@
                                     lessCache[file] = tree.toCSS({ compress: true });
                                     res.end(lessCache[file]);
                                 } else {
-                                    res.writeHead(500, { 'Content-Type': 'text/plain' });
+                                    res.writeHead(500, 'Error: ' + e, { 'Content-Type': 'text/plain' });
                                     res.end(JSON.stringify(err2));
                                 }
                             });
                         } catch (e) {
-                            res.writeHead(500, { 'Content-Type': 'text/plain' });
+                            res.writeHead(500, 'Error: ' + e, { 'Content-Type': 'text/plain' });
                             res.end(JSON.stringify(e));
                         }
                     } else {
-                        res.writeHead(500, { 'Content-Type': 'text/plain' });
+                        res.writeHead(500, 'Error: ' + e, { 'Content-Type': 'text/plain' });
                         res.end(JSON.stringify(err));
                     }
                 });
@@ -79,8 +81,8 @@
                 fileStream.pipe(res);
             }
         } else {
-            res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.end('404 Not found');
+            res.writeHead(404, 'Not found', { 'Content-Type': 'text/plain' });
+            res.end();
         }
     };
 
