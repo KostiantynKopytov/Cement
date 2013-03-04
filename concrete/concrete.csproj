@@ -78,11 +78,14 @@
     <Content Include="app.js" />
     <Content Include="libs\json2.js" />
     <Content Include="portal\controllers\app.controller.js" />
+    <Content Include="portal\widgets\portlet\portlet.editor.html" />
+    <Content Include="portal\widgets\portlet\portlet.widget.html" />
+    <Content Include="portal\widgets\portlet\portlet.widget.js" />
     <Content Include="portal\widgets\news-details\news-details.widget.html" />
     <Content Include="portal\widgets\news-details\news-details.widget.js" />
     <Content Include="portal\widgets\news-details\news-details.editor.html" />
-    <Content Include="portal\widgets\test-layout\test-layout.widget.html" />
-    <Content Include="portal\widgets\test-layout\test-layout.widget.js" />
+    <Content Include="portal\widgets\multi-column\multicolumn.widget.html" />
+    <Content Include="portal\widgets\multi-column\multicolumn.widget.js" />
     <Content Include="portal\widgets\main-layout\main-layout.widget.html" />
     <Content Include="portal\widgets\main-layout\main-layout.widget.js" />
     <Content Include="portal\widgets\navigation\navigation.widget.js" />
@@ -276,6 +279,7 @@
     <Content Include="tests\runTests.js" />
     <Content Include="tests\TestSpec1.js" />
     <Content Include="core\directives\dialog.directive.js" />
+    <Content Include="content\styles\less\elements.less" />
     <None Include="libs\jquery-1.9.1.intellisense.js" />
     <Content Include="libs\jquery-1.9.1.js" />
     <Content Include="libs\jquery-1.9.1.min.js" />
@@ -292,6 +296,7 @@
     <Content Include="shared\requirejs\plugins\css.js" />
     <Content Include="shared\requirejs\plugins\module.js" />
     <Content Include="portal\widgets\text\text.editor.less" />
+    <Content Include="portal\widgets\portlet\portlet.less" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\styles\less\bootstrap\accordion.less" />
