@@ -1,19 +1,24 @@
-(function (module, require) {
+(function(module, require) {
     var Q = require('Q');
     var db = require('../db');
 
-    function readPost(req, callback) {
+    var readPost = function (req) {
+        var q = Q.defer();
         var post = '';
         req.on('data', function(chunk) {
             post += chunk;
         });
         req.on('end', function() {
-            callback(null, post);
+            q.resolve(post);
         });
         req.on('error', function(error) {
-            callback(error);
+            q.reject(error);
         });
-    }
+        req.on('close', function () {
+            q.reject("conntection closed");
+        });
+        return q.promise;
+    };
 
     var trimEndSlash = function(path) {
         if (path && path !== '/' && path[path.length - 1] === '/') {
@@ -26,58 +31,48 @@
 
     module.exports = function(router) {
         return router
-            .get(pageRegex, function(req, res, path, parent) {
-                parent = trimEndSlash(parent);
-                db.getEntity('pages', path).then(function(data) {
+            .get(pageRegex, function (req, res, path, parent) {
+                Q.try(function() {
+                    parent = trimEndSlash(parent);
+                    return db.getEntity('pages', path);
+                }).then(function(data) {
                     if (data || !parent) {
-                        return Q(data || {});
+                        return data || {};
                     }
                     return db.hasEntity('pages', parent).then(function(hasEntity) {
                         if (!hasEntity) throw 'No parent page: ' + parent;
-                        return Q({});
+                        return {};
                     });
-                }).then(function (data) {
+                }).then(function(data) {
                     var result = JSON.stringify(data);
                     res.writeHead(200, { 'Content-Type': 'application/json' });
                     res.end(result);
+                }).catch(function(error) {
+                    res.writeHead(500, error);
+                    res.end();
+                });
+            }).put(pageRegex, function(req, res, path, parent) {
+                var qPost = readPost(req);
+                Q.try(function () {
+                    parent = trimEndSlash(parent);
+                    if (!parent) return true;
+                    return db.hasEntity('pages', parent);
+                }).then(function(canPut) {
+                    console.log(1, canPut);
+                    if (!canPut) throw 'No parent page: ' + parent;
+                    return qPost;
+                }).then(function (post) {
+                    console.log(2);
+                    var data = JSON.parse(post);
+                    data.parentId = parent || null;
+                    return db.putEntity('pages', path, data);
+                }).then(function() {
+                    res.writeHead(200, 'OK');
+                    res.end();
                 }).catch(function (error) {
                     res.writeHead(500, error);
                     res.end();
                 });
-            }).put(pageRegex, function (req, res, path, parent) {
-                parent = trimEndSlash(parent);
-                readPost(req, function (error, post) {
-                    if (error) {
-                        res.writeHead(500, error);
-                        res.end();
-                        return;
-                    }
-                    var data = JSON.parse(post);
-                    if (parent) {
-                        db.hasEntity('pages', parent, function(error, result) {
-                            if (error) {
-                                res.writeHead(500, error);
-                                res.end();
-                            } else if (result) {
-                                data.parentId = parent;
-                                db.putEntity('pages', path, data, function(error) {
-                                    if (error) throw error;
-                                    res.writeHead(200, 'OK');
-                                    res.end();
-                                });
-                            } else {
-                                res.writeHead(500, 'No parent page: ' + parent);
-                                res.end();
-                            }
-                        });
-                    }
-                    db.putEntity('pages', path, data, function(error) {
-                        if (error) throw error;
-                        res.writeHead(200, 'OK');
-                        res.end();
-                    });
-                });
             });
-
     };
 })(module, require);

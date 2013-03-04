@@ -32,7 +32,7 @@
                 };
 
                 active++;
-                logger.silly('<--', { active: active, url: req.url });
+                logger.silly('<-- ' + req.method, { active: active, url: req.url });
                 res.writeHead = logWriteHead;
                 res.end = logEnd;
 

@@ -54,7 +54,7 @@
                     res.end();
                 });
             } else {
-                var contentType = contentType || getContentType(path.extname(file));
+                contentType = contentType || getContentType(path.extname(file));
 
                 res.writeHead(200, { 'Content-Type': contentType });
                 var fileStream = fs.createReadStream(file);
