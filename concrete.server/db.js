@@ -11,63 +11,46 @@
         });
     };
 
-    var getPage = function(path, callback) {
-        path = path || "/";
-        $collection('pages', function(error, collection) {
+    var hasEntity = function(type, id, callback) {
+        $collection(type, function(error, collection) {
             if (error) callback(error);
-            collection.find({ _id: path }, { limit: 1 }).nextObject(callback);
-        });
-    };
-
-    var putPage = function(path, data, callback) {
-        path = path || "/";
-        $collection('pages', function(error, collection) {
-            if (error) callback(error);
-            logger.silly('update page:', { id: path, data: data });
-            delete data._id;
-            collection.update({ _id: path }, { $set: data }, { upsert: true }, callback);
+            collection.findOne({ _id: id }, { limit: 1 }, function (error, data) {
+                logger.silly('--- has entity:', { id: id, type: type, 'has?': data });
+                callback(error, data !== null);
+            });
         });
     };
 
     var getEntity = function(type, id, callback) {
         $collection(type, function(error, collection) {
             if (error) callback(error);
-            collection.find({ _id: id }, { limit: 1 }).nextObject(callback);
+            logger.silly('--- reading entity:', { id: id, type: type });
+            collection.findOne({ _id: id }, { limit: 1 }, callback);
         });
     };
 
     var putEntity = function(type, id, data, callback) {
         $collection(type, function(error, collection) {
             if (error) callback(error);
-            logger.silly('update entity: ' + type, { id: id, data: data });
+            logger.silly('--- update entity: ', { id: id, type: type, data: data });
             delete data._id;
             collection.update({ _id: id }, { $set: data }, { upsert: true }, callback);
         });
     };
 
-    var getMenu = function() {
-        return menu;
+    var getMenu = function (path, callback) {
+        $collection('pages', function (error, collection) {
+            if (error) callback(error);
+            logger.silly('--- read menu: ', path);
+            collection.find({ parentId: path }).toArray(callback);
+        });
     };
-    module.exports.getPage = getPage;
-    module.exports.putPage = putPage;
-    module.exports.getMenu = getMenu;
 
+    module.exports.hasEntity = hasEntity;
     module.exports.getEntity = getEntity;
     module.exports.putEntity = putEntity;
 
-    module.exports.$collection = $collection;
+    module.exports.getMenu = getMenu;
 
-    var menu = {
-        childPages: [{
-                href: "/",
-                title: "home"
-            }, {
-                href: "/about",
-                title: "about"
-            }, {
-                href: "/contact-us",
-                title: "contact-us"
-            }
-        ]
-    };
+    module.exports.$collection = $collection;
 })(module, require);
