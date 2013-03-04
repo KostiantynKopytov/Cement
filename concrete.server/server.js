@@ -17,24 +17,25 @@
 
     function logRequest(chainFn) {
         return function(req, res) {
-            var wrap = function(that, fn) { return function() { return fn.apply(that, arguments); }; };
             try {
-                active++;
-                logger.silly('<--', { active: active, url: req.url });
                 var resWriteHead = res.writeHead;
                 var resEnd = res.end;
-                
-                res.writeHead = function(statusCode, reasonPhrase, headers) {
-                    logger.silly('--> code: ' + statusCode, reasonPhrase);
+                var logWriteHead = function(statusCode, reasonPhrase, headers) {
+                    logger.silly('--> code: ' + statusCode, { headers: headers , reason: reasonPhrase });
                     return resWriteHead.apply(res, arguments);
                 };
-                res.end = function(data) {
+                var logEnd = function(data) {
                     if (data) {
                         logger.silly('--> text: ' + data.substring(0, 100));
                     }
                     return resEnd.apply(res, arguments);
                 };
-                
+
+                active++;
+                logger.silly('<--', { active: active, url: req.url });
+                res.writeHead = logWriteHead;
+                res.end = logEnd;
+
                 return chainFn(req, res);
             } finally {
                 active--;

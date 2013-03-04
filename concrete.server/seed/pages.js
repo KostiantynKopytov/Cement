@@ -4,31 +4,11 @@
 
     var pages = [{ _id: '/' }];
 
-    function progress(message) {
-        return function(error) {
-            if (error) {
-                logger.error('db error:', error);
-                throw error;
-            }
-            logger.info(message);
-        };
-    }
+    var qPages = db.getCollection('pages');
+    qPages.ninvoke("remove").done();
+    qPages.ninvoke("insert", pages).done();
+    qPages.ninvoke("ensureIndex", "parentId").done();
 
-    db.$collection('pages', function(error, collection) {
-        progress('pages: seed started...')(error);
-        collection.remove(function(error) {
-            progress('pages: removed')(error);
-            collection.insert(pages, function(error) {
-                progress('pages: inserted')(error);
-                collection.ensureIndex("parentId", progress('pages: indexed'));
-            });
-        });
-    });
-    
-    db.$collection('news', function (error, collection) {
-        progress('news: seed started...')(error);
-        collection.remove(function (error) {
-            progress('news: removed')(error);
-        });
-    });
+    var qNews = db.getCollection('news');
+    qNews.ninvoke("remove").done();
 })(module, require);

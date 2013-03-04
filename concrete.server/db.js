@@ -1,49 +1,31 @@
 (function(module, require) {
+    var Q = require('q');
     var mongodb = require('mongodb');
-    var logger = require('./logger').get();
 
-    var $collection = function(name, callback) {
+    var getCollection = function(name) {
         var server = new mongodb.Server("127.0.0.1", 27017, {});
-        new mongodb.Db('test', server, { w: 1 }).open(function(error, client) {
-            if (error) callback(error);
-            var collection = new mongodb.Collection(client, name);
-            callback(null, collection);
+        var db = new mongodb.Db('test', server, { w: 1 });
+        return Q.ninvoke(db, "open").then(function (client) {
+            return Q(new mongodb.Collection(client, name));
         });
     };
 
-    var hasEntity = function(type, id, callback) {
-        $collection(type, function(error, collection) {
-            if (error) callback(error);
-            collection.findOne({ _id: id }, { limit: 1 }, function (error, data) {
-                logger.silly('--- has entity:', { id: id, type: type, 'has?': data });
-                callback(error, data !== null);
-            });
+    var hasEntity = function(type, id) {
+        return getCollection(type).ninvoke("findOne", { _id: id }).then(function (data) {
+            return Q(data ? true : false);
         });
     };
 
-    var getEntity = function(type, id, callback) {
-        $collection(type, function(error, collection) {
-            if (error) callback(error);
-            logger.silly('--- reading entity:', { id: id, type: type });
-            collection.findOne({ _id: id }, { limit: 1 }, callback);
-        });
+    var getEntity = function(type, id) {
+        return getCollection(type).ninvoke("findOne", { _id: id });
     };
 
-    var putEntity = function(type, id, data, callback) {
-        $collection(type, function(error, collection) {
-            if (error) callback(error);
-            logger.silly('--- update entity: ', { id: id, type: type, data: data });
-            delete data._id;
-            collection.update({ _id: id }, { $set: data }, { upsert: true }, callback);
-        });
+    var putEntity = function(type, id, data) {
+        return getCollection(type).ninvoke("update", { _id: id }, { $set: data }, { upsert: true });
     };
 
-    var getMenu = function (path, callback) {
-        $collection('pages', function (error, collection) {
-            if (error) callback(error);
-            logger.silly('--- read menu: ', path);
-            collection.find({ parentId: path }).toArray(callback);
-        });
+    var getMenu = function() {
+        return getCollection('pages').ninvoke("aggregate", [{ $group: { _id: "$parentId", childPages: { $addToSet: "$_id" } } }]);
     };
 
     module.exports.hasEntity = hasEntity;
@@ -52,5 +34,5 @@
 
     module.exports.getMenu = getMenu;
 
-    module.exports.$collection = $collection;
+    module.exports.getCollection = getCollection;
 })(module, require);

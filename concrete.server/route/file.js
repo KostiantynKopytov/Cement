@@ -1,12 +1,11 @@
 (function (module, require) {
+    var Q = require('Q');
     var fs = require('fs');
     var less = require('less');
     var path = require('path');
     var logger = require("../logger").get();
 
     require("../helpers");
-
-    var lessCache = {};
 
     function getContentType(ext) {
         switch (ext) {
@@ -32,49 +31,30 @@
         }
     };
     
-    function serveFile(res, file, contentType) {
+    var serveFile = function (res, file, contentType) {
         //var date = new Date();
         //date.setHours(date.getHours() + 24);
         //res.setHeader("Cache-Control", "must-revalidate");
         //res.setHeader("Expires", date.toUTCString());
         
         if (fs.existsSync(file) && fs.lstatSync(file).isFile()) {
-            logger.silly('--> file:', file);
+            logger.silly('--- file:', file);
             if (file.endsWith('.less')) {
-                //                if (lessCache[file]) {
-                //                    res.writeHead(200, { 'Content-Type': 'text/css' });
-                //                    res.end(lessCache[file]);
-                //                    return;
-                //                }
-
-                fs.readFile(file, 'utf8', function (err, data) {
-                    if (!err) {
-                        try {
-                            var parser = new (less.Parser)({
-                                paths: [path.dirname(file)],
-                                filename: path.basename(file)
-                            });
-                            parser.parse(data, function (err2, tree) {
-                                if (!err2) {
-                                    res.writeHead(200, { 'Content-Type': 'text/css' });
-                                    lessCache[file] = tree.toCSS({ compress: true });
-                                    res.end(lessCache[file]);
-                                } else {
-                                    res.writeHead(500, 'Error: ' + e, { 'Content-Type': 'text/plain' });
-                                    res.end(JSON.stringify(err2));
-                                }
-                            });
-                        } catch (e) {
-                            res.writeHead(500, 'Error: ' + e, { 'Content-Type': 'text/plain' });
-                            res.end(JSON.stringify(e));
-                        }
-                    } else {
-                        res.writeHead(500, 'Error: ' + e, { 'Content-Type': 'text/plain' });
-                        res.end(JSON.stringify(err));
-                    }
+                Q.nfcall(fs.readFile, file, 'utf8').then(function(data) {
+                    var parser = new (less.Parser)({
+                        paths: [path.dirname(file)],
+                        filename: path.basename(file)
+                    });
+                    return Q.ninvoke(parser, "parse", data);
+                }).then(function(tree) {
+                    res.writeHead(200, { 'Content-Type': 'text/css' });
+                    res.end(tree.toCSS({ compress: true }));
+                }).catch(function(error) {
+                    res.writeHead(500, error, { 'Content-Type': 'text/plain' });
+                    res.end();
                 });
             } else {
-                contentType = contentType || getContentType(path.extname(file));
+                var contentType = contentType || getContentType(path.extname(file));
 
                 res.writeHead(200, { 'Content-Type': contentType });
                 var fileStream = fs.createReadStream(file);

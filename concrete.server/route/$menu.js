@@ -4,16 +4,13 @@
 
     module.exports = function(router) {
         return router
-            .get(/^\/\$menu(.*)$/, function (req, res, path) {
-                db.getMenu(path, function (error, data) {
-                    if (error) {
-                        res.writeHead(500, error);
-                        res.end();
-                    } else {
-                        var result = JSON.stringify(data);
-                        res.writeHead(200, { 'Content-Type': 'application/json' });
-                        res.end(result);
-                    }
+            .get(/^\/\$menu(.*)$/, function(req, res, path) {
+                db.getMenu(path).then(function(data) {
+                    res.writeHead(200, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify(data));
+                }).catch(function(error) {
+                    res.writeHead(500, error);
+                    res.end();
                 });
             });
     };
