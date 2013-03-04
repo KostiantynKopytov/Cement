@@ -2,21 +2,13 @@
     var Q = require('Q');
     var db = require('../db');
 
-    var readPost = function (req) {
+    var readPost = function(req) {
         var q = Q.defer();
         var post = '';
-        req.on('data', function(chunk) {
-            post += chunk;
-        });
-        req.on('end', function() {
-            q.resolve(post);
-        });
-        req.on('error', function(error) {
-            q.reject(error);
-        });
-        req.on('close', function () {
-            q.reject("conntection closed");
-        });
+        req.on('data', function(chunk) { post += chunk; });
+        req.on('end', function() { q.resolve(post); });
+        req.on('error', function(error) { q.reject(error); });
+        req.on('close', function() { q.reject("conntection closed"); });
         return q.promise;
     };
 
@@ -31,7 +23,7 @@
 
     module.exports = function(router) {
         return router
-            .get(pageRegex, function (req, res, path, parent) {
+            .get(pageRegex, function(req, res, path, parent) {
                 Q.try(function() {
                     parent = trimEndSlash(parent);
                     return db.getEntity('pages', path);
@@ -53,23 +45,21 @@
                 });
             }).put(pageRegex, function(req, res, path, parent) {
                 var qPost = readPost(req);
-                Q.try(function () {
+                Q.try(function() {
                     parent = trimEndSlash(parent);
                     if (!parent) return true;
                     return db.hasEntity('pages', parent);
                 }).then(function(canPut) {
-                    console.log(1, canPut);
                     if (!canPut) throw 'No parent page: ' + parent;
                     return qPost;
-                }).then(function (post) {
-                    console.log(2);
+                }).then(function(post) {
                     var data = JSON.parse(post);
                     data.parentId = parent || null;
                     return db.putEntity('pages', path, data);
                 }).then(function() {
                     res.writeHead(200, 'OK');
                     res.end();
-                }).catch(function (error) {
+                }).catch(function(error) {
                     res.writeHead(500, error);
                     res.end();
                 });
