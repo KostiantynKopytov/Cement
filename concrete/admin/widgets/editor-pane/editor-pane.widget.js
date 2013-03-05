@@ -19,7 +19,7 @@
                 }, function () {
                     $scope.placeholders = $('[ct-placeholder]').map(function (index, val) {
                         return {
-                            name: (getParentPlaceholderName($(val)) + $(val).attr('ct-placeholder')).replace(/\.data/g, ''),
+                            name: (getParentPlaceholderName($(val)) + $(val).attr('ct-placeholder')).replace(/data\./g, ''),
                             scope: $(val).data('$scope')
                         };
                     }).get();

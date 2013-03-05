@@ -7,16 +7,18 @@
             scope: {
                 data: '=ctNewsDetails'
             },
-            controller: ['$scope', '$location', 'dbService', function ($scope, $location, dbService) {
-                var id = $location.search().id;
-                dbService.getEntity('news', id).success(function (data) {
-                    console.log('get news', id, data);
-                    $scope.news = $.extend({}, $scope.news, data);
-                });
-                $scope.$on('ctSave', function() {
-                    console.log('put news', id, $scope.news);
-                    dbService.putEntity('news', id, $scope.news);
-                });
+            controller: ['$scope', '$location', 'dbService', function($scope, $location, dbService) {
+                $scope.id = $location.search().id;
+                if ($scope.id) {
+                    dbService.getEntity('news', $scope.id).success(function(data) {
+                        console.log('get news', $scope.id, data);
+                        $scope.news = data;
+                    });
+                    $scope.$on('ctSave', function() {
+                        console.log('put news', $scope.id, $scope.news);
+                        dbService.putEntity('news', $scope.id, $scope.news);
+                    });
+                }
             }]
         };
     }]);
