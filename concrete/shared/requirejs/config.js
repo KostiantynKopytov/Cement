@@ -9,17 +9,19 @@
             'text': '/shared/requirejs/plugins/text',
             'json': '/shared/requirejs/plugins/json',
             'jquery': '/libs/jquery-1.9.1',
+            'bootstrap': '/libs/bootstrap/bootstrap.min',
             'underscore': '/libs/underscore.min',
             'angular': '/libs/angular/angular',
             'angular-mocks': '/libs/angular/angular-mocks',
             'extensions': '/shared/helpers/extensions',
             'jquery-ui': '/libs/jquery-ui/jquery-ui-1.10.1.custom.min',
             'json2': '/libs/json2',
-            'jquery-markitup': '/libs/markitup/jquery.markitup',
-            
+            'wysihtml5': '/libs/wysihtml5/wysihtml5-0.3.0.min',
+            'bootstrap-wysihtml5': '/libs/bootstrap/bootstrap-wysihtml5/bootstrap-wysihtml5-0.0.2',
             // css
             'jquery-ui-styles': '/libs/jquery-ui/themes/ui-lightness/jquery-ui-1.10.1.custom.min',
-            'markitup-styles': '/libs/markitup/skins/simple/style'
+            'bootstrap-wysihtml5-styles': '/libs/bootstrap/bootstrap-wysihtml5/bootstrap-wysihtml5-0.0.2',
+            'wysihtml5-color': '/libs/wysihtml5/wysiwyg-color',
         },
         shim: {
             'angular': {
@@ -41,10 +43,13 @@
             'jquery-ui': {
                 deps: ['jquery', 'css!jquery-ui-styles']
             },
-            'jquery-markitup': {
-                deps: ['jquery', 'css!markitup-styles'],
+            'wysihtml5': {
+                deps: ['css!wysihtml5-color']
+            },
+            'bootstrap-wysihtml5': {
+                deps: ['jquery', 'bootstrap', 'wysihtml5', 'css!bootstrap-wysihtml5-styles'],
                 init: function ($) {
-                    return $.fn.markItUp;
+                    return $.fn.wysihtml5;
                 }
             }
         }
