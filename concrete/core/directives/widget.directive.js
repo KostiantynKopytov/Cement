@@ -10,10 +10,10 @@
                 scope.edit = function(event) {
                     scope.editor = {
                         widgetUrl: String.Format("/portal/widgets/{0}/{0}.editor.html", scope.type),
-                        data: ext.extend({}, scope.data),
+                        context: ext.cleanClone(scope),
                         ok: function () {
-                            scope.data = ext.extend(scope.data, scope.editor.data);
-                            console.log(scope.data);
+                            scope = ext.extend(scope, scope.editor.context);
+                            console.log(scope);
                             scope.editor = null;
                         },
                         cancel: function() {

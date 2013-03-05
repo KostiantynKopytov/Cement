@@ -1,4 +1,4 @@
-﻿define(['jquery', 'module!core', 'extensions', 'jquery-ui'], function ($, module) {
+﻿define(['jquery', 'module!core', 'extensions', 'jquery-ui'], function ($, module, ext) {
     module.directive('ctPlaceholder', [function() {
         return {
 //            replace: true,
@@ -48,7 +48,7 @@
 
                         senderScope.widgets.splice(senderIndex, 1);
                         receiverScope.widgets = receiverScope.widgets || [];
-                        receiverScope.widgets.splice(receiverIndex, 0, { type: item.type, data: item.data });
+                        receiverScope.widgets.splice(receiverIndex, 0, ext.cleanClone(item));
                         scope.$root.$apply();
 
                         console.log('stop', receiverScope, receiverIndex);

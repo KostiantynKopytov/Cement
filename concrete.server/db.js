@@ -21,7 +21,8 @@
         return getCollection(type).ninvoke('findOne', { _id: id });
     };
 
-    var putEntity = function(type, id, data) {
+    var putEntity = function (type, id, data) {
+        delete data._id;
         return getCollection(type).ninvoke('update', { _id: id }, { $set: data }, { upsert: true });
     };
 
