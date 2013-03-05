@@ -234,9 +234,10 @@
 
             toolbar.find('a[data-wysihtml5-command=insertImage]').click(function () {
                 var activeButton = $(this).hasClass("wysihtml5-command-active");
+                var disabled = $(this).hasClass("disabled");
 
-                if (!activeButton) {
-                    insertImageModal.modal('show');
+                if (!activeButton && !disabled) {
+                    insertImageModal.appendTo('body').modal('show');
                     insertImageModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function (e) {
                         e.stopPropagation();
                     });
@@ -285,8 +286,9 @@
 
             toolbar.find('a[data-wysihtml5-command=createLink]').click(function () {
                 var activeButton = $(this).hasClass("wysihtml5-command-active");
-
-                if (!activeButton) {
+                var disabled = $(this).hasClass("disabled");
+                
+                if (!activeButton && !disabled) {
                     insertLinkModal.appendTo('body').modal('show');
                     insertLinkModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function (e) {
                         e.stopPropagation();
