@@ -50,7 +50,7 @@
                     res.writeHead(200, 'OK', { 'Content-Type': 'text/css' });
                     res.end(tree.toCSS({ compress: true }));
                 }).catch(function(error) {
-                    res.writeHead(500, error, { 'Content-Type': 'text/plain' });
+                    res.writeHead(500, error);
                     res.end();
                 });
             } else {
@@ -61,7 +61,7 @@
                 fileStream.pipe(res);
             }
         } else {
-            res.writeHead(404, 'Not found', { 'Content-Type': 'text/plain' });
+            res.writeHead(404, 'Not found');
             res.end();
         }
     };
