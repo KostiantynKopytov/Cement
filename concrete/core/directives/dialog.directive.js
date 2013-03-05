@@ -22,7 +22,7 @@
 
                 $(element).dialog({
                     autoOpen: true,
-                    modal: true,
+                    modal: false,
                     close: function () {
                         scope.$apply(function () {
                             scope.onClose();

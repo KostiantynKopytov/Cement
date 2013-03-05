@@ -55,7 +55,8 @@
                     }
                 }).droppable({
                     greedy: true,
-                    activeClass: 'ct-placeholder-active'
+                    activeClass: 'ct-placeholder-active',
+                    accept: '[ct-widget]'
                 }).disableSelection();
 
                 scope.$on('$destory', function () {
