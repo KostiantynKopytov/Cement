@@ -1,41 +1,29 @@
-(function (module, require) {
+(function(module, require) {
     var db = require('../db');
-    var logger = require('../logger').get();
+    var helpers = require('../helpers');
 
-    var readPost = function(req, callback) {
-        var post = '';
-        req.on('data', function(chunk) {
-            post += chunk;
-        });
-        req.on('end', function() {
-            callback(null, post);
-        });
-        req.on('error', function(error) {
-            callback(error);
-        });
-    };
-
-    module.exports = function (router) {
+    module.exports = function(router) {
         return router
-            .get(/^\/\$entity\/([^/]*)\/([^/]*)/, function (req, res, type, id) {
-                db.getEntity(type, id, function (error, data) {
-                    if (error) throw error;
-                    var result = JSON.stringify(data || {});
-                    logger.silly('--> json:', result);
-                    res.writeHead(200, { 'Content-Type': 'application/json' });
-                    res.end(result);
-                });
+            .get(/^\/\$entity\/([^/]*)\/([^/]*)/, function(req, res, type, id) {
+                db.getEntity(type, id).then(function(data) {
+                    res.writeHead(200, 'OK', { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify(data || {}));
+                }).catch(function(error) {
+                    res.writeHead(500, error);
+                    res.end();
+                }).done();
             })
-            .put(/^\/\$entity\/([^/]*)\/([^/]*)/, function (req, res, type, id) {
-                readPost(req, function (error, post) {
-                    if (error) throw error;
+            .put(/^\/\$entity\/([^/]*)\/([^/]*)/, function(req, res, type, id) {
+                helpers.readPost(req).then(function(post) {
                     var data = JSON.parse(post);
-                    db.putEntity(type, id, data, function(error) {
-                        if (error) throw error;
-                        res.writeHead(200);
-                        res.end();
-                    });
-                });
+                    return db.putEntity(type, id, data);
+                }).then(function() {
+                    res.writeHead(200, 'OK');
+                    res.end();
+                }).catch(function(error) {
+                    res.writeHead(500, error);
+                    res.end();
+                }).done();
             });
     };
 })(module, require);

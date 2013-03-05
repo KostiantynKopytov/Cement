@@ -33,8 +33,7 @@
                     }
                     if (!error) {
                         var result = JSON.stringify(files);
-                        logger.silly('--> widgets:', result);
-                        res.writeHead(200, { 'Content-Type': 'application/json' });
+                        res.writeHead(200, 'OK', { 'Content-Type': 'application/json' });
                         res.end(result);
                     }
                 });

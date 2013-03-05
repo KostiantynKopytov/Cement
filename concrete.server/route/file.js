@@ -47,7 +47,7 @@
                     });
                     return Q.ninvoke(parser, "parse", data);
                 }).then(function(tree) {
-                    res.writeHead(200, { 'Content-Type': 'text/css' });
+                    res.writeHead(200, 'OK', { 'Content-Type': 'text/css' });
                     res.end(tree.toCSS({ compress: true }));
                 }).catch(function(error) {
                     res.writeHead(500, error, { 'Content-Type': 'text/plain' });
@@ -56,7 +56,7 @@
             } else {
                 contentType = contentType || getContentType(path.extname(file));
 
-                res.writeHead(200, { 'Content-Type': contentType });
+                res.writeHead(200, 'OK', { 'Content-Type': contentType });
                 var fileStream = fs.createReadStream(file);
                 fileStream.pipe(res);
             }

@@ -1,16 +1,7 @@
 (function(module, require) {
     var Q = require('Q');
     var db = require('../db');
-
-    var readPost = function(req) {
-        var q = Q.defer();
-        var post = '';
-        req.on('data', function(chunk) { post += chunk; });
-        req.on('end', function() { q.resolve(post); });
-        req.on('error', function(error) { q.reject(error); });
-        req.on('close', function() { q.reject("conntection closed"); });
-        return q.promise;
-    };
+    var helpers = require('../helpers');
 
     var trimEndSlash = function(path) {
         if (path && path !== '/' && path[path.length - 1] === '/') {
@@ -24,37 +15,22 @@
     module.exports = function(router) {
         return router
             .get(pageRegex, function(req, res, path, parent) {
-                Q.try(function() {
-                    parent = trimEndSlash(parent);
-                    return db.getEntity('pages', path);
-                }).then(function(data) {
-                    if (data || !parent) {
-                        return data || {};
-                    }
-                    return db.hasEntity('pages', parent).then(function(hasEntity) {
-                        if (!hasEntity) throw 'No parent page: ' + parent;
-                        return {};
-                    });
-                }).then(function(data) {
+                parent = trimEndSlash(parent);
+                Q.all([db.getEntity('pages', path), (path === '/') || db.hasEntity('pages', parent)]).spread(function(data, hasParent) {
+                    if (!hasParent) throw 'No parent page: ' + parent;
                     var result = JSON.stringify(data);
-                    res.writeHead(200, { 'Content-Type': 'application/json' });
+                    res.writeHead(200, 'OK', { 'Content-Type': 'application/json' });
                     res.end(result);
                 }).catch(function(error) {
                     res.writeHead(500, error);
                     res.end();
-                });
+                }).done();
             }).put(pageRegex, function(req, res, path, parent) {
-                var qPost = readPost(req);
-                Q.try(function() {
-                    parent = trimEndSlash(parent);
-                    if (!parent) return true;
-                    return db.hasEntity('pages', parent);
-                }).then(function(canPut) {
-                    if (!canPut) throw 'No parent page: ' + parent;
-                    return qPost;
-                }).then(function(post) {
+                parent = trimEndSlash(parent);
+                Q.all([helpers.readPost(req), (path === '/') || db.hasEntity('pages', parent)]).spread(function (post, hasParent) {
+                    if (!hasParent) throw 'No parent page: ' + parent;
                     var data = JSON.parse(post);
-                    data.parentId = parent || null;
+                    if (path !== '/') data.parentId = parent;
                     return db.putEntity('pages', path, data);
                 }).then(function() {
                     res.writeHead(200, 'OK');
@@ -62,7 +38,7 @@
                 }).catch(function(error) {
                     res.writeHead(500, error);
                     res.end();
-                });
+                }).done();
             });
     };
 })(module, require);

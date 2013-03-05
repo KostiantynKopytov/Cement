@@ -21,12 +21,14 @@
                 var resWriteHead = res.writeHead;
                 var resEnd = res.end;
                 var logWriteHead = function(statusCode, reasonPhrase, headers) {
-                    logger.silly('--> code: ' + statusCode, { headers: headers , reason: reasonPhrase });
+                    logger.silly('--> code: ' + statusCode + ' ' + reasonPhrase, headers);
                     return resWriteHead.apply(res, arguments);
                 };
                 var logEnd = function(data) {
                     if (data) {
-                        logger.silly('--> text: ' + data.substring(0, 100));
+                        var text = data.substring(0, 200).replace(/[\r\n\t ]+/g, ' ');
+                        text = text.substring(0, 80) + (text.length > 80 ? '...' : '');
+                        logger.silly('--> text: ' + text);
                     }
                     return resEnd.apply(res, arguments);
                 };
