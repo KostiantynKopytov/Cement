@@ -52,6 +52,7 @@
     <Content Include="content\images\glyphicons-halflings.png" />
     <Content Include="content\jasmine\jasmine.css" />
     <Content Include="content\jasmine\jasmine_favicon.png" />
+    <Content Include="core\directives\editor.directive.js" />
     <Content Include="core\directives\richtext.directive.js" />
     <Content Include="libs\jquery-ui\themes\ui-lightness\images\animated-overlay.gif" />
     <Content Include="libs\jquery-ui\themes\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
@@ -314,6 +315,7 @@
     <Content Include="tests\TestSpec1.js" />
     <Content Include="core\directives\dialog.directive.js" />
     <Content Include="content\styles\less\elements.less" />
+    <Content Include="portal\editors\page.editor.html" />
     <None Include="libs\jquery-1.9.1.intellisense.js" />
     <Content Include="libs\jquery-1.9.1.js" />
     <Content Include="libs\jquery-1.9.1.min.js" />

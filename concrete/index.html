@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
 
-<html ng-controller="AppController">
+<html ng-controller="AppController" ct-editor="/portal/editors/page.editor.html" >
     <head>
         <!-- meta tags -->
-        <title ng-bind="page.title"></title>
+        <title ng-bind="title"></title>
         <meta name="keywords" content="{{ metaKeywords }}">
         <meta name="description" content="{{ metaDescription }}">
         
         <!-- content -->
-        <script type="text/javascript" data-main="/app" src="/libs/require.js"></script>
+        <script type="text/javascript" data-main="/app" src="/libs/require.js"> </script>
         <link rel="stylesheet" type="text/css" href="/content/styles/less/bootstrap/bootstrap.less" data-usage="1" />
     </head>
     <body>
