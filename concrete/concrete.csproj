@@ -107,8 +107,8 @@
     <Content Include="portal\widgets\news-details\news-details.widget.html" />
     <Content Include="portal\widgets\news-details\news-details.widget.js" />
     <Content Include="portal\widgets\news-details\news-details.editor.html" />
-    <Content Include="portal\widgets\multi-column\multicolumn.widget.html" />
-    <Content Include="portal\widgets\multi-column\multicolumn.widget.js" />
+    <Content Include="portal\widgets\multi-column\multi-column.widget.html" />
+    <Content Include="portal\widgets\multi-column\multi-column.widget.js" />
     <Content Include="portal\widgets\main-layout\main-layout.widget.html" />
     <Content Include="portal\widgets\main-layout\main-layout.widget.js" />
     <Content Include="portal\widgets\navigation\navigation.widget.js" />
