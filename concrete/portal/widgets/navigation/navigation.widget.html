@@ -1,5 +1,7 @@
 ﻿<div>
     <ul class="nav nav-pills">
-        <li ng-class="navClass(child.href)" ng-repeat="child in menu.childPages"><a ng-href="{{child.href}}">{{child.title}}</a></li>
+        <li ng-class="navClass(child.href)" ng-repeat="child in menu[0].childPages">
+            <a ng-href="{{ child.href }}">{{ child.title || child.href }}</a>
+        </li>
     </ul>
 </div>

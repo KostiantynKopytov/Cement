@@ -41,17 +41,24 @@
         return key && key[0] !== '$' && key !== 'this';
     };
 
-    var cleanClone = function (obj, level) {
-        if (level > 3) {
-            return 'too deep';
+    var cleanClone = function (obj, visited) {
+        visited = visited || [];
+        if (visited.indexOf(obj) >= 0) {
+            return obj;
         }
-        if (!obj || typeof obj !== 'object') return obj;
-        var result = {};
+
+        visited.push(obj);
+
+        if (!obj || typeof obj !== 'object') {
+            return obj;
+        }
+       
+        var result = $.isArray(obj) ? [] : {};
         var keys = Object.keys(obj).filter(filter$);
         keys.forEach(function (key) {
             var val = obj[key];
             if (typeof val !== 'function') {
-                result[key] = cleanClone(val, level ? level + 1 : 1);
+                result[key] = cleanClone(val, visited);
             }
         });
         console.log('clone end:', result);
