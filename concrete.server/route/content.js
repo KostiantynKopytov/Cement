@@ -6,7 +6,7 @@
         return router
             .get(/^(.*\.(js|json|html?|ico|jpg|png|gif|css|less))$/, function(req, res, path) {
                 var parsedUrl = url.parse(path);
-                return serveFile(res, "../concrete" + parsedUrl.pathname);
+                return serveFile(req, res, "../concrete" + parsedUrl.pathname);
             });
     };
 })(module, require);

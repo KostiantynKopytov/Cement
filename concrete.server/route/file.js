@@ -3,9 +3,9 @@
     var fs = require('fs');
     var less = require('less');
     var path = require('path');
-    var logger = require("../logger").get();
-
-    require("../helpers");
+    var logger = require('../logger').get();
+    var zlib = require('zlib');
+    require('../helpers');
 
     var getContentType = function(ext) {
         switch (ext) {
@@ -31,7 +31,7 @@
         }
     };
 
-    var serveFile = function(res, file, contentType) {
+    var serveFile = function(req, res, file, contentType) {
         if (fs.existsSync(file) && fs.lstatSync(file).isFile()) {
             logger.silly('--- file:', file);
             if (file.endsWith('.less')) {
@@ -51,9 +51,26 @@
             } else {
                 contentType = contentType || getContentType(path.extname(file));
 
-                res.writeHead(200, 'OK', { 'Content-Type': contentType });
-                var fileStream = fs.createReadStream(file);
-                fileStream.pipe(res);
+                res.setHeader('Content-Type', contentType);
+                var raw = fs.createReadStream(file);
+                
+                var acceptEncoding = req.headers['accept-encoding'];
+                if (!acceptEncoding) {
+                    acceptEncoding = '';
+                }
+
+                // Note: this is not a conformant accept-encoding parser.
+                // See http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3
+                if (acceptEncoding.match(/\bdeflate\b/)) {
+                    res.writeHead(200, { 'content-encoding': 'deflate' });
+                    raw.pipe(zlib.createDeflate()).pipe(res);
+                } else if (acceptEncoding.match(/\bgzip\b/)) {
+                    res.writeHead(200, { 'content-encoding': 'gzip' });
+                    raw.pipe(zlib.createGzip()).pipe(res);
+                } else {
+                    res.writeHead(200, {});
+                    raw.pipe(res);
+                }
             }
         } else {
             res.writeHead(404, 'Not found');
