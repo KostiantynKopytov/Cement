@@ -1,35 +1,37 @@
 ﻿
-
+// Editor Pane
 .editor-pane {
+	z-index: 1000;
     position: fixed;
     top: 0;
     right: 0;
     height: 100%;   
+
+	.editor-pane-content {
+		background: #b1ccc1;
+		width: 300px;
+		padding: 20px;
+		position: relative;
+		height: 100%;
+	}
+
+	.editor-pane-close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 20px;
+	}
+
+	.editor-pane-open {
+		position: fixed;
+		top: 50%;
+		right: 0;
+		width: 15px;
+		border: 1px solid #ccc;
+		cursor: pointer;
+	}
 }
 
-.editor-pane-content {
-    background: #b1ccc1;
-    width: 300px;
-    padding: 20px;
-    position: relative;
-    height: 100%;
-}
-
-.editor-pane-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20px;
-}
-
-.editor-pane-open {
-    position: fixed;
-    top: 50%;
-	right: 0;
-    width: 15px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-}
 
 .btn-widget-editor {
 	opacity: 0.3;
@@ -47,9 +49,24 @@
 
 [ct-widget] {
 	border: 1px dotted transparent;
-
 	&:hover {
 		border-color: black;
+	}
+}
+
+.editable {
+	position: relative;
+
+	.edit-button {
+		position: absolute;
+		right: 0;
+		top: 0;
+		display: none;
+	}
+	&:hover {
+		> .edit-button {
+			display: block;
+		}
 	}
 }
 

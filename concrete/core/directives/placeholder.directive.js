@@ -48,14 +48,15 @@
 
                         senderScope.widgets.splice(senderIndex, 1);
                         receiverScope.widgets = receiverScope.widgets || [];
-                        receiverScope.widgets.splice(receiverIndex, 0, ext.cleanClone(item));
+                        receiverScope.widgets.splice(receiverIndex, 0, { type: item.type, data: item.data });
                         scope.$root.$apply();
 
                         console.log('stop', receiverScope, receiverIndex);
                     }
                 }).droppable({
                     greedy: true,
-                    activeClass: 'ct-placeholder-active'
+                    activeClass: 'ct-placeholder-active',
+                    accept: '[ct-widget]'
                 }).disableSelection();
 
                 scope.$on('$destory', function () {

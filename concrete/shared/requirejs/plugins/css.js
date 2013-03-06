@@ -246,7 +246,10 @@ define(['./normalize', 'module'], function (normalize, module) {
 
         var fileUrl = cssId;
 
-        if (fileUrl.substr(fileUrl.length - 4, 4) != '.css' && !parse)
+        var dotindx = fileUrl.lastIndexOf('.');
+
+        var ext = dotindx > 0 ? fileUrl.substr(dotindx) : '';
+        if (ext != '.css' && ext != '.less' && !parse)
             fileUrl += '.css';
 
         fileUrl = req.toUrl(fileUrl);

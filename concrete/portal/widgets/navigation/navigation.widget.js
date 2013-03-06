@@ -3,6 +3,9 @@
         return {
             templateUrl: '/portal/widgets/navigation/navigation.widget.html',
             restrict: 'A',
+            scope: {
+                data: '=ctNavigation'
+            },
             controller: function($scope, $element, $attrs) {
                 $scope.$watch('data', function(url) {
                     coreService.getMenu(url || '/').success(function(menu) {
