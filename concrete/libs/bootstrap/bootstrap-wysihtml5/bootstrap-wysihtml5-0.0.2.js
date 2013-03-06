@@ -345,10 +345,10 @@
         "font-styles": true,
         "color": false,
         "emphasis": true,
-        "lists": true,
-        "html": false,
+        "lists": true,  
         "link": true,
         "image": true,
+        "html": false,
         events: {},
         parserRules: {
             classes: {
