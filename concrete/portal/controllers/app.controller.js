@@ -15,7 +15,8 @@
 
         $scope.save = function () {
             $scope.$root.$broadcast('ctSave');
-
+            console.log('scope: ', $scope);
+            console.log('clone: ', ext.cleanClone($scope));
             var json = angular.toJson(ext.cleanClone($scope));
             console.log('saving', json);
             coreService.putPage($location.path(), json).error(function () {

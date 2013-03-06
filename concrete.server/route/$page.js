@@ -18,7 +18,7 @@
                 parent = trimEndSlash(parent);
                 return Q.all([db.getEntity('pages', path), (path === '/') || db.hasEntity('pages', parent)]).spread(function(data, hasParent) {
                     if (!hasParent) throw new Error('No parent page: ' + parent);
-                    var result = JSON.stringify(data);
+                    var result = JSON.stringify(data || {});
                     res.writeHead(200, 'OK', { 'Content-Type': 'application/json' });
                     res.end(result);
                 });
