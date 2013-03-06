@@ -61,5 +61,5 @@
     };
 })(requirejs);
 
-define(['jquery', 'underscore', 'angular', 'extensions', 'json2'], function() {
+define(['jquery', 'angular', 'extensions', 'json2'], function() {
 });

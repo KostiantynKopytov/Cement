@@ -1,4 +1,4 @@
-﻿define(['jquery', 'underscore'], function($, _) {
+﻿define(['jquery'], function($) {
     // ------ .Net string extensions ------ //
     String.Format = function() {
         var args = arguments;
