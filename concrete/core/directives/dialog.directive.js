@@ -20,28 +20,30 @@
                     });
                 };
 
-                $(element).dialog({
-                    autoOpen: true,
-                    modal: false,
-                    close: function () {
-                        scope.$apply(function () {
-                            scope.onClose();
-                        });
-                    },
-                    minWidth: 500,
-                    minHeight: 300
-                });
+                require(['jquery-ui'], function() {
+                    $(element).dialog({
+                        autoOpen: true,
+                        modal: false,
+                        close: function() {
+                            scope.$apply(function() {
+                                scope.onClose();
+                            });
+                        },
+                        minWidth: 500,
+                        minHeight: 300
+                    });
 
-                scope.$watch('title', function () {
-                    $(element).dialog('option', 'title', scope.title);
-                });
-                
-                scope.$watch('buttons.length', function () {
-                    $(element).dialog('option', 'buttons', scope.buttons);
-                });
+                    scope.$watch('title', function() {
+                        $(element).dialog('option', 'title', scope.title);
+                    });
 
-                scope.$on('$destroy', function () {
-                    $(element).dialog('destroy');
+                    scope.$watch('buttons.length', function() {
+                        $(element).dialog('option', 'buttons', scope.buttons);
+                    });
+
+                    scope.$on('$destroy', function() {
+                        $(element).dialog('destroy');
+                    });
                 });
             }],
             template: "<div ng-transclude></div>"

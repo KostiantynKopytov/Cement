@@ -24,7 +24,7 @@
                 });
             }).put(pageRegex, function(req, res, path, parent) {
                 parent = trimEndSlash(parent);
-                return Q.all([helpers.readPost(req), (path === '/') || db.hasEntity('pages', parent)]).spread(function (post, hasParent) {
+                return Q.all([helpers.readPost(req), (path === '/') || db.hasEntity('pages', parent)]).spread(function(post, hasParent) {
                     if (!hasParent) throw new Error('No parent page: ' + parent);
                     var data = JSON.parse(post);
                     if (path !== '/') data.parentId = parent;

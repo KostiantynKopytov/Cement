@@ -8,7 +8,9 @@
 
     function getLogger(name) {
         return winston.loggers.get(name || 'default');
-    };
+    }
+
+    ;
 
     getLogger('default').cli();
 

@@ -21,7 +21,7 @@
 
     var logWriteHead = function(req, res) {
         var resWriteHead = res.writeHead;
-        res.writeHead = function (statusCode, reasonPhrase, headers) {
+        res.writeHead = function(statusCode, reasonPhrase, headers) {
             var method = statusCode < 500 ? "silly" : "error";
             logger[method]('--> code: ' + statusCode + ' ' + reasonPhrase, headers);
             return resWriteHead.apply(res, arguments);
@@ -40,18 +40,23 @@
         };
     };
 
-    var pipeFns = [logRequest, logWriteHead, logEnd, router];
+    var enableCache = function(req, res) {
+        var date = new Date();
+        date.setHours(date.getHours() + 24);
+        res.setHeader("Cache-Control", "private");
+        res.setHeader("Expires", date.toUTCString());
+    };
+
+    var pipeFns = [logRequest, enableCache, logWriteHead, logEnd, router];
     var pipe = function(req, res) {
-        Q.try(function() {
-            var q = Q();
+        try {
             pipeFns.forEach(function(fn) {
-                q = q.then(function() { return fn(req, res); });
+                Q(fn(req, res)).done();
             });
-            return q;
-        }).catch(function (error) {
+        } catch(error) {
             res.writeHead(500, error.stack || error);
             res.end();
-        }).done();
+        }
     };
 
     http.createServer(pipe).listen(10000);
