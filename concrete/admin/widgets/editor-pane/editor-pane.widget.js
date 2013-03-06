@@ -1,4 +1,4 @@
-﻿define(['module!admin', 'jquery', 'json!/portal/widgets/*~name'], function (module, $, widgetTypes) {
+﻿define(['module!admin', 'jquery'], function (module, $) {
 
     var getParentPlaceholderName = function (jqName) {
         var parent = jqName.parents('[ct-placeholder]');
@@ -11,6 +11,11 @@
             restrict: 'A',
             scope: {},
             controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
+                require(['json!/portal/widgets/*~name'], function(widgetTypes) {
+                    $scope.widgetTypes = widgetTypes;
+                });
+
+                $scope.opened = true;
                 $scope.$watch(function () {
                     var key = $('[ct-placeholder]').map(function(index, val) {
                         return $(val).data('$scope').$id;
@@ -25,7 +30,6 @@
                     }).get();
                     console.log('updated placeholders:', $scope.placeholders);
                 });
-                $scope.widgetTypes = widgetTypes;
                 $scope.addWidget = function () {
                     $scope.placeholder.scope.widgets = $scope.placeholder.scope.widgets || [];
                     $scope.placeholder.scope.widgets.push({
@@ -37,7 +41,10 @@
                 $scope.canAdd = function () {
                     return $scope.placeholder && $scope.widgetType;
                 };
-
+                
+                $scope.save = function () {
+                    $scope.$root.$broadcast('ctSave');
+                };
             }],
             templateUrl: '/admin/widgets/editor-pane/editor-pane.widget.html'
         };

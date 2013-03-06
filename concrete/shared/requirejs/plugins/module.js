@@ -3,7 +3,6 @@
         var syntax = name.split('!');
         if (syntax.length > 1 && syntax[1] == 'deps') {
             req(['module!' + syntax[0], syntax[0] + '/**/*.js~amd'], function (module, deps) {
-                console.log(deps);
                 onload(module);
             });
         } else {

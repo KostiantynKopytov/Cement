@@ -8,9 +8,6 @@
                 widgets: '=ctPlaceholder'
             },
             link: function (scope, element) {
-                var links = $("link[data-usage='0']");
-                links.remove();
-
                 require(['jquery-ui'], function() {
                     var senderScope = null;
                     var senderIndex = 0;

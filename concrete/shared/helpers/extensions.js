@@ -41,7 +41,7 @@
         return key && key[0] !== '$' && key !== 'this';
     };
 
-    var cleanClone = function (obj, visited) {
+    var cleanClone = function(obj, visited) {
         visited = visited || [];
         if (visited.indexOf(obj) >= 0) {
             return obj;
@@ -52,10 +52,10 @@
         if (!obj || typeof obj !== 'object') {
             return obj;
         }
-       
+
         var result = $.isArray(obj) ? [] : {};
         var keys = Object.keys(obj).filter(filter$);
-        keys.forEach(function (key) {
+        keys.forEach(function(key) {
             var val = obj[key];
             if (typeof val !== 'function') {
                 result[key] = cleanClone(val, visited);
@@ -69,8 +69,21 @@
         return typeof(obj) === "object" ? $.extend.apply($, arguments) : arguments[arguments.length - 1];
     };
 
+    var appendStyles = function(name, text) {
+        var selector = String.Format("style[data-href='{0}']", name);
+        var link = $(selector);
+
+        if (!link.exists()) {
+            link = $('<style type="text/css" />').attr('data-href', name).appendTo('head');
+        }
+        
+        link.text(text);
+        return link;
+    };
+
     return {
         cleanClone: cleanClone,
-        extend: extend
+        extend: extend,
+        appendStyles: appendStyles
     };
 });

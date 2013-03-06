@@ -1,4 +1,4 @@
-﻿define(['module!core', 'extensions', 'jquery-ui'], function(module) {
+﻿define(['module!core', 'extensions'], function(module) {
     module.directive('ctDialog', function() {
         return {
             replace: true,

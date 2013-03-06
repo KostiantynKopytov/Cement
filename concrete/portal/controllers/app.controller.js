@@ -11,16 +11,18 @@
                     // TODO: handle this
                 });
             }
+            
+            // cleanup css
+            var links = $("style[data-usage='0']");
+            links.remove();
         });
 
-        $scope.save = function () {
-            $scope.$root.$broadcast('ctSave');
-
+        $scope.$on('ctSave', function() {
             var json = angular.toJson(ext.cleanClone($scope));
             console.log('saving', json);
             coreService.putPage($location.path(), json).error(function () {
                 // TODO: handle this
             });
-        };
+        });
     }]);
 });
