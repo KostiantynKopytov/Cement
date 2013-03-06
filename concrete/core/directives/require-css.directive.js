@@ -2,8 +2,6 @@
     module.directive('ctRequireCss', ['$compile', function($compile) {
         return {
             restrict: 'A',
-            template: '',
-            replace: true,
             compile: function(tElement, tAttrs) {
 
                 var content = tElement.contents();
