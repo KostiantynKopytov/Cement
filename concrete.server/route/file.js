@@ -1,4 +1,4 @@
-(function (module, require) {
+(function(module, require) {
     var Q = require('Q');
     var fs = require('fs');
     var less = require('less');
@@ -7,52 +7,52 @@
 
     require("../helpers");
 
-    function getContentType(ext) {
+    var getContentType = function(ext) {
         switch (ext) {
-            case ".htm":
-            case ".html":
-                return "text/html";
-            case ".css":
-                return "text/css";
-            case ".js":
-                return "application/javascript";
-            case ".json":
-                return "application/json";
-            case ".ico":
-                return "image/icon";
-            case ".gif":
-                return "image/gif";
-            case ".png":
-                return "image/png";
-            case ".jpg":
-                return "image/jpeg";
-            default:
-                return "text/plain";
+        case ".htm":
+        case ".html":
+            return "text/html";
+        case ".css":
+            return "text/css";
+        case ".js":
+            return "application/javascript";
+        case ".json":
+            return "application/json";
+        case ".ico":
+            return "image/icon";
+        case ".gif":
+            return "image/gif";
+        case ".png":
+            return "image/png";
+        case ".jpg":
+            return "image/jpeg";
+        default:
+            return "text/plain";
         }
     };
-    
-    var serveFile = function (res, file, contentType) {
+
+    var serveFile = function(res, file, contentType) {
         //var date = new Date();
         //date.setHours(date.getHours() + 24);
         //res.setHeader("Cache-Control", "must-revalidate");
         //res.setHeader("Expires", date.toUTCString());
-        
+
         if (fs.existsSync(file) && fs.lstatSync(file).isFile()) {
             logger.silly('--- file:', file);
             if (file.endsWith('.less')) {
-                Q.nfcall(fs.readFile, file, 'utf8').then(function(data) {
-                    var parser = new (less.Parser)({
-                        paths: [path.dirname(file)],
-                        filename: path.basename(file)
+                return Q.try(Q.nfbind(fs.readFile, file, 'utf8'))
+                    .then(function(data) {
+                        var parser = new (less.Parser)({
+                            paths: [path.dirname(file)],
+                            filename: path.basename(file)
+                        });
+                        return Q.ninvoke(parser, "parse", data);
+                    }, function(z) {
+                        console.error(z);
+                    }).then(function(tree) {
+                        res.writeHead(200, 'OK', { 'Content-Type': 'text/css' });
+                        res.end(tree.toCSS({ compress: true }));
                     });
-                    return Q.ninvoke(parser, "parse", data);
-                }).then(function(tree) {
-                    res.writeHead(200, 'OK', { 'Content-Type': 'text/css' });
-                    res.end(tree.toCSS({ compress: true }));
-                }).catch(function(error) {
-                    res.writeHead(500, error);
-                    res.end();
-                });
             } else {
                 contentType = contentType || getContentType(path.extname(file));
 
@@ -64,6 +64,8 @@
             res.writeHead(404, 'Not found');
             res.end();
         }
+
+        return "done";
     };
 
     module.exports = serveFile;

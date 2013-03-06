@@ -1,4 +1,6 @@
 (function(module, require) {
+    var Q = require('Q');
+
     var http = require('http');
     var logger = require('./logger').get();
 
@@ -13,39 +15,46 @@
     require('./route/content')(router);
     require('./route/index')(router);
 
-    var active = 0;
-
-    function logRequest(chainFn) {
-        return function(req, res) {
-            try {
-                var resWriteHead = res.writeHead;
-                var resEnd = res.end;
-                var logWriteHead = function(statusCode, reasonPhrase, headers) {
-                    logger.silly('--> code: ' + statusCode + ' ' + reasonPhrase, headers);
-                    return resWriteHead.apply(res, arguments);
-                };
-                var logEnd = function(data) {
-                    if (data) {
-                        var text = data.substring(0, 200).replace(/[\r\n\t ]+/g, ' ');
-                        text = text.substring(0, 80) + (text.length > 80 ? '...' : '');
-                        logger.silly('--> text: ' + text);
-                    }
-                    return resEnd.apply(res, arguments);
-                };
-
-                active++;
-                logger.silly('<-- ' + req.method, { active: active, url: req.url });
-                res.writeHead = logWriteHead;
-                res.end = logEnd;
-
-                return chainFn(req, res);
-            } finally {
-                active--;
-            }
-        };
+    function logRequest(req, res) {
+        logger.silly('<-- ' + req.method, req.url);
     }
 
-    http.createServer(logRequest(router)).listen(10000);
+    var logWriteHead = function(req, res) {
+        var resWriteHead = res.writeHead;
+        res.writeHead = function (statusCode, reasonPhrase, headers) {
+            var method = statusCode < 500 ? "silly" : "error";
+            logger[method]('--> code: ' + statusCode + ' ' + reasonPhrase, headers);
+            return resWriteHead.apply(res, arguments);
+        };
+    };
+
+    var logEnd = function(req, res) {
+        var resEnd = res.end;
+        res.end = function(data, encoding) {
+            if (data) {
+                var text = data.substring(0, 200).replace(/[\r\n\t ]+/g, ' ');
+                text = text.substring(0, 80) + (text.length > 80 ? '...' : '');
+                logger.silly('--> text: ' + text);
+            }
+            return resEnd.apply(res, arguments);
+        };
+    };
+
+    var pipeFns = [logRequest, logWriteHead, logEnd, router];
+    var pipe = function(req, res) {
+        Q.try(function() {
+            var q = Q();
+            pipeFns.forEach(function(fn) {
+                q = q.then(function() { return fn(req, res); });
+            });
+            return q;
+        }).catch(function (error) {
+            res.writeHead(500, error.stack || error);
+            res.end();
+        }).done();
+    };
+
+    http.createServer(pipe).listen(10000);
 
     logger.info('server is running at http://localhost:10000');
 })(module, require);

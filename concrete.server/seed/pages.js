@@ -1,5 +1,4 @@
 ﻿(function(module, require) {
-    var logger = require('../logger').get();
     var db = require('../db');
 
     var pages = [{ _id: '/' }];

@@ -4,7 +4,7 @@
     module.exports = function(router) {
         return router
             .get('/**', function(req, res) {
-                serveFile(res, '../concrete/index.html');
+                return serveFile(res, '../concrete/index.html');
             });
 
     };
