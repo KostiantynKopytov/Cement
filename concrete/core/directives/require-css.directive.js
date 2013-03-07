@@ -5,6 +5,7 @@
             compile: function(tElement, tAttrs) {
                 var content = tElement.clone();
                 content.removeAttr('ct-require-css');
+                tElement.html('');
                 return function (scope, element, attrs) {
                     var name = attrs.ctRequireCss;
                     require(['css!' + name], function (text) {

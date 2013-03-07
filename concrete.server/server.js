@@ -4,7 +4,7 @@
     var http = require('http');
     var logger = require('./logger').get();
 
-    require('./seed/pages');
+    //require('./seed/pages');
 
     var router = require('choreographer').router();
 

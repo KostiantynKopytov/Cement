@@ -1,7 +1,6 @@
 ﻿define(['jquery', 'module!core', 'extensions'], function ($, module, ext) {
     module.directive('ctPlaceholder', [function() {
         return {
-//            replace: true,
             template: '<div ct-widget="{{ widget.type }}" data="widget.data" ng-repeat="widget in widgets"></div>',
             restrict: 'A',
             scope: {
@@ -53,11 +52,6 @@
                         activeClass: 'ct-placeholder-active',
                         accept: '[ct-widget]'
                     }).disableSelection();
-                    
-                    //scope.$on('$destroy', function () {
-                    //    $(element).sortable('destroy');
-                    //    $(element).droppable('destroy');
-                    //});
                 });
             }
         };
