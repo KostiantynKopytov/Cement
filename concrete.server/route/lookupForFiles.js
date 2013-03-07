@@ -13,7 +13,8 @@
 
     module.exports = function(router) {
         return router
-            .get(/^\/([^*]*)([^*]*\*[^~]*)~?(.*)$/, function(req, res, path, pattern, filter) {
+            .get(/^\/([^*]*)([^*]*\*[^~]*)~?(.*)$/, function(req, res) {
+                var path = req.params[0], pattern = req.params[1], filter = req.params[2];
                 logger.silly('--- ', { path: path, pattern: pattern });
                 return Q
                     .try(Q.nfbind(glob, path + pattern, { root: '../concrete', cwd: '../concrete' }))

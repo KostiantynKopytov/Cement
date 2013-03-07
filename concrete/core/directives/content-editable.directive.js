@@ -9,7 +9,7 @@
                 tElement.attr('contentEditable', 'true');
 
                 return function (scope, element, attrs) {
-                    scope.$parent.$watch('data', function(data, oldData) {
+                    scope.$parent.$watch('data', function(data) {
                         if ($(element).html() != data) {
                             $(element).html(data);
                         }
