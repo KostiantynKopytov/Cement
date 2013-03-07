@@ -14,7 +14,8 @@
 
     module.exports = function(router) {
         return router
-            .get(pageRegex, function(req, res, path, parent) {
+            .get(pageRegex, function (req, res) {
+                var path = req.params[0], parent = req.params[1];
                 parent = trimEndSlash(parent);
                 return Q.all([db.getEntity('pages', path), (path === '/') || db.hasEntity('pages', parent)]).spread(function(data, hasParent) {
                     if (!hasParent) throw new Error('No parent page: ' + parent);
@@ -22,7 +23,8 @@
                     res.writeHead(200, 'OK', { 'Content-Type': 'application/json' });
                     res.end(result);
                 });
-            }).put(pageRegex, function(req, res, path, parent) {
+            }).put(pageRegex, function(req, res) {
+                var path = req.params[0], parent = req.params[1];
                 parent = trimEndSlash(parent);
                 return Q.all([helpers.readPost(req), (path === '/') || db.hasEntity('pages', parent)]).spread(function(post, hasParent) {
                     if (!hasParent) throw new Error('No parent page: ' + parent);

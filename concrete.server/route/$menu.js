@@ -3,7 +3,8 @@
 
     module.exports = function(router) {
         return router
-            .get(/^\/\$menu(.*)$/, function(req, res, path) {
+            .get(/^\/\$menu(.*)$/, function (req, res) {
+                var path = req.params[0];
                 return db.getMenu(path).then(function(data) {
                     res.writeHead(200, { 'Content-Type': 'application/json' });
                     res.end(JSON.stringify(data));
