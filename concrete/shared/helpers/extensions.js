@@ -68,21 +68,8 @@
         return typeof(obj) === "object" ? $.extend.apply($, arguments) : arguments[arguments.length - 1];
     };
 
-    var appendStyles = function(name, text) {
-        var selector = String.Format("style[data-href='{0}']", name);
-        var link = $(selector);
-
-        if (!link.exists()) {
-            link = $('<style type="text/css" />').attr('data-href', name).appendTo('head');
-        }
-        
-        link.text(text);
-        return link;
-    };
-
     return {
         cleanClone: cleanClone,
-        extend: extend,
-        appendStyles: appendStyles
+        extend: extend
     };
 });
