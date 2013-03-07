@@ -12,15 +12,15 @@
                 });
             }
 
-            setTimeout(function () {
-                if (path === '/home') {
-                    $location.path('/vasya');
-                }
-                if (path === '/vasya') {
-                    $location.path('/home');
-                }
-                $scope.$apply();
-            }, 500);
+            //setTimeout(function () {
+            //    if (path === '/lala') {
+            //        $location.path('/lalala');
+            //    }
+            //    if (path === '/lalala') {
+            //        $location.path('/lala');
+            //    }
+            //    $scope.$apply();
+            //}, 400);
 
             // cleanup css
             var links = $("style[data-usage='0']");
