@@ -28,14 +28,12 @@
                             scope: $(val).data('$scope')
                         };
                     }).get();
-                    console.log('updated placeholders:', $scope.placeholders);
                 });
                 $scope.addWidget = function () {
                     $scope.placeholder.scope.widgets = $scope.placeholder.scope.widgets || [];
                     $scope.placeholder.scope.widgets.push({
                         type: $scope.widgetType
                     });
-                    console.log('added to:', $scope.placeholder.scope.widgets);
                 };
 
                 $scope.canAdd = function () {

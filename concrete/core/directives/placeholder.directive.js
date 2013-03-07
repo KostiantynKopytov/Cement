@@ -34,7 +34,6 @@
                             ui.placeholder.attr('style', '').html(ui.item.clone().html()).addClass('ct-placeholder-targetplace');
                             senderScope = ui.item.parent().data('$scope');
                             senderIndex = ui.item.index();
-                            console.log('start', senderScope, senderIndex);
                         },
                         change: updateRatio,
                         stop: function (event, ui) {
@@ -48,19 +47,17 @@
                             receiverScope.widgets = receiverScope.widgets || [];
                             receiverScope.widgets.splice(receiverIndex, 0, { type: item.type, data: item.data });
                             scope.$root.$apply();
-
-                            console.log('stop', receiverScope, receiverIndex);
                         }
                     }).droppable({
                         greedy: true,
                         activeClass: 'ct-placeholder-active',
                         accept: '[ct-widget]'
                     }).disableSelection();
-                });
-
-                scope.$on('$destory', function () {
-                    $(element).sortable('destroy');
-                    $(element).droppable('destroy');
+                    
+                    //scope.$on('$destroy', function () {
+                    //    $(element).sortable('destroy');
+                    //    $(element).droppable('destroy');
+                    //});
                 });
             }
         };

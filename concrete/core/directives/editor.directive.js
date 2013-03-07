@@ -17,7 +17,6 @@
                             url: editorUrl,
                             ok: function() {
                                 scope = ext.extend(scope, scope.editor.context);
-                                console.log(scope);
                                 delete scope.editor;
                             },
                             cancel: function() {

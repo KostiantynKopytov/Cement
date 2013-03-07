@@ -61,7 +61,6 @@
                 result[key] = cleanClone(val, visited);
             }
         });
-        console.log('clone end:', result);
         return result;
     };
 
