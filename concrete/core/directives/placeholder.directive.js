@@ -1,7 +1,6 @@
 ﻿define(['jquery', 'module!core', 'extensions'], function ($, module, ext) {
     module.directive('ctPlaceholder', [function() {
         return {
-//            replace: true,
             template: '<div ct-widget="{{ widget.type }}" data="widget.data" ng-repeat="widget in widgets"></div>',
             restrict: 'A',
             scope: {
@@ -34,7 +33,6 @@
                             ui.placeholder.attr('style', '').html(ui.item.clone().html()).addClass('ct-placeholder-targetplace');
                             senderScope = ui.item.parent().data('$scope');
                             senderIndex = ui.item.index();
-                            console.log('start', senderScope, senderIndex);
                         },
                         change: updateRatio,
                         stop: function (event, ui) {
@@ -48,19 +46,12 @@
                             receiverScope.widgets = receiverScope.widgets || [];
                             receiverScope.widgets.splice(receiverIndex, 0, { type: item.type, data: item.data });
                             scope.$root.$apply();
-
-                            console.log('stop', receiverScope, receiverIndex);
                         }
                     }).droppable({
                         greedy: true,
                         activeClass: 'ct-placeholder-active',
                         accept: '[ct-widget]'
                     }).disableSelection();
-                });
-
-                scope.$on('$destory', function () {
-                    $(element).sortable('destroy');
-                    $(element).droppable('destroy');
                 });
             }
         };

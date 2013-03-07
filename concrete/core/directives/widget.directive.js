@@ -17,8 +17,6 @@
                     var compiled = $compile(wrapper)(scope);
                     element.html('');
                     element.append(compiled);
-
-                    console.log('widget compiled:', type, scope.data);
                 });
             }
         };

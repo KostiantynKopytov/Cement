@@ -13,8 +13,6 @@
                 path = path.substring(0, slashPos >= 0 ? slashPos : path.length);
                 text = text.replace(/url\s*\(\s*"(?!\/)/g, 'url("' + path + "/");
                 link.text(text);
-                console.log(link, name, text.substring(0, 100));
-
                 onload(text);
             });
         });

@@ -1,5 +1,4 @@
 ﻿(function (requirejs) {
-    console.log(requirejs);
     var requireCfg = {
         waitSeconds: 600,
         paths: {
