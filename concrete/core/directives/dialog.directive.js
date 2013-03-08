@@ -10,6 +10,7 @@
             controller: ['$scope', '$element', '$attrs', function (scope, element, attrs) {
                 scope.buttons = [];
                 this.addButton = function (text, click) {
+                    console.log('addButton received');
                     scope.buttons.push({
                         text: text,
                         click: function () {
@@ -38,12 +39,15 @@
                     });
 
                     scope.$watch('buttons.length', function() {
+                        console.log('buttons', scope.buttons);
                         $(element).dialog('option', 'buttons', scope.buttons);
                     });
 
                     scope.$on('$destroy', function() {
                         $(element).dialog('destroy');
                     });
+
+                    scope.$apply();
                 });
             }],
             template: "<div ng-transclude></div>"
@@ -62,8 +66,9 @@
                 scope.$watch('onClick', function () {
                     var compiledContent = $compile(content)(scope);
                     controller.addButton(compiledContent.html(), scope.onClick);
+                    console.log('addButton sent');
                 });
-                $(element).remove();
+                $(element).hide();
             }
         };
     }]);

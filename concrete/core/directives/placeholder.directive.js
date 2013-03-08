@@ -52,6 +52,8 @@
                         activeClass: 'ct-placeholder-active',
                         accept: '[ct-widget]'
                     }).disableSelection();
+
+                    scope.$apply();
                 });
             }
         };

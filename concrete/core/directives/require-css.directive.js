@@ -3,15 +3,11 @@
         return {
             restrict: 'A',
             compile: function(tElement, tAttrs) {
-                var content = tElement.clone();
-                content.removeAttr('ct-require-css');
-                tElement.html('');
+                tElement.hide();
                 return function (scope, element, attrs) {
                     var name = attrs.ctRequireCss;
                     require(['css!' + name], function () {
-                        var compiled = $compile(content)(scope);
-                        element.replaceWith(compiled);
-                        scope.$apply();
+                        element.removeAttr("style");
 
                         scope.$on('$destroy', function () {
                             var selector = String.Format("style[data-href='{0}']", name);

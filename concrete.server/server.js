@@ -1,10 +1,19 @@
 (function(module, require) {
+    var logger = require('./logger').get();
+
     var express = require('express');
     var app = express();
+
+    var enableCache = function (req, res, next) {
+        var date = new Date();
+        date.setHours(date.getHours() + 24);
+        res.setHeader("Cache-Control", "private");
+        res.setHeader("Expires", date.toUTCString());
+        next();
+    };
     
     app.use(express.logger());
-
-    var logger = require('./logger').get();
+    app.use(enableCache);
 
     require('./route/lookupForFiles')(app);
     require('./route/$page')(app);
@@ -40,13 +49,7 @@
 //        };
 //    };
 //
-//    var enableCache = function(req, res, next) {
-//        var date = new Date();
-//        date.setHours(date.getHours() + 24);
-//        res.setHeader("Cache-Control", "private");
-//        res.setHeader("Expires", date.toUTCString());
-//        next();
-//    };
+
 
 //    app.use(logRequest);
 //    app.use(enableCache);
