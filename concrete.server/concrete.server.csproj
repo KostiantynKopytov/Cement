@@ -40,6 +40,7 @@
     <Content Include="helpers.js" />
     <Content Include="logger.js" />
     <Content Include="route\%24entity.js" />
+    <Content Include="route\file_less.js" />
     <Content Include="route\index.js" />
     <Content Include="seed\pages.js" />
     <Content Include="server.js" />

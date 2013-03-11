@@ -8,11 +8,9 @@
 
     function getLogger(name) {
         return winston.loggers.get(name || 'default');
-    }
+    };
 
-    ;
-
-    getLogger('default').cli();
+    getLogger().cli();
 
     module.exports.get = getLogger;
 })(module, require);

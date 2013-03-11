@@ -1,7 +1,5 @@
-(function(module, require) {
-    var Q = require('Q');
+(function(module, require, process) {
     var fs = require('fs');
-    var less = require('less');
     var path = require('path');
     var logger = require('../logger').get();
     var zlib = require('zlib');
@@ -35,25 +33,18 @@
         if (fs.existsSync(file) && fs.lstatSync(file).isFile()) {
             logger.silly('--- file:', file);
             if (file.endsWith('.less')) {
-                return Q.try(Q.nfbind(fs.readFile, file, 'utf8'))
-                    .then(function(data) {
-                        var parser = new (less.Parser)({
-                            paths: [path.dirname(file)],
-                            filename: path.basename(file)
-                        });
-                        return Q.ninvoke(parser, "parse", data);
-                    }, function(z) {
-                        console.error(z);
-                    }).then(function(tree) {
-                        res.writeHead(200, 'OK', { 'Content-Type': 'text/css' });
-                        res.end(tree.toCSS({ compress: true }));
-                    });
+                var fork = require('child_process').fork;
+                var less = fork(__dirname + '/file_less.js', [file]);
+                less.on('message', function (msg) {
+                    res.writeHead(msg.statusCode || 500, msg.reason || 'OK', msg.headers);
+                    res.end(msg.content);
+                });
             } else {
                 contentType = contentType || getContentType(path.extname(file));
 
                 res.setHeader('Content-Type', contentType);
                 var raw = fs.createReadStream(file);
-                
+
                 var acceptEncoding = req.headers['accept-encoding'];
                 if (!acceptEncoding) {
                     acceptEncoding = '';
@@ -78,4 +69,4 @@
     };
 
     module.exports = serveFile;
-})(module, require);
+})(module, require, process);
