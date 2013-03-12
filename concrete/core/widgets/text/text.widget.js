@@ -1,7 +1,7 @@
-﻿define(['module!portal'], function(module) {
+﻿define(['module!core'], function(module) {
     module.directive('ctText', [function() {
         return {
-            templateUrl: '/portal/widgets/text/text.widget.html',
+            templateUrl: '/core/widgets/text/text.widget.html',
             replace: true,
             restrict: 'A',
             scope: {

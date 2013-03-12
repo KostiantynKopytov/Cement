@@ -1,4 +1,4 @@
-﻿define(['module!admin', 'jquery'], function (module, $) {
+﻿define(['module!core', 'jquery'], function (module, $) {
 
     var getParentPlaceholderName = function (jqName) {
         var parent = jqName.parents('[ct-placeholder]');
@@ -11,7 +11,7 @@
             restrict: 'A',
             scope: {},
             controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
-                require(['json!/portal/widgets/*~name'], function(widgetTypes) {
+                require(['json!/core/widgets/*~name'], function(widgetTypes) {
                     $scope.widgetTypes = widgetTypes;
                 });
 
@@ -44,7 +44,7 @@
                     $scope.$root.$broadcast('ctSave');
                 };
             }],
-            templateUrl: '/admin/widgets/editor-pane/editor-pane.widget.html'
+            templateUrl: '/core/widgets/editor-pane/editor-pane.widget.html'
         };
     }]);
 });

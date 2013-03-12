@@ -3,11 +3,11 @@
         waitSeconds: 600,
         paths: {
             // require [lugins
-            'name': '/shared/requirejs/plugins/name',
-            'module': '/shared/requirejs/plugins/module',
-            'css': '/shared/requirejs/plugins/css',
-            'text': '/shared/requirejs/plugins/text',
-            'json': '/shared/requirejs/plugins/json',
+            'name': '/requirejs/plugins/name',
+            'module': '/requirejs/plugins/module',
+            'css': '/requirejs/plugins/css',
+            'text': '/requirejs/plugins/text',
+            'json': '/requirejs/plugins/json',
             // libs
             'jquery': '/libs/jquery-1.9.1.min',
             'jquery-ui': '/libs/jquery-ui/jquery-ui-1.10.1.custom.min',
@@ -17,7 +17,7 @@
             'bootstrap': '/libs/bootstrap/bootstrap.min',
             'bootstrap-wysihtml5': '/libs/bootstrap/bootstrap-wysihtml5/bootstrap-wysihtml5-0.0.2',
             'underscore': '/libs/underscore.min',
-            'extensions': '/shared/helpers/extensions',
+            'extensions': '/core/helpers/extensions',
             'json2': '/libs/json2',
             // css
             'jquery-ui-styles': '/libs/jquery-ui/themes/custom-theme/jquery-ui-1.10.1.custom',

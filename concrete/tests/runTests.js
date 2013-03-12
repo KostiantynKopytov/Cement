@@ -1,4 +1,4 @@
-﻿define(['../shared/requirejs/config'], function () {
+﻿define(['../core/requirejs/config'], function () {
     var tests = ['./TestSpec1'];
 
     require(tests, function () {

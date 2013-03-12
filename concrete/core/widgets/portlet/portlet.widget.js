@@ -1,7 +1,7 @@
-﻿define(['module!portal'], function(module) {
+﻿define(['module!core'], function(module) {
     module.directive('ctPortlet', [function () {
         return {
-            templateUrl: '/portal/widgets/portlet/portlet.widget.html',
+            templateUrl: '/core/widgets/portlet/portlet.widget.html',
             replace: true,
             restrict: 'A',
             scope: {

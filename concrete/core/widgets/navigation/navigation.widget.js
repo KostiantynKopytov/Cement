@@ -1,7 +1,7 @@
-﻿define(['module!portal', 'extensions'], function (module, extensions) {
+﻿define(['module!core', 'extensions'], function (module, extensions) {
     module.directive('ctNavigation', ['coreService', '$location', function(coreService, $location) {
         return {
-            templateUrl: '/portal/widgets/navigation/navigation.widget.html',
+            templateUrl: '/core/widgets/navigation/navigation.widget.html',
             restrict: 'A',
             scope: {
                 data: '=ctNavigation'
