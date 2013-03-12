@@ -1,4 +1,4 @@
 ﻿<div ng-disabled="!id">
     <h4 ng-bind="news.title"></h4>
-    <div ng-bind="news.content"></div>
+    <div ng-bind-html-unsafe="news.content"></div>
 </div>

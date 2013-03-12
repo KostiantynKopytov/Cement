@@ -3,16 +3,16 @@
 <html ng-controller="AppController">
     <head>
         <!-- meta tags -->
-        <title ng-bind="title"></title>
-        <meta name="keywords" content="{{ metaKeywords }}" />
-        <meta name="description" content="{{ metaDescription }}" />
+        <title ng-bind="page.title"></title>
+        <meta name="keywords" content="{{ page.metaKeywords }}" />
+        <meta name="description" content="{{ page.metaDescription }}" />
         <script type="text/javascript" data-main="/app" src="/libs/require.js"> </script>
     </head>
     <body>
         <div ct-require-css="/content/styles/less/main.less">
             <div ct-page ct-editor="/core/editors/page.editor.html">
                 <div ct-editor-pane></div>
-                <div ct-placeholder="page"></div>
+                <div ct-placeholder="page.widgets"></div>
             </div>
         </div>
     </body>

@@ -6,13 +6,18 @@
                 type: '@ctWidget',
                 data: '='
             },
-            link: function(scope, element, attrs) {
+            link: function(scope, element) {
                 scope.$watch('type', function (type) {
                     var editorUrl = String.Format("/core/widgets/{0}/{0}.editor.html", scope.type);
-                    var jqWidget = $('<div ct-' + type + '="data"/>').attr('ct-editor', editorUrl);
+                    var jqWidget = $('<div ct-' + type + '="data"/>');
 
-                    var compiled = $compile(jqWidget)(scope);
-                    element.html('').append(compiled);
+                    $.get(editorUrl).done(function () {
+                        jqWidget.attr('ct-editor', editorUrl);
+                    }).always(function () {
+                        var compiled = $compile(jqWidget)(scope);
+                        element.html('').append(compiled);
+                        scope.$apply();
+                    });
                 });
             }
         };
