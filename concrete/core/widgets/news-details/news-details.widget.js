@@ -1,7 +1,7 @@
-﻿define(['module!portal', 'jquery'], function(module, $) {
+﻿define(['module!core', 'jquery'], function(module, $) {
     module.directive('ctNewsDetails', [function() {
         return {
-            templateUrl: '/portal/widgets/news-details/news-details.widget.html',
+            templateUrl: '/core/widgets/news-details/news-details.widget.html',
             replace: true,
             restrict: 'A',
             scope: {

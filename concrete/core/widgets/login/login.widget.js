@@ -1,4 +1,4 @@
-﻿define(['module!admin'], function (module) {
+﻿define(['module!core'], function (module) {
     module.directive('ctLogin', [function() {
         return {
             replace: true,
@@ -7,7 +7,7 @@
             controller: ['$scope', function (scope) {
                 scope.visible = true;
             }],
-            templateUrl: '/admin/widgets/login/login.widget.html'
+            templateUrl: '/core/widgets/login/login.widget.html'
         };
     }]);
 });

@@ -8,7 +8,7 @@
             },
             link: function(scope, element, attrs) {
                 scope.$watch('type', function (type) {
-                    var editorUrl = String.Format("/portal/widgets/{0}/{0}.editor.html", scope.type);
+                    var editorUrl = String.Format("/core/widgets/{0}/{0}.editor.html", scope.type);
                     var jqWidget = $('<div ct-' + type + '="data"/>').attr('ct-editor', editorUrl);
 
                     var compiled = $compile(jqWidget)(scope);

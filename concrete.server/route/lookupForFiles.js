@@ -50,10 +50,10 @@
                                     if (text.charCodeAt(0) == 0xFEFF) {
                                         text = text.substr(1);
                                     }
-                                    content += text.replace(/^define\(/, 'define("' + filename + '", ');
+                                    content += text.replace(/^define\(/, '\ndefine("' + filename + '", ');
                                     deps += (deps ? '","' : '') + filename;
                                 });
-                                content += 'define(["' + deps + '"], function () { return arguments; });';
+                                content += '\ndefine(["' + deps + '"], function () { return arguments; });';
                                 res.writeHead(200, 'OK', { 'Content-Type': 'application/javascript' });
                                 res.end(content);
                             });
