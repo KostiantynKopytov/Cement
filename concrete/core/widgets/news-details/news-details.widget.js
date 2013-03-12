@@ -9,6 +9,7 @@
             },
             controller: ['$scope', '$location', 'dbService', function($scope, $location, dbService) {
                 $scope.id = $location.search().id;
+                console.log($scope.id);
                 if ($scope.id) {
                     dbService.getEntity('news', $scope.id).success(function(data) {
                         $scope.news = data;
