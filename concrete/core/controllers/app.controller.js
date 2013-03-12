@@ -8,7 +8,7 @@
                 $location.path('/home');
             } else {
                 coreService.getPage(path).success(function(page) {
-                    $scope.page = page;
+                    $scope.$root.page = page;
                 }).error(function() {
                     // TODO: handle this
                 });
@@ -20,7 +20,7 @@
         });
 
         $scope.$on('ctSave', function() {
-            var json = angular.toJson($scope.page);
+            var json = angular.toJson($scope.$root.page);
             coreService.putPage($location.path(), json).error(function() {
                 // TODO: handle this
             });
