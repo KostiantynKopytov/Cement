@@ -49,24 +49,22 @@
 }
 
 [ct-widget] {
-	border: 1px dotted transparent;
-	&:hover {
-		border-color: black;
-	}
-}
+	.editable {
+		position: relative;
+		border: 1px dotted transparent;
+	
 
-.editable {
-	position: relative;
-
-	.edit-button {
-		position: absolute;
-		right: 0;
-		top: 0;
-		display: none;
-	}
-	&:hover {
-		> .edit-button {
-			display: block;
+		.edit-button {
+			position: absolute;
+			right: 0;
+			top: 0;
+			display: none;
+		}
+		&:hover {
+			border-color: black;
+			> .edit-button {
+				display: block;
+			}
 		}
 	}
 }

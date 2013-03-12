@@ -55,6 +55,7 @@
     <Content Include="core\directives\content-editable.directive.js" />
     <Content Include="core\directives\editor.directive.js" />
     <Content Include="core\directives\richtext.directive.js" />
+    <Content Include="favicon.ico" />
     <Content Include="libs\bootstrap\bootstrap-wysihtml5\bootstrap-wysihtml5-0.0.2.css" />
     <Content Include="libs\jquery-ui\themes\custom-theme\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="libs\jquery-ui\themes\custom-theme\images\ui-bg_glass_55_fbf9ee_1x400.png" />
