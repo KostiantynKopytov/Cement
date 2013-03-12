@@ -1,7 +1,7 @@
 ﻿(function(module, require) {
     var db = require('../db');
 
-    var pages = [{ _id: '/' }];
+    var pages = [{ _id: '/', regex: '^/$' }];
 
     var qPages = db.getCollection('pages');
     qPages.ninvoke("remove").done();

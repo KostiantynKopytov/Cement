@@ -1,7 +1,7 @@
 (function(module, require) {
     var logger = require('./logger').get();
     
-    //require('./seed/pages');
+    require('./seed/pages');
 
     var express = require('express');
     var app = express();
@@ -16,6 +16,16 @@
     
     app.use(express.logger());
     app.use(enableCache);
+    app.use(app.router);
+    app.use(function (err, req, res, next) {
+        logger.error(err.stack);
+        res.writeHead(500, err.stack);
+        res.end();
+        next(err);
+    });
+    app.use(function (err, req, res, next) {
+        next(err);
+    });
 
     require('./route/lookupForFiles')(app);
     require('./route/$page')(app);
@@ -23,6 +33,7 @@
     require('./route/$menu')(app);
     require('./route/content')(app);
     require('./route/index')(app);
+
 
 //    function logRequest(req, res) {
 //        logger.silly('<-- ' + req.method, req.url);
