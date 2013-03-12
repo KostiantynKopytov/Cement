@@ -43,11 +43,11 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="admin\widgets\editor-pane\editor-pane.widget.js" />
-    <Content Include="admin\widgets\editor-pane\editor-pane.widget.html" />
-    <Content Include="admin\widgets\login\login.popup.html" />
-    <Content Include="admin\widgets\login\login.widget.html" />
-    <Content Include="admin\widgets\login\login.widget.js" />
+    <Content Include="core\widgets\editor-pane\editor-pane.widget.js" />
+    <Content Include="core\widgets\editor-pane\editor-pane.widget.html" />
+    <Content Include="core\widgets\login\login.popup.html" />
+    <Content Include="core\widgets\login\login.widget.html" />
+    <Content Include="core\widgets\login\login.widget.js" />
     <Content Include="content\images\glyphicons-halflings-white.png" />
     <Content Include="content\images\glyphicons-halflings.png" />
     <Content Include="content\jasmine\jasmine.css" />
@@ -102,22 +102,22 @@
     <Content Include="libs\wysihtml5\wysiwyg-color.css" />
     <Content Include="libs\wysihtml5\wysihtml5-0.3.0.js" />
     <Content Include="libs\wysihtml5\wysihtml5-0.3.0.min.js" />
-    <Content Include="portal\controllers\app.controller.js" />
-    <Content Include="portal\widgets\portlet\portlet.editor.html" />
-    <Content Include="portal\widgets\portlet\portlet.widget.html" />
-    <Content Include="portal\widgets\portlet\portlet.widget.js" />
-    <Content Include="portal\widgets\news-details\news-details.widget.html" />
-    <Content Include="portal\widgets\news-details\news-details.widget.js" />
-    <Content Include="portal\widgets\news-details\news-details.editor.html" />
-    <Content Include="portal\widgets\multi-column\multi-column.widget.html" />
-    <Content Include="portal\widgets\multi-column\multi-column.widget.js" />
-    <Content Include="portal\widgets\main-layout\main-layout.widget.html" />
-    <Content Include="portal\widgets\main-layout\main-layout.widget.js" />
-    <Content Include="portal\widgets\navigation\navigation.widget.js" />
-    <Content Include="portal\widgets\navigation\navigation.widget.html" />
-    <Content Include="portal\widgets\text\text.widget.js" />
-    <Content Include="portal\widgets\text\text.editor.html" />
-    <Content Include="portal\widgets\text\text.widget.html" />
+    <Content Include="core\controllers\app.controller.js" />
+    <Content Include="core\widgets\portlet\portlet.editor.html" />
+    <Content Include="core\widgets\portlet\portlet.widget.html" />
+    <Content Include="core\widgets\portlet\portlet.widget.js" />
+    <Content Include="core\widgets\news-details\news-details.widget.html" />
+    <Content Include="core\widgets\news-details\news-details.widget.js" />
+    <Content Include="core\widgets\news-details\news-details.editor.html" />
+    <Content Include="core\widgets\multi-column\multi-column.widget.html" />
+    <Content Include="core\widgets\multi-column\multi-column.widget.js" />
+    <Content Include="core\widgets\main-layout\main-layout.widget.html" />
+    <Content Include="core\widgets\main-layout\main-layout.widget.js" />
+    <Content Include="core\widgets\navigation\navigation.widget.js" />
+    <Content Include="core\widgets\navigation\navigation.widget.html" />
+    <Content Include="core\widgets\text\text.widget.js" />
+    <Content Include="core\widgets\text\text.editor.html" />
+    <Content Include="core\widgets\text\text.widget.html" />
     <Content Include="libs\angular\angular-cookies.js" />
     <Content Include="libs\angular\angular-cookies.min.js" />
     <Content Include="libs\angular\angular-mocks.js" />
@@ -284,15 +284,15 @@
     <Content Include="libs\jasmine\jasmine.js" />
     <Content Include="libs\jquery-ui\jquery-ui-1.10.1.custom.js" />
     <Content Include="libs\jquery-ui\jquery-ui-1.10.1.custom.min.js" />
-    <Content Include="shared\requirejs\plugins\name.js" />
-    <Content Include="shared\requirejs\plugins\json.js" />
-    <Content Include="shared\requirejs\plugins\text.js" />
+    <Content Include="requirejs\plugins\name.js" />
+    <Content Include="requirejs\plugins\json.js" />
+    <Content Include="requirejs\plugins\text.js" />
     <Content Include="tests\index.html" />
     <Content Include="tests\runTests.js" />
     <Content Include="tests\TestSpec1.js" />
     <Content Include="core\directives\dialog.directive.js" />
     <Content Include="content\styles\less\elements.less" />
-    <Content Include="portal\editors\page.editor.html" />
+    <Content Include="core\editors\page.editor.html" />
     <None Include="libs\jquery-1.9.1.intellisense.js" />
     <Content Include="libs\jquery-1.9.1.js" />
     <Content Include="libs\jquery-1.9.1.min.js" />
@@ -301,12 +301,12 @@
     <Content Include="libs\require.js" />
     <Content Include="libs\underscore.js" />
     <Content Include="libs\underscore.min.js" />
-    <Content Include="shared\helpers\extensions.js" />
-    <Content Include="shared\requirejs\config.js" />
-    <Content Include="shared\requirejs\plugins\css.js" />
-    <Content Include="shared\requirejs\plugins\module.js" />
-    <Content Include="portal\widgets\text\text.editor.less" />
-    <Content Include="portal\widgets\portlet\portlet.less" />
+    <Content Include="core\helpers\extensions.js" />
+    <Content Include="requirejs\config.js" />
+    <Content Include="requirejs\plugins\css.js" />
+    <Content Include="requirejs\plugins\module.js" />
+    <Content Include="core\widgets\text\text.editor.less" />
+    <Content Include="core\widgets\portlet\portlet.less" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\styles\less\bootstrap\accordion.less" />
@@ -354,9 +354,7 @@
     <Content Include="content\styles\less\main.less" />
     <Content Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="core\controllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
