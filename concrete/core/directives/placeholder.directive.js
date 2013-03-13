@@ -1,4 +1,4 @@
-﻿define(['jquery', 'module!core', 'extensions'], function ($, module, ext) {
+﻿define(['jquery', 'module!core', 'extensions'], function($, module, ext) {
     module.directive('ctPlaceholder', [function() {
         return {
             template: '<div ct-widget="{{ widget.type }}" data="widget.data" ng-repeat="widget in widgets"></div>',
@@ -6,12 +6,12 @@
             scope: {
                 widgets: '=ctPlaceholder'
             },
-            link: function (scope, element) {
+            link: function(scope, element) {
                 require(['jquery-ui'], function() {
                     var senderScope = null;
                     var senderIndex = 0;
 
-                    var updateRatio = function (event, ui) {
+                    var updateRatio = function(event, ui) {
                         var helper = $(ui.helper);
                         var helperWidth = helper.width();
                         var helperHeight = helper.height();
@@ -29,7 +29,7 @@
                         forcePlaceholderSize: false,
                         forceHelperSize: false,
                         tolerance: "pointer",
-                        start: function (event, ui) {
+                        start: function(event, ui) {
                             ui.placeholder.attr('style', '').html(ui.item.clone().html()).addClass('ct-placeholder-targetplace');
                             senderScope = ui.item.parent().data('$scope');
                             senderIndex = ui.item.index();
@@ -37,7 +37,6 @@
                         change: updateRatio,
                         stop: function (event, ui) {
                             var item = ui.item.data('$scope');
-
                             var recevierElement = ui.item.parent();
                             var receiverScope = recevierElement.data('$scope');
                             var receiverIndex = ui.item.index();
@@ -50,7 +49,7 @@
                     }).droppable({
                         greedy: true,
                         activeClass: 'ct-placeholder-active',
-                        accept: '[ct-widget]'
+                        accept: '[ct-widget], .dragme'
                     }).disableSelection();
 
                     scope.$apply();

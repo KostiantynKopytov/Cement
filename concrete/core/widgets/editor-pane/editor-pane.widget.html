@@ -14,6 +14,19 @@
         </select>
         
         <br />
+        <div class="drag-wrap">
+            <div class="dragme" data-widget-type="navigation">
+                Nav
+                <div class="widget-drag-helper" ct-navigation></div>
+            </div>
+        </div>
+        <div class="drag-wrap">
+            <div class="dragme" data-widget-type="text">
+                text
+                <div class="widget-drag-helper" ct-text></div>
+            </div>
+        </div>
+        
 
         <button ng-disabled="!canAdd()" class="btn" type="submit" ng-click="addWidget()"><i class="icon-plus"></i>Add module</button>
         <button class="btn btn-save" type="submit" ng-click="save()"><i class="icon-thumbs-up"></i>Save</button>

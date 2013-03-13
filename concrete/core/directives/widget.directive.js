@@ -11,8 +11,13 @@
                     var editorUrl = String.Format("/core/widgets/{0}/{0}.editor.html", scope.type);
                     var jqWidget = $('<div ct-' + type + '="data"/>');
 
-                    $.get(editorUrl).done(function () {
+                    $.ajax({
+                        url: editorUrl,
+                        type: 'HEAD'
+                    }).done(function () {
                         jqWidget.attr('ct-editor', editorUrl);
+                    }).fail(function () {
+                        
                     }).always(function () {
                         var compiled = $compile(jqWidget)(scope);
                         element.html('').append(compiled);
