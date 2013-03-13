@@ -6,12 +6,9 @@
         file: { level: 'silly', handleExceptions: true, filename: 'server.log' }
     });
 
-    function getLogger(name) {
+    var getLogger = function(name) {
         return winston.loggers.get(name || 'default');
-    }
-
-    ;
-
+    };
     getLogger('default').cli();
 
     module.exports.get = getLogger;

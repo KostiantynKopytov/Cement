@@ -6,7 +6,7 @@
                 onload(module);
             });
         } else {
-            req(['angular'], function () {
+            req(['angular'], function (angular) {
                 onload(angular.module(syntax[0], []));
             });
         }

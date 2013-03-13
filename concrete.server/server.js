@@ -1,7 +1,7 @@
 (function(module, require) {
     var logger = require('./logger').get();
     
-    require('./seed/pages');
+    //require('./seed/pages');
 
     var express = require('express');
     var app = express();

@@ -21,6 +21,7 @@
 
         $scope.$on('ctSave', function() {
             var json = angular.toJson($scope.$root.page);
+            console.log(json);
             coreService.putPage($location.path(), json).error(function() {
                 // TODO: handle this
             });

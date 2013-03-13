@@ -38,9 +38,11 @@
                             var values = path.match(pageData.regex);
                             var names = pageData._id.match(/:([\d\w_]+)/gi);
                             pageData.params = {};
-                            names.map(function(name, index) {
-                                pageData.params[name.substring(1)] = values[index + 1];
-                            });
+                            if (names) {
+                                names.map(function(name, index) {
+                                    pageData.params[name.substring(1)] = values[index + 1];
+                                });
+                            }
                         }
                         var result = JSON.stringify(pageData || {});
                         res.writeHead(200, 'OK', { 'Content-Type': 'application/json' });
