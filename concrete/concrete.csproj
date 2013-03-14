@@ -43,6 +43,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="core\services\location.service.js" />
     <Content Include="core\widgets\editor-pane\editor-pane.widget.js" />
     <Content Include="core\widgets\editor-pane\editor-pane.widget.html" />
     <Content Include="core\widgets\login\login.popup.html" />

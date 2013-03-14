@@ -1,5 +1,5 @@
-﻿define(['module!core', 'extensions'], function (module, extensions) {
-    module.directive('ctNavigation', ['coreService', '$location', function(coreService, $location) {
+﻿define(['module!core', 'extensions'], function(module, extensions) {
+    module.directive('ctNavigation', ['coreService', 'locationService', function (coreService, locationService) {
         return {
             templateUrl: '/core/widgets/navigation/navigation.widget.html',
             restrict: 'A',
@@ -16,7 +16,7 @@
                 });
 
                 $scope.navClass = function(page) {
-                    var currentRoute = $location.path() || '/';
+                    var currentRoute = locationService.path() || '/';
                     return page === currentRoute.toLowerCase() ? 'active' : '';
                 };
             }

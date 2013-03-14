@@ -61,6 +61,7 @@
                         var pageId = pageData ? pageData._id : path;
                         console.log('put page', pageId, pageData, parentData);
                         var data = JSON.parse(post);
+                        delete data.params;
                         if (path !== '/') data.parentId = parentData._id;
                         data.regex = pageData ? pageData.regex : preparePageIdRegex(path);
                         return db.putEntity('pages', pageId, data);

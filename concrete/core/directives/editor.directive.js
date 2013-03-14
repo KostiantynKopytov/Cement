@@ -3,15 +3,15 @@
         return {
             restrict: 'A',
             compile: function(tElement, tAttrs) {
+                var editButton = $('<button class="edit-button btn btn-mini" type="button" />').prepend($('<i class="icon-wrench"/>'));
+                tElement.append(editButton);
                 tElement.append($('<div ng-include />').attr('src', 'editor.url'));
 
                 return function(scope, element, attrs) {
                     var editorUrl = null;
 
-                    element.addClass('editable');
-
-                    var editButton = $('<button class="edit-button btn btn-mini" type="button" />').prepend($('<i class="icon-wrench"/>'));
-                    editButton.on('click', function () {
+                    editButton.on('click', function() {
+                        console.log('click', scope);
                         scope.editor = {
                             context: ext.cleanClone(scope),
                             url: editorUrl,
@@ -25,10 +25,9 @@
                         };
                         scope.$apply();
                     });
-                    element.append(editButton);
 
-                    scope.$watch(function() { return $interpolate(attrs.ctEditor)(scope); }, function(url) {
-                        editorUrl = url;
+                    attrs.$observe('ctEditor', function(value) {
+                        editorUrl = $interpolate(value)(scope);
                     });
                 };
             },
