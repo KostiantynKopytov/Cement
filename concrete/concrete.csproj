@@ -44,6 +44,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="core\services\location.service.js" />
+    <Content Include="core\widgets\page\page.widget.html" />
+    <Content Include="core\widgets\page\page.widget.js" />
     <Content Include="core\widgets\editor-pane\editor-pane.widget.js" />
     <Content Include="core\widgets\editor-pane\editor-pane.widget.html" />
     <Content Include="core\widgets\login\login.popup.html" />
@@ -54,7 +56,6 @@
     <Content Include="content\jasmine\jasmine.css" />
     <Content Include="content\jasmine\jasmine_favicon.png" />
     <Content Include="core\directives\content-editable.directive.js" />
-    <Content Include="core\directives\editor.directive.js" />
     <Content Include="core\directives\richtext.directive.js" />
     <Content Include="favicon.ico" />
     <Content Include="libs\bootstrap\bootstrap-wysihtml5\bootstrap-wysihtml5-0.0.2.css" />
@@ -293,7 +294,8 @@
     <Content Include="tests\TestSpec1.js" />
     <Content Include="core\directives\dialog.directive.js" />
     <Content Include="content\styles\less\elements.less" />
-    <Content Include="core\editors\page.editor.html" />
+    <Content Include="core\widgets\page\page.editor.html" />
+    <Content Include="core\widgets\page\page.editor.less" />
     <None Include="libs\jquery-1.9.1.intellisense.js" />
     <Content Include="libs\jquery-1.9.1.js" />
     <Content Include="libs\jquery-1.9.1.min.js" />

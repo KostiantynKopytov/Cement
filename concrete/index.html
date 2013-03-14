@@ -10,10 +10,7 @@
     </head>
     <body>
         <div ct-require-css="/content/styles/less/main.less">
-            <div ct-page ct-editor="/core/editors/page.editor.html">
-                <div ct-editor-pane></div>
-                <div ct-placeholder="$root.page.widgets"></div>
-            </div>
+            <div ct-widget="page" data="$root.page" />
         </div>
     </body>
 </html>
