@@ -295,7 +295,6 @@
     <Content Include="core\directives\dialog.directive.js" />
     <Content Include="content\styles\less\elements.less" />
     <Content Include="core\widgets\page\page.editor.html" />
-    <Content Include="core\widgets\page\page.editor.less" />
     <None Include="libs\jquery-1.9.1.intellisense.js" />
     <Content Include="libs\jquery-1.9.1.js" />
     <Content Include="libs\jquery-1.9.1.min.js" />
@@ -308,8 +307,6 @@
     <Content Include="requirejs\config.js" />
     <Content Include="requirejs\plugins\css.js" />
     <Content Include="requirejs\plugins\module.js" />
-    <Content Include="core\widgets\text\text.editor.less" />
-    <Content Include="core\widgets\portlet\portlet.less" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\styles\less\bootstrap\accordion.less" />
