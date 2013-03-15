@@ -48,23 +48,35 @@
 	}
 }
 
-[ct-widget] {
-	.editable {
-		position: relative;
-		border: 1px dotted transparent;
 
-		.edit-button {
-			opacity: 0.75;
-			position: absolute;
-			left: 0;
-			top: 0;
-			display: none;
-		}
-		&:hover {
+[ct-widget] {
+	position: relative;
+
+	.btn-0 {
+		left: 0px;
+	}
+
+	.btn-1 {
+		left: 25px;
+	}
+
+	.editable {
+		border: 1px dotted transparent;
+	}
+
+	.widget-button {
+		opacity: 0.75;
+		position: absolute;
+		top: 0;
+		display: none;
+	}
+
+	&:hover {
+		>.editable {
 			border-color: black;
-			> .edit-button {
-				display: block;
-			}
+		}
+		>.widget-button {
+			display: block;
 		}
 	}
 }
