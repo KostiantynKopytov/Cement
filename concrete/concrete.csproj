@@ -43,6 +43,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="core\directives\editor.directive.js" />
     <Content Include="core\services\location.service.js" />
     <Content Include="core\widgets\page\page.widget.html" />
     <Content Include="core\widgets\page\page.widget.js" />
@@ -94,7 +95,6 @@
     <Content Include="libs\jquery-ui\themes\ui-lightness\jquery-ui-1.10.1.custom.min.css" />
     <Content Include="core\directives\widget.directive.js" />
     <Content Include="core\directives\placeholder.directive.js" />
-    <Content Include="core\directives\require-css.directive.js" />
     <Content Include="core\services\db.service.js" />
     <Content Include="core\services\core.service.js" />
     <Content Include="index.html" />

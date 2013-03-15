@@ -15,7 +15,7 @@
     };
     
     app.use(express.logger());
-    app.use(enableCache);
+    //app.use(enableCache);
     app.use(app.router);
     app.use(function (err, req, res, next) {
         logger.error(err.stack);

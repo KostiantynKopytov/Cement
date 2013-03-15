@@ -1,4 +1,4 @@
-﻿define(['module!core', 'jquery', 'angular', 'jquery-ui'], function(module, $, angular) {
+﻿define(['module!core', 'jquery', 'angular'], function(module, $, angular) {
 
     var getParentPlaceholderName = function(jqName) {
         var parent = jqName.parents('[ct-placeholder]');
@@ -45,42 +45,43 @@
                 };
             }],
             link: function(scope, element, attrs) {
-                var wrapper = $('.drag-wrap', element);
-                
-                wrapper.sortable({
-                    connectWith: '[ct-placeholder]',
-                    tolerance: "pointer",
-                    cursor: 'pointer',
-                    cursorAt: { left: 0, top: -32 },
-                    helper: function (event, item) {
-                        return $('.widget-drag-helper', item).clone().show();
-                    },
-                    start: function(event, ui) {
-                        ui.placeholder.attr('style', '').html(
-                            $('.widget-drag-helper', ui.item).clone().show()
-                        ).addClass('ct-placeholder-targetplace');
-                    },
-                    change: function (event, ui) {
-                        ui.item.show();
-                        var recevierElement = ui.placeholder.parent();
-                        var receiverScope = recevierElement.data('$scope');
-                        ui.placeholder.toggle(angular.isDefined(receiverScope));
-                    },
-                    stop: function(event, ui) {
-                        var type = ui.item.data('widgetType');
-                        var recevierElement = ui.item.parent();
-                        var receiverScope = recevierElement.data('$scope');
-                        if (angular.isDefined(receiverScope)) {
-                            var receiverIndex = ui.item.index();
+                require(['jquery-ui'], function () {
+                    var wrapper = $('.drag-wrap', element);
+                    wrapper.sortable({
+                        connectWith: '[ct-placeholder]',
+                        tolerance: "pointer",
+                        cursor: 'pointer',
+                        cursorAt: { left: 0, top: -32 },
+                        helper: function(event, item) {
+                            return $('.widget-drag-helper', item).clone().show();
+                        },
+                        start: function(event, ui) {
+                            ui.placeholder.attr('style', '').html(
+                                $('.widget-drag-helper', ui.item).clone().show()
+                            ).addClass('ct-placeholder-targetplace');
+                        },
+                        change: function(event, ui) {
+                            ui.item.show();
+                            var recevierElement = ui.placeholder.parent();
+                            var receiverScope = recevierElement.data('$scope');
+                            ui.placeholder.toggle(angular.isDefined(receiverScope));
+                        },
+                        stop: function(event, ui) {
+                            var type = ui.item.data('widgetType');
+                            var recevierElement = ui.item.parent();
+                            var receiverScope = recevierElement.data('$scope');
+                            if (angular.isDefined(receiverScope)) {
+                                var receiverIndex = ui.item.index();
 
-                            receiverScope.widgets = receiverScope.widgets || [];
-                            receiverScope.widgets.splice(receiverIndex, 0, { type: type });
-                            scope.$root.$apply();
+                                receiverScope.widgets = receiverScope.widgets || [];
+                                receiverScope.widgets.splice(receiverIndex, 0, { type: type });
+                                scope.$root.$apply();
+                            }
+
+                            wrapper.sortable("cancel");
                         }
-
-                        wrapper.sortable("cancel");
-                    }
-                }).disableSelection();
+                    }).disableSelection();
+                });
             },
             templateUrl: '/core/widgets/editor-pane/editor-pane.widget.html'
         };

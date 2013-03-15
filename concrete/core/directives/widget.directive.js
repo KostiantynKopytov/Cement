@@ -11,35 +11,25 @@
                     scope.$watch('type', function(type) {
                         var editorUrl = String.Format("core/widgets/{0}/{0}.editor.html", scope.type);
 
-                        var jqWidget = $('<div><div ct-' + type + '="data"/></div>');
+                        var wrapper = $('<div />');
+                        var widget = $('<div ct-' + type + '="data"/>').appendTo(wrapper);
+                        var ribbon = $('<div class="ribbon" />').appendTo(wrapper);
 
                         if (editors.indexOf(editorUrl) >= 0) {
                             element.addClass('editable');
 
                             var editButton = $('<button class="widget-button btn btn-mini btn-1" type="button" />').prepend($('<i class="icon-edit"/>'));
-                            jqWidget.append(editButton);
-                            jqWidget.append($('<div ng-include />').attr('src', 'editor.url'));
-
-                            editButton.on('click', function() {
-                                console.log('click', scope);
-                                scope.editor = {
-                                    data: ext.cleanClone(scope.data),
-                                    url: "/" + editorUrl,
-                                    ok: function() {
-                                        scope.data = ext.extend(scope.data, scope.editor.data);
-                                        delete scope.editor;
-                                    },
-                                    cancel: function() {
-                                        delete scope.editor;
-                                    }
-                                };
+                            editButton.on('click', function () {
+                                scope.editorUrl =  "/" + editorUrl;
                                 scope.$apply();
                             });
+                            ribbon.append(editButton);
+                            var editor = $('<div ct-editor data="data" src="editorUrl" />').appendTo(wrapper);
                         }
 
                         if (element.parent('[ct-placeholder]').exists()) {
                             var deleteButton = $('<button class="widget-button btn btn-mini btn-0" type="button" />').prepend($('<i class="icon-remove"/>'));
-                            jqWidget.append(deleteButton);
+                            ribbon.append(deleteButton);
 
                             deleteButton.on('click', function() {
                                 var placeholder = element.parent().data('$scope');
@@ -48,7 +38,7 @@
                             });
                         }
 
-                        var compiled = $compile(jqWidget.children())(scope);
+                        var compiled = $compile(wrapper.children())(scope);
                         element.append(compiled);
                     });
                 };

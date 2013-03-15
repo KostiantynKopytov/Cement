@@ -23,6 +23,7 @@
             'jquery-ui-styles': '/libs/jquery-ui/themes/custom-theme/jquery-ui-1.10.1.custom',
             'bootstrap-wysihtml5-styles': '/libs/bootstrap/bootstrap-wysihtml5/bootstrap-wysihtml5-0.0.2',
             'wysihtml5-color': '/libs/wysihtml5/wysiwyg-color',
+            'main': '/content/styles/less/main.less'
         },
         shim: {
             'angular': {
