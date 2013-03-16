@@ -18,13 +18,12 @@
                         if (editors.indexOf(editorUrl) >= 0) {
                             element.addClass('editable');
 
-                            var editButton = $('<button class="widget-button btn btn-mini btn-1" type="button" />').prepend($('<i class="icon-edit"/>'));
-                            editButton.on('click', function () {
-                                scope.editorUrl =  "/" + editorUrl;
-                                scope.$apply();
-                            });
+                            var editButton = $('<button class="widget-button btn btn-mini btn-1" type="button" ng-click="onedit()" />').prepend($('<i class="icon-edit"/>'));
+                            scope.onedit = function() {
+                                scope.showEditor = true;
+                            };
                             ribbon.append(editButton);
-                            var editor = $('<div ct-editor data="data" src="editorUrl" />').appendTo(wrapper);
+                            $('<div ct-editor show="showEditor" data="data"/>').attr('src', '/' + editorUrl).appendTo(wrapper);
                         }
 
                         if (element.parent('[ct-placeholder]').exists()) {

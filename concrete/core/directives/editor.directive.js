@@ -3,26 +3,28 @@
         return {
             restrict: 'A',
             scope: {
+                show: '=',
                 data: '=',
-                src: '='
+                src: '@'
             },
             compile: function (tElement, tAttrs) {
-                tElement.append($('<div ng-include />').attr('src', 'src'));
+                tElement.append($('<div ng-include />').attr('src', 'editor.src'));
                 return function (scope, element) {
-                    scope.$watch('src', function (src) {
-                        if (src) {
+                    scope.$watch('show', function (show) {
+                        if (show) {
                             scope.editor = {
                                 data: ext.cleanClone(scope.data),
-                                ok: function () {
+                                src: scope.src,
+                                ok: function() {
                                     scope.data = ext.extend(scope.data, scope.editor.data);
-                                    scope.src = null;
-                                    delete scope.editor;
+                                    scope.show = false;
                                 },
-                                cancel: function () {
-                                    scope.src = null;
-                                    delete scope.editor;
+                                cancel: function() {
+                                    scope.show = false;
                                 }
                             };
+                        } else {
+                            delete scope.editor;
                         }
                     });
                 };
