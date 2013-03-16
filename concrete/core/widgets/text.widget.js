@@ -1,11 +1,11 @@
 ﻿define(['module!core'], function(module) {
-    module.directive('ctPage', [function() {
+    module.directive('ctText', [function() {
         return {
-            templateUrl: '/core/widgets/page/page.widget.html',
+            templateUrl: '/core/widgets/text.widget.html',
             replace: true,
             restrict: 'A',
             scope: {
-                data: '=ctPage'
+                data: '=ctText'
             }
         };
     }]);

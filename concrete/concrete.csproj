@@ -45,8 +45,6 @@
   <ItemGroup>
     <Content Include="core\directives\editor.directive.js" />
     <Content Include="core\services\location.service.js" />
-    <Content Include="core\widgets\page\page.widget.html" />
-    <Content Include="core\widgets\page\page.widget.js" />
     <Content Include="core\widgets\editor-pane\editor-pane.widget.js" />
     <Content Include="core\widgets\editor-pane\editor-pane.widget.html" />
     <Content Include="core\widgets\login\login.popup.html" />
@@ -117,9 +115,6 @@
     <Content Include="core\widgets\main-layout\main-layout.widget.js" />
     <Content Include="core\widgets\navigation\navigation.widget.js" />
     <Content Include="core\widgets\navigation\navigation.widget.html" />
-    <Content Include="core\widgets\text\text.widget.js" />
-    <Content Include="core\widgets\text\text.editor.html" />
-    <Content Include="core\widgets\text\text.widget.html" />
     <Content Include="libs\angular\angular-cookies.js" />
     <Content Include="libs\angular\angular-cookies.min.js" />
     <Content Include="libs\angular\angular-mocks.js" />
@@ -294,7 +289,6 @@
     <Content Include="tests\TestSpec1.js" />
     <Content Include="core\directives\dialog.directive.js" />
     <Content Include="content\styles\less\elements.less" />
-    <Content Include="core\widgets\page\page.editor.html" />
     <None Include="libs\jquery-1.9.1.intellisense.js" />
     <Content Include="libs\jquery-1.9.1.js" />
     <Content Include="libs\jquery-1.9.1.min.js" />
@@ -307,6 +301,22 @@
     <Content Include="requirejs\config.js" />
     <Content Include="requirejs\plugins\css.js" />
     <Content Include="requirejs\plugins\module.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="core\widgets\page.widget.js" />
+    <Content Include="core\widgets\page.widget.html">
+      <DependentUpon>page.widget.js</DependentUpon>
+    </Content>
+    <Content Include="core\widgets\page.editor.html">
+      <DependentUpon>page.widget.js</DependentUpon>
+    </Content>
+    <Content Include="core\widgets\text.widget.js" />
+    <Content Include="core\widgets\text.widget.html">
+      <DependentUpon>text.widget.js</DependentUpon>
+    </Content>
+    <Content Include="core\widgets\text.editor.html">
+      <DependentUpon>text.widget.js</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\styles\less\bootstrap\accordion.less" />

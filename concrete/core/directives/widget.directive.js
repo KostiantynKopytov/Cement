@@ -9,7 +9,7 @@
             compile: function(tElement, tAttrs) {
                 return function(scope, element) {
                     scope.$watch('type', function(type) {
-                        var editorUrl = String.Format("core/widgets/{0}/{0}.editor.html", scope.type);
+                        var editorUrl = String.Format("core/widgets/{0}.editor.html", scope.type);
 
                         var wrapper = $('<div />');
                         var widget = $('<div ct-' + type + '="data"/>').appendTo(wrapper);
